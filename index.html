@@ -138,14 +138,30 @@
           <ellipse cx="247" cy="179" rx="5" ry="4.5" fill="#F2E3C8"/>
         </g>
       </g>
-      <!-- 二楼：未来的圆窗 -->
+      <!-- 二楼：第二夜的故事之窗 + 未来的圆窗 -->
+      <g class="storywin" id="trainwin" role="link" aria-label="第二夜 · 慢一点的火车">
+        <rect class="halo" x="140" y="230" width="64" height="84" rx="8" fill="#ffcf7e" filter="url(#hglow)"/>
+        <rect class="glass" x="145" y="235" width="54" height="74" rx="5"/>
+        <!-- 小火车 -->
+        <g fill="#ece5d3" opacity=".9">
+          <rect x="152" y="272" width="40" height="12" rx="3"/>
+          <path d="M152 272 L156 264 L166 264 L166 272 Z"/>
+          <rect x="168" y="266" width="18" height="6" rx="2" opacity=".8"/>
+          <circle cx="158" cy="286" r="3"/>
+          <circle cx="166" cy="286" r="3"/>
+          <circle cx="180" cy="286" r="3"/>
+          <circle cx="157" cy="258" r="2" opacity=".6"/>
+          <circle cx="162" cy="252" r="2.6" opacity=".4"/>
+        </g>
+        <rect x="158" y="268" width="10" height="8" rx="1.5" fill="#242a45" class="glass" style="fill:#3a4266"/>
+      </g>
       <g class="futurewin" id="futurewin">
-        <circle cx="190" cy="262" r="30" fill="#20263f"/>
-        <circle cx="190" cy="262" r="25" fill="#242a45"/>
-        <circle cx="190" cy="262" r="25" fill="none" stroke="#2a3149" stroke-width="4"/>
-        <circle class="dot" cx="176" cy="262" r="2.8"/>
-        <circle class="dot" cx="190" cy="262" r="2.8"/>
-        <circle class="dot" cx="204" cy="262" r="2.8"/>
+        <circle cx="230" cy="272" r="24" fill="#20263f"/>
+        <circle cx="230" cy="272" r="20" fill="#242a45"/>
+        <circle cx="230" cy="272" r="20" fill="none" stroke="#2a3149" stroke-width="3.5"/>
+        <circle class="dot" cx="220" cy="272" r="2.3"/>
+        <circle class="dot" cx="230" cy="272" r="2.3"/>
+        <circle class="dot" cx="240" cy="272" r="2.3"/>
       </g>
       <!-- 一楼：第一夜的故事之窗 -->
       <g class="storywin" id="rainwin" role="link" aria-label="第一夜 · 动物城的雨">
@@ -177,7 +193,8 @@
 <script>
 /* 故事清单：以后每加一夜，在这里登记一扇窗 */
 var STORIES=[
-  {id:"rain",url:"rain/",win:document.getElementById("rainwin")}
+  {id:"rain",url:"rain/",win:document.getElementById("rainwin")},
+  {id:"train",url:"train/",win:document.getElementById("trainwin")}
 ];
 
 /* 已读的窗，进来就是亮的 */

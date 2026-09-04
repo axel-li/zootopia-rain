@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1d2240">
+<title>慢一点的火车 · 第二夜</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%82%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/common.css">
+<style>
+/* ============================================================
+   第二夜 ·《慢一点的火车》 —— 本页专属样式
+   暮色旅途 → 隧道 → 到站的灯
+   ============================================================ */
+#s0,#s1{background:#1d2240}
+#s2{background:#1c2136}
+#s3{background:#4a3f5e}
+#s4{background:#2a2438}
+#s5{background:#0d0f1a}
+#s6{background:#1a2036}
+#s7{background:#1c2038}
+#s8{background:linear-gradient(#332e4e 0%, #5c4a58 30%, #93706a 62%, #d9b48c 85%, #efd9b8 100%)}
+footer{
+  background:#efd9b8;color:#6b5747;text-align:center;
+  padding:26px 0 40px;letter-spacing:.5em;font-size:13px;
+}
+footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;margin-right:1em}
+
+/* ---------- 封面 ---------- */
+#s0{align-items:center;text-align:center;justify-content:flex-end;padding-bottom:16vh}
+#s0 .art svg{width:126%;max-width:620px}
+#s0 .cover-block{position:relative;z-index:2;margin-bottom:5vh}
+#s0 h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(32px,10vw,50px);
+  letter-spacing:.12em;text-indent:.06em;color:var(--cream);
+  text-shadow:0 2px 24px rgba(0,0,0,.45);
+}
+#s0 .sub{margin-top:18px;color:var(--cream-dim);font-size:14px;letter-spacing:.32em}
+#s0 .series-badge{margin-top:26px;color:#8d92ab;font-size:11.5px;letter-spacing:.42em}
+.back-home{
+  position:absolute;top:18px;left:16px;z-index:3;
+  color:var(--cream-dim);text-decoration:none;
+  font-size:12px;letter-spacing:.22em;opacity:.8;padding:6px 10px;
+}
+#s0 .cue{
+  position:relative;z-index:2;margin-top:9vh;
+  display:inline-flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--cream);font-size:12px;letter-spacing:.4em;
+  text-shadow:0 1px 10px rgba(10,13,24,.95),0 0 3px rgba(10,13,24,.9);
+}
+#s0 .cue i{
+  width:1px;height:34px;background:linear-gradient(var(--cream),transparent);
+  animation:cue 2.2s ease-in-out infinite;
+}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* ---------- s1：两班火车 ---------- */
+#s1 .art svg{width:110%;max-width:520px}
+.tt{
+  display:flex;gap:14px;justify-content:center;margin:0 auto 3vh;max-width:32em;
+}
+.tt .board{
+  flex:1;border:1px solid rgba(236,229,211,.16);border-radius:10px;
+  padding:14px 10px 12px;text-align:center;background:rgba(18,22,31,.35);
+}
+.tt .board .name{font-size:13px;letter-spacing:.3em;color:var(--cream)}
+.tt .board .info{margin-top:8px;font-size:11.5px;color:var(--cream-dim);letter-spacing:.12em;line-height:1.8}
+.tt .board.fast .name{color:var(--cream-dim)}
+.tt .board.slow{border-color:rgba(244,184,96,.45)}
+.tt .board.slow .name{color:var(--amber)}
+
+/* ---------- s2：快车呼啸（文字在上，插画跟随） ---------- */
+#s2{justify-content:flex-start;padding-top:12vh}
+#s2 .artflow{position:relative;z-index:1;width:100%;max-width:520px;margin:4vh auto 0}
+#s2 .artflow svg{width:100%;height:auto;display:block}
+#s2 .big{
+  font-family:var(--serif);font-size:clamp(20px,5.6vw,26px);
+  line-height:2;letter-spacing:.06em;color:var(--cream);
+}
+
+/* ---------- s3：窗外慢慢（金色黄昏） ---------- */
+#s3{justify-content:flex-start;padding-top:10vh}
+#s3 .artflow{position:relative;z-index:1;width:100%;max-width:540px;margin:4vh auto 0}
+#s3 .artflow svg{width:100%;height:auto;display:block}
+
+/* ---------- s4：车厢里（插画在上，文字在下） ---------- */
+#s4 .art svg{width:112%;max-width:540px;top:6%;bottom:auto;transform:translateX(-50%)}
+#s4 .words{margin-top:50vh}
+#tail{transform-origin:60% 40%;animation:tailbreath 4.6s ease-in-out infinite}
+@keyframes tailbreath{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.035) translateY(1px)}}
+
+/* ---------- s5：隧道 ---------- */
+#s5{align-items:center;justify-content:center;text-align:center}
+#s5 .words{max-width:27em}
+#s5 .tun-art{width:min(52vw,240px);margin:0 auto 4vh;opacity:.95}
+#s5 .tun-art svg{width:100%;height:auto;display:block}
+#s5 .words p{margin-bottom:1.3em}
+#s5 .words p.dim{color:#6d7288}
+#s5 .quiet{font-family:var(--serif);letter-spacing:.1em;color:var(--cream)}
+
+/* ---------- s6：车窗互动 ---------- */
+#s6{justify-content:flex-start;padding-top:9vh}
+#s6 .words{text-align:center;max-width:26em}
+#s6 .hint{font-size:13px;letter-spacing:.34em;color:var(--cream-dim)}
+#s6 .hint b{font-weight:400;color:var(--amber);animation:hintp 2.4s ease-in-out infinite}
+@keyframes hintp{0%,100%{opacity:.55}50%{opacity:1}}
+.winframe{
+  position:relative;z-index:2;width:min(86vw,400px);margin:4.5vh auto 0;
+  border-radius:18px;padding:9px;background:#3a3450;
+  box-shadow:0 10px 40px rgba(0,0,0,.5), inset 0 0 0 2px #2c2840;
+  cursor:pointer;user-select:none;-webkit-user-select:none;
+}
+.winview{position:relative;border-radius:10px;overflow:hidden;height:54vw;max-height:300px}
+.winview .sky{position:absolute;inset:0;transition:opacity 1.6s ease}
+.skyA{background:linear-gradient(#6a5670 0%,#8a6a6a 45%,#c99a6e 100%)}
+.skyB{background:linear-gradient(#161b2e 0%,#232a47 60%,#3a3355 100%);opacity:0}
+.skyB.on{opacity:1}
+.layer{position:absolute;left:0;top:0;height:100%}
+.layer svg{height:100%;width:auto;display:block}
+.layer.far{width:220%;transition:transform 2.6s ease-in-out}
+.layer.mid{width:340%;transition:transform 2.6s ease-in-out}
+.layer.near{width:300%;transition:transform 2.2s ease-in-out}
+.winframe.arrived{cursor:default}
+.stlamp{opacity:.18;transition:opacity 1.2s ease}
+.stlamp.on{opacity:1}
+.sill{
+  margin:14px auto 0;width:min(60vw,240px);
+  display:flex;justify-content:center;gap:22px;align-items:flex-end;
+}
+.sill svg{width:auto;height:34px;display:block}
+#s6 .lines{min-height:5.4em;margin-top:4.5vh}
+#s6 .lines p{
+  font-family:var(--serif);font-size:16.5px;line-height:2.2;letter-spacing:.1em;margin-bottom:.35em;
+}
+#s6 .lines p span{opacity:0;transform:translateY(10px);display:inline-block;
+  transition:opacity 1.3s ease,transform 1.3s ease}
+#s6 .lines p.on span{opacity:1;transform:none}
+#s6 .lines p:last-child span{color:var(--amber-soft)}
+
+/* ---------- s7：到站（文字在上，插画跟随） ---------- */
+#s7{justify-content:flex-start;padding-top:11vh}
+#s7 .artflow{position:relative;z-index:1;width:100%;max-width:540px;margin:4vh auto 0}
+#s7 .artflow svg{width:100%;height:auto;display:block}
+
+/* ---------- s8：尾声 ---------- */
+#s8{justify-content:flex-end;padding-bottom:8vh}
+#s8 .art svg{width:104%;max-width:460px;top:8%;bottom:auto}
+#s8 .words{margin-top:38vh;text-align:center;max-width:28em}
+#s8 .kicker{justify-content:center}
+#s8 .kicker::before{content:"";flex:0 0 44px;height:1px;background:currentColor;opacity:.55}
+#s8 .words p{color:#5d4c3d}
+#s8 .words p.dim{color:#8a7360}
+.dedic{margin-top:3.2em;font-family:var(--serif);letter-spacing:.12em}
+.dedic .to{font-size:19px;color:#4a392b;line-height:2}
+.dedic .from{margin-top:1em;font-size:14.5px;color:#8a7360}
+.nextup{
+  margin-top:4em;padding-top:2.4em;border-top:1px solid rgba(107,87,71,.25);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.nextup .win-mini{width:44px;opacity:.85}
+.nextup .win-mini svg{width:100%;height:auto;display:block}
+.nextup .next-text{font-size:13px;color:#8a7360;letter-spacing:.28em}
+.nextup .back-study{
+  margin-top:1.4em;font-size:12.5px;color:#a5826a;text-decoration:none;
+  letter-spacing:.3em;border-bottom:1px solid rgba(165,130,106,.4);padding-bottom:3px;
+}
+</style>
+</head>
+<body>
+
+<div id="vignette"></div>
+<button id="sndBtn" aria-label="声音开关">声音</button>
+
+<main>
+
+<!-- ════════════ 封面 ════════════ -->
+<section id="s0" class="scene">
+  <a class="back-home" href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">◂ 书房</a>
+  <div class="art">
+    <svg viewBox="0 0 380 520" aria-hidden="true">
+      <!-- 暮色天空 -->
+      <circle cx="96" cy="112" r="34" fill="#e8cba0" opacity=".1"/>
+      <circle cx="96" cy="112" r="22" fill="#e8cba0" opacity=".18"/>
+      <circle cx="96" cy="112" r="14" fill="#f2d9ae" opacity=".5"/>
+      <g fill="#fff">
+        <circle cx="300" cy="70" r="1.4" opacity=".6"/>
+        <circle cx="260" cy="120" r="1.1" opacity=".45"/>
+        <circle cx="340" cy="150" r="1.3" opacity=".55"/>
+        <circle cx="190" cy="60" r="1.1" opacity=".4"/>
+      </g>
+      <!-- 远山 -->
+      <path d="M0 300 Q80 240 170 290 Q240 326 320 282 Q360 262 380 276 L380 520 L0 520 Z" fill="#3a3355"/>
+      <path d="M0 340 Q100 300 200 336 Q290 366 380 330 L380 520 L0 520 Z" fill="#2c3252"/>
+      <!-- 高架桥 -->
+      <g fill="#232a47">
+        <rect x="30" y="376" width="14" height="144"/>
+        <rect x="110" y="376" width="14" height="144"/>
+        <rect x="190" y="376" width="14" height="144"/>
+        <rect x="270" y="376" width="14" height="144"/>
+        <rect x="346" y="376" width="14" height="144"/>
+        <rect x="0" y="368" width="380" height="14" rx="3"/>
+      </g>
+      <!-- 慢车剪影 -->
+      <g>
+        <path d="M18 330 L30 306 L44 306 L44 330 Z" fill="#1c2136"/>
+        <rect x="44" y="308" width="66" height="24" rx="6" fill="#1c2136"/>
+        <rect x="116" y="310" width="72" height="22" rx="6" fill="#1c2136"/>
+        <rect x="196" y="310" width="72" height="22" rx="6" fill="#1c2136"/>
+        <rect x="276" y="310" width="72" height="22" rx="6" fill="#1c2136"/>
+        <!-- 一扇亮着的窗 -->
+        <rect class="winlit" x="132" y="315" width="12" height="12" rx="2" fill="#ffd98a"/>
+        <rect class="winlit" x="212" y="315" width="12" height="12" rx="2" fill="#ffd98a" opacity=".7"/>
+        <!-- 烟囱小烟 -->
+        <circle cx="26" cy="298" r="3.4" fill="#3a3355" opacity=".7"/>
+        <circle cx="32" cy="290" r="4.2" fill="#3a3355" opacity=".5"/>
+        <circle cx="40" cy="280" r="5" fill="#3a3355" opacity=".3"/>
+      </g>
+      <!-- 铁轨路基 -->
+      <rect x="0" y="392" width="380" height="8" fill="#1a2036"/>
+      <g fill="#161b2e"><rect x="0" y="400" width="380" height="120"/></g>
+    </svg>
+  </div>
+  <div class="cover-block">
+    <h1>慢一点的火车</h1>
+    <div class="sub">一 个 小 小 的 睡 前 故 事</div>
+    <div class="series-badge">动物城睡前故事 · 第二夜</div>
+  </div>
+  <div class="cue"><span>往下滑</span><i></i></div>
+</section>
+
+<!-- ════════════ 一 · 两班火车 ════════════ -->
+<section id="s1" class="scene">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">壹</span><span>两班火车</span></div>
+    <div class="tt reveal" style="--d:.15s">
+      <div class="board fast"><div class="name">快 车</div><div class="info">三个小时<br>一路不停</div></div>
+      <div class="board slow"><div class="name">慢 车</div><div class="info">十四个小站<br>摇摇晃晃走一天</div></div>
+    </div>
+    <p class="reveal" style="--d:.35s">朱迪买的是慢车票——快车的票，卖完了。</p>
+    <div class="bubble reveal" style="--d:.6s">
+      <span class="who">朱迪嘟囔 / 尼克拎着行李上车</span>
+      “命运让我慢一天。”<br>“那命运，还挺会安排。”
+    </div>
+  </div>
+  <div class="art">
+    <svg viewBox="0 0 380 240" aria-hidden="true">
+      <g fill="#232a47">
+        <rect x="24" y="150" width="10" height="90"/>
+        <rect x="118" y="150" width="10" height="90"/>
+        <rect x="212" y="150" width="10" height="90"/>
+        <rect x="306" y="150" width="10" height="90"/>
+        <rect x="0" y="144" width="380" height="10" rx="3"/>
+      </g>
+      <rect x="0" y="196" width="380" height="44" fill="#161b2e"/>
+      <g>
+        <path d="M22 108 L34 84 L48 84 L48 108 Z" fill="#1c2136"/>
+        <rect x="48" y="86" width="62" height="22" rx="6" fill="#1c2136"/>
+        <rect x="118" y="88" width="70" height="20" rx="6" fill="#1c2136"/>
+        <rect x="196" y="88" width="70" height="20" rx="6" fill="#1c2136"/>
+        <rect x="274" y="88" width="70" height="20" rx="6" fill="#1c2136"/>
+        <rect class="winlit" x="134" y="93" width="11" height="11" rx="2" fill="#ffd98a"/>
+        <rect class="winlit" x="212" y="93" width="11" height="11" rx="2" fill="#ffd98a" opacity=".75"/>
+        <circle cx="30" cy="76" r="3" fill="#2c3252" opacity=".7"/>
+        <circle cx="36" cy="68" r="3.8" fill="#2c3252" opacity=".5"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 二 · 快车呼啸 ════════════ -->
+<section id="s2" class="scene">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">贰</span><span>快车呼啸</span></div>
+    <p class="reveal" style="--d:.15s">刚开出去没多久，一列快车呼啸而过，一眨眼，没了影。</p>
+    <p class="reveal dim" style="--d:.35s">朱迪贴着窗户，看了很久。</p>
+    <p class="reveal big" style="--d:.55s">“好像……所有人都比我先到。”</p>
+    <p class="reveal dim" style="--d:.8s">她说得很轻，像自言自语。</p>
+    <p class="reveal" style="--d:1.05s">尼克没有接话。他只是把自己靠窗的位子，换给了她。</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 300" aria-hidden="true">
+      <!-- 疾驰的快车：模糊的光条 -->
+      <g>
+        <rect x="30" y="70" width="220" height="10" rx="5" fill="#3a4468" opacity=".8"/>
+        <rect x="90" y="88" width="260" height="8" rx="4" fill="#324058" opacity=".7"/>
+        <rect x="0" y="104" width="180" height="7" rx="3.5" fill="#2c3a52" opacity=".6"/>
+        <g stroke="#8fa0c8" stroke-width="1.4" opacity=".35" stroke-linecap="round">
+          <line x1="60" y1="60" x2="130" y2="60"/>
+          <line x1="150" y1="126" x2="240" y2="126"/>
+          <line x1="300" y1="66" x2="360" y2="66"/>
+        </g>
+        <circle cx="330" cy="84" r="7" fill="#f4b860" opacity=".9"/>
+        <circle cx="330" cy="84" r="15" fill="#f4b860" opacity=".25"/>
+      </g>
+      <!-- 我们的慢车：亮着的车窗 -->
+      <g>
+        <rect x="16" y="168" width="348" height="72" rx="14" fill="#33406a"/>
+        <rect x="24" y="200" width="332" height="9" rx="4.5" fill="#ece5d3" opacity=".2"/>
+        <circle cx="58" cy="244" r="9" fill="#1a2036"/>
+        <circle cx="96" cy="244" r="9" fill="#1a2036"/>
+        <circle cx="300" cy="244" r="9" fill="#1a2036"/>
+        <circle cx="340" cy="244" r="9" fill="#1a2036"/>
+        <!-- 车窗们 -->
+        <rect x="44" y="182" width="44" height="26" rx="5" fill="#242c48"/>
+        <rect x="102" y="182" width="44" height="26" rx="5" fill="#242c48"/>
+        <rect x="160" y="182" width="44" height="26" rx="5" fill="#242c48"/>
+        <!-- 靠窗的两个小家伙 -->
+        <rect x="236" y="180" width="60" height="34" rx="5" fill="#ffd98a"/>
+        <ellipse cx="236" cy="198" rx="42" ry="26" fill="#ffd98a" opacity=".14"/>
+        <!-- 朱迪剪影（长耳朵） -->
+        <g fill="#5a5470">
+          <ellipse cx="256" cy="192" rx="7" ry="7"/>
+          <rect x="250" y="172" width="4.6" height="14" rx="2.3" transform="rotate(9 252 178)"/>
+          <rect x="257" y="171" width="4.6" height="14" rx="2.3" transform="rotate(-10 259 178)"/>
+        </g>
+        <!-- 尼克剪影（尖耳朵+大尾巴尖） -->
+        <g fill="#4a3a52">
+          <path d="M272 186 L268 170 L279 183 Z"/>
+          <path d="M285 184 L292 169 L279 182 Z"/>
+          <ellipse cx="280" cy="194" rx="8" ry="7"/>
+        </g>
+        <rect x="252" y="182" width="30" height="1.6" fill="#6e5a3a" opacity=".6"/>
+        <rect x="310" y="182" width="30" height="26" rx="5" fill="#242c48"/>
+      </g>
+      <!-- 铁轨 -->
+      <rect x="0" y="256" width="380" height="5" fill="#1a2036"/>
+      <g fill="#161b2e"><rect x="0" y="261" width="380" height="39"/></g>
+      <g fill="#232a47">
+        <rect x="30" y="262" width="5" height="9"/><rect x="90" y="262" width="5" height="9"/>
+        <rect x="150" y="262" width="5" height="9"/><rect x="210" y="262" width="5" height="9"/>
+        <rect x="270" y="262" width="5" height="9"/><rect x="330" y="262" width="5" height="9"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 三 · 窗外慢慢 ════════════ -->
+<section id="s3" class="scene">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">叁</span><span>窗外慢慢</span></div>
+    <p class="reveal" style="--d:.15s">慢车的风景，是真的慢。</p>
+    <p class="reveal" style="--d:.35s">向日葵田整片整片地铺开，全都仰着脸，慢吞吞地跟着太阳转。</p>
+    <p class="reveal" style="--d:.6s">一条狗追着火车跑了一站地，跑不动了，坐在原地，目送他们远去。</p>
+    <div class="bubble reveal" style="--d:.85s">
+      <span class="who">尼克朝它挥了挥手</span>
+      “你看，连告别，都是慢车给的。”
+    </div>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 300" aria-hidden="true">
+      <!-- 金色黄昏 -->
+      <rect x="0" y="0" width="380" height="300" fill="#8a6a6a"/>
+      <rect x="0" y="0" width="380" height="150" fill="#6a5670"/>
+      <circle cx="296" cy="128" r="30" fill="#f2c98e"/>
+      <circle cx="296" cy="128" r="46" fill="#e8b478" opacity=".3"/>
+      <!-- 远山 -->
+      <path d="M0 130 Q70 84 150 122 Q230 156 300 116 Q340 96 380 112 L380 170 L0 170 Z" fill="#4a4066"/>
+      <path d="M0 152 Q90 118 190 150 Q280 176 380 140 L380 190 L0 190 Z" fill="#3f3a58"/>
+      <!-- 田 -->
+      <rect x="0" y="176" width="380" height="124" fill="#3e5a4a"/>
+      <path d="M0 190 Q190 180 380 192 L380 300 L0 300 Z" fill="#35503f"/>
+      <path d="M-20 226 Q190 214 400 228" stroke="#2f4a38" stroke-width="2" fill="none" opacity=".6"/>
+      <path d="M-20 258 Q190 246 400 260" stroke="#2f4a38" stroke-width="2" fill="none" opacity=".5"/>
+      <!-- 向日葵 -->
+      <g>
+        <g transform="translate(48,196)"><line x1="0" y1="0" x2="0" y2="26" stroke="#2f4a38" stroke-width="3"/><circle r="13" fill="#d9a53f"/><circle r="6.5" fill="#6e4a28"/></g>
+        <g transform="translate(104,186)"><line x1="0" y1="0" x2="0" y2="34" stroke="#2f4a38" stroke-width="3"/><circle r="15" fill="#e8b54a"/><circle r="7.5" fill="#6e4a28"/></g>
+        <g transform="translate(158,200)"><line x1="0" y1="0" x2="0" y2="22" stroke="#2f4a38" stroke-width="3"/><circle r="12" fill="#d9a53f"/><circle r="6" fill="#6e4a28"/></g>
+        <g transform="translate(238,190)"><line x1="0" y1="0" x2="0" y2="30" stroke="#2f4a38" stroke-width="3"/><circle r="14" fill="#e8b54a"/><circle r="7" fill="#6e4a28"/></g>
+        <g transform="translate(306,202)"><line x1="0" y1="0" x2="0" y2="20" stroke="#2f4a38" stroke-width="3"/><circle r="11" fill="#d9a53f"/><circle r="5.5" fill="#6e4a28"/></g>
+        <g transform="translate(356,194)"><line x1="0" y1="0" x2="0" y2="26" stroke="#2f4a38" stroke-width="3"/><circle r="12" fill="#d9a53f"/><circle r="6" fill="#6e4a28"/></g>
+      </g>
+      <!-- 追火车的狗 -->
+      <g>
+        <ellipse cx="196" cy="248" rx="20" ry="11" fill="#8a6a4e" transform="rotate(-6 196 248)"/>
+        <circle cx="216" cy="240" r="9" fill="#8a6a4e"/>
+        <path d="M210 233 L206 224 L216 230 Z" fill="#6e5238"/>
+        <circle cx="219" cy="238" r="1.6" fill="#33281c"/>
+        <path d="M225 242 q5 1 4 4" stroke="#33281c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M180 244 Q170 236 168 228" stroke="#8a6a4e" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M186 256 L178 266" stroke="#8a6a4e" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M204 257 L210 267" stroke="#8a6a4e" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M194 257 L191 268" stroke="#6e5238" stroke-width="4" stroke-linecap="round"/>
+        <ellipse cx="164" cy="252" rx="5" ry="3" fill="#c9b8a0" opacity=".4"/>
+        <ellipse cx="152" cy="256" rx="4" ry="2.5" fill="#c9b8a0" opacity=".3"/>
+      </g>
+      <!-- 车头一角 -->
+      <g>
+        <path d="M-30 208 L-14 190 L4 190 L4 208 Z" fill="#33406a"/>
+        <rect x="-6" y="192" width="10" height="9" rx="2" fill="#ffd98a"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 四 · 车厢里 ════════════ -->
+<section id="s4" class="scene">
+  <div class="art">
+    <svg viewBox="0 0 380 330" aria-hidden="true">
+      <!-- 车厢壁 -->
+      <rect x="0" y="0" width="380" height="330" fill="#2a2438"/>
+      <!-- 行李架 -->
+      <rect x="30" y="66" width="150" height="5" rx="2.5" fill="#3a3450"/>
+      <rect x="52" y="38" width="44" height="28" rx="5" fill="#6e4a44"/>
+      <rect x="52" y="38" width="44" height="9" rx="4" fill="#815a50"/>
+      <rect x="102" y="44" width="34" height="22" rx="4" fill="#54586e"/>
+      <!-- 车窗：黄昏原野 -->
+      <rect x="196" y="30" width="150" height="122" rx="12" fill="#6a5670"/>
+      <rect x="196" y="98" width="150" height="54" fill="#55486b"/>
+      <circle cx="310" cy="80" r="14" fill="#f2c98e"/>
+      <path d="M196 116 Q246 96 300 116 Q340 130 346 122 L346 152 L196 152 Z" fill="#3f3a58"/>
+      <path d="M196 132 Q260 118 346 136 L346 152 L196 152 Z" fill="#39504a"/>
+      <g fill="#d9a53f">
+        <circle cx="226" cy="112" r="5"/><circle cx="244" cy="108" r="4"/><circle cx="262" cy="114" r="5"/>
+      </g>
+      <rect x="196" y="30" width="150" height="122" rx="12" fill="none" stroke="#3a3450" stroke-width="7"/>
+      <line x1="271" y1="34" x2="271" y2="148" stroke="#3a3450" stroke-width="5"/>
+      <!-- 座椅 -->
+      <rect x="76" y="196" width="228" height="46" rx="14" fill="#3d5a5e"/>
+      <rect x="84" y="182" width="212" height="36" rx="12" fill="#47696e"/>
+      <rect x="88" y="242" width="10" height="16" rx="2" fill="#2c4245"/>
+      <rect x="282" y="242" width="10" height="16" rx="2" fill="#2c4245"/>
+      <!-- 小桌板 + 胡萝卜汁 -->
+      <rect x="322" y="212" width="46" height="6" rx="3" fill="#3a3450"/>
+      <rect x="330" y="216" width="4" height="20" fill="#3a3450"/>
+      <g>
+        <rect x="326" y="196" width="24" height="17" rx="3.5" fill="#e8973f"/>
+        <rect x="323.5" y="195" width="29" height="3.5" rx="1.75" fill="#c97a2e"/>
+        <rect x="356" y="201" width="12" height="12" rx="3" fill="#d98a4e"/>
+        <rect x="354.5" y="200" width="15" height="3" rx="1.5" fill="#b8712e"/>
+      </g>
+      <!-- 朱迪：靠着车窗睡着了 -->
+      <g>
+        <circle cx="128" cy="236" r="7" fill="#EDEFF4"/>
+        <ellipse cx="152" cy="226" rx="21" ry="25" fill="#2B3556"/>
+        <rect x="139" y="241" width="26" height="5" rx="2.5" fill="#1D2540"/>
+        <path d="M136 210 Q132 222 141 228" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <path d="M167 208 Q174 220 170 232" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="170" cy="234" r="4.5" fill="#A6ABBB"/>
+        <ellipse cx="145" cy="253" rx="6" ry="3.5" fill="#222B47"/>
+        <ellipse cx="159" cy="253" rx="6" ry="3.5" fill="#222B47"/>
+        <!-- 软软垂下的耳朵 -->
+        <path d="M144 184 Q128 192 124 214" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M144 188 Q133 195 130 209" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <path d="M162 184 Q176 196 174 216" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M161 188 Q172 197 171 211" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <!-- 歪着的头 -->
+        <g transform="rotate(-8 152 194)">
+          <ellipse cx="152" cy="194" rx="17.5" ry="15.5" fill="#A6ABBB"/>
+          <ellipse cx="152" cy="199" rx="11" ry="8" fill="#CDD1DC"/>
+          <!-- 睡着的眼睛 -->
+          <path d="M142 191 Q146.5 194 151 191" stroke="#4A5060" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+          <path d="M155 191 Q159.5 194 164 191" stroke="#4A5060" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+          <path d="M150 197 Q152 195.8 154 197 Q153.4 199.6 152 199.8 Q150.6 199.6 150 197 Z" fill="#C4708A"/>
+          <path d="M150.5 203 Q152 202.4 153.5 203" stroke="#5A6070" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        </g>
+      </g>
+      <!-- 尼克：在旁边看着她 -->
+      <g>
+        <ellipse cx="242" cy="234" rx="23" ry="20" fill="#3E4A6B"/>
+        <ellipse cx="242" cy="212" rx="23" ry="23" fill="#B3C28E"/>
+        <path d="M236 198 L242 208 L248 198 Z" fill="#F2E3C8"/>
+        <path d="M234 197 L238 202 L233 204 Z" fill="#98A873"/>
+        <path d="M250 197 L246 202 L251 204 Z" fill="#98A873"/>
+        <path d="M240 206 L244 206 L245.5 222 L242 226 L238.5 222 Z" fill="#2E3A5C"/>
+        <!-- 搭在膝上的手 -->
+        <path d="M224 206 Q214 214 212 224" stroke="#B3C28E" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="211" cy="226" r="4.5" fill="#DB6E38"/>
+        <!-- 头 -->
+        <g>
+          <g transform="rotate(-14 228 156)">
+            <ellipse cx="228" cy="156" rx="7" ry="16" fill="#DB6E38"/>
+            <ellipse cx="228" cy="158" rx="3.6" ry="10" fill="#F2E3C8"/>
+            <ellipse cx="227" cy="144" rx="5.6" ry="4.8" fill="#4A2C1C"/>
+          </g>
+          <g transform="rotate(14 254 156)">
+            <ellipse cx="254" cy="156" rx="7" ry="16" fill="#DB6E38"/>
+            <ellipse cx="254" cy="158" rx="3.6" ry="10" fill="#F2E3C8"/>
+            <ellipse cx="255" cy="144" rx="5.6" ry="4.8" fill="#4A2C1C"/>
+          </g>
+          <ellipse cx="241" cy="176" rx="20.5" ry="17" fill="#DB6E38"/>
+          <path d="M226 180 Q214 182 216 190 Q224 192 229 186 Z" fill="#F2E3C8"/>
+          <path d="M256 180 Q268 182 266 190 Q258 192 253 186 Z" fill="#F2E3C8"/>
+          <ellipse cx="241" cy="184" rx="11.5" ry="7.5" fill="#F2E3C8"/>
+          <path d="M237 180 Q241 178 245 180 Q244.2 183.4 241 183.8 Q237.8 183.4 237 180 Z" fill="#4E3430"/>
+          <path d="M236 189 Q241 192.5 246 189" stroke="#4E3430" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+          <path d="M231 172 A5.2 5.2 0 0 0 241.4 172 Z" fill="#6E9E55"/>
+          <path d="M246.6 172 A5.2 5.2 0 0 0 257 172 Z" fill="#6E9E55"/>
+          <path d="M230.5 172 Q236 169.5 241.5 172" stroke="#7A3E20" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M246.5 172 Q252 169.5 257.5 172" stroke="#7A3E20" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <circle cx="236" cy="173.5" r="1.8" fill="#2E2016"/>
+          <circle cx="251.8" cy="173.5" r="1.8" fill="#2E2016"/>
+          <path d="M230 164 Q236 162 241 164.5" stroke="#8A4A26" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <path d="M246.5 164.5 Q251.5 162 257 164" stroke="#8A4A26" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        </g>
+      </g>
+      <!-- 大尾巴：盖住她的膝盖 -->
+      <g id="tail">
+        <path d="M260 226 Q240 252 208 252 Q180 252 166 236 Q161 227 168 220 Q178 214 192 221 Q222 234 258 218 Z" fill="#DB6E38"/>
+        <circle cx="196" cy="222" r="9" fill="#DB6E38"/>
+        <circle cx="216" cy="238" r="10" fill="#DB6E38"/>
+        <circle cx="236" cy="246" r="10" fill="#DB6E38"/>
+        <ellipse cx="166" cy="226" rx="10" ry="9" fill="#F2E3C8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="words">
+    <div class="kicker reveal"><span class="num">肆</span><span>车厢里</span></div>
+    <p class="reveal" style="--d:.15s">小站一个接一个。有的站小到只有一间屋子、一盏灯、一只老山羊。</p>
+    <p class="reveal" style="--d:.35s">老山羊卖刚榨的胡萝卜汁，凉丝丝，甜津津。尼克倒成两杯，大的、甜的那杯，递给朱迪。</p>
+    <p class="reveal" style="--d:.55s">后来，她靠着车窗睡着了。</p>
+    <div class="bubble reveal" style="--d:.75s">
+      <span class="who">尼克想把尾巴解下来给她当被子</span>
+      ……好吧，尾巴解不下来。他只是往她那边挪了挪，让大尾巴稳稳地盖住她的膝盖。
+    </div>
+    <p class="reveal dim" style="--d:1s">火车摇啊摇，像一只很大的手，在轻轻拍。</p>
+  </div>
+</section>
+
+<!-- ════════════ 五 · 隧道 ════════════ -->
+<section id="s5" class="scene">
+  <div class="tun-art reveal">
+    <svg viewBox="0 0 240 160" aria-hidden="true">
+      <rect x="0" y="0" width="240" height="160" fill="#0d0f1a"/>
+      <rect x="70" y="20" width="100" height="120" rx="12" fill="#ffd98a"/>
+      <rect x="70" y="20" width="100" height="120" rx="12" fill="none" stroke="#3a3450" stroke-width="6"/>
+      <ellipse cx="120" cy="80" rx="76" ry="66" fill="#ffd98a" opacity=".08"/>
+      <!-- 窗里两个依偎的剪影 -->
+      <g fill="#6e5a3a">
+        <rect x="96" y="52" width="5" height="18" rx="2.5" transform="rotate(10 98 60)"/>
+        <rect x="106" y="50" width="5" height="18" rx="2.5" transform="rotate(-10 108 60)"/>
+        <circle cx="103" cy="74" r="8"/>
+        <path d="M120 68 L116 54 L128 66 Z"/>
+        <path d="M132 66 L138 52 L126 64 Z"/>
+        <circle cx="128" cy="76" r="9"/>
+        <ellipse cx="103" cy="98" rx="11" ry="12"/>
+        <ellipse cx="130" cy="100" rx="12" ry="12"/>
+        <path d="M142 102 Q156 98 160 88 Q163 98 154 106 Z"/>
+      </g>
+      <g fill="#8d92ab" opacity=".5">
+        <circle cx="24" cy="30" r="2"/><circle cx="216" cy="26" r="1.6"/><circle cx="222" cy="120" r="1.8"/><circle cx="18" cy="128" r="1.6"/>
+      </g>
+    </svg>
+  </div>
+  <div class="words">
+    <div class="kicker reveal" style="justify-content:center"><span class="num">伍</span><span>隧道</span></div>
+    <p class="reveal" style="--d:.15s">隧道，一个接一个。</p>
+    <p class="reveal" style="--d:.35s">每次钻进去，车厢都会黑一下。</p>
+    <p class="reveal quiet" style="--d:.6s">但每一次，也都只是一下。</p>
+    <p class="reveal dim" style="--d:.9s">再亮起来的时候，窗外，<br>已经是新的风景了。</p>
+  </div>
+</section>
+
+<!-- ════════════ 互动 · 你的车窗 ════════════ -->
+<section id="s6" class="scene">
+  <div class="words">
+    <div class="kicker reveal" style="justify-content:center"><span class="num">◇</span><span>你的车窗</span></div>
+    <p class="reveal dim" style="--d:.15s;margin-bottom:.6em">隧道过去了。现在，换你来看这扇窗。</p>
+    <p class="hint reveal" id="s6hint" style="--d:.4s"><b>点一点，让火车继续往前开</b></p>
+  </div>
+  <div class="winframe reveal" id="winframe" style="--d:.55s">
+    <div class="winview" id="winview">
+      <div class="sky skyA" id="skyA"></div>
+      <div class="sky skyB" id="skyB">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMax slice" style="position:absolute;inset:0;width:100%;height:100%">
+          <g fill="#fff">
+            <circle cx="60" cy="50" r="1.6" opacity=".7"/><circle cx="150" cy="30" r="1.2" opacity=".5"/>
+            <circle cx="250" cy="60" r="1.5" opacity=".6"/><circle cx="330" cy="26" r="1.3" opacity=".55"/>
+            <circle cx="210" cy="90" r="1.1" opacity=".4"/><circle cx="100" cy="100" r="1.2" opacity=".45"/>
+          </g>
+        </svg>
+      </div>
+      <!-- 远景：山丘 -->
+      <div class="layer far" id="layFar">
+        <svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice">
+          <path d="M0 190 Q100 140 220 180 Q340 216 460 172 Q560 140 660 184 Q780 224 900 176 Q1020 136 1120 180 L1200 200 L1200 300 L0 300 Z" fill="#3a3355"/>
+          <path d="M0 226 Q140 190 300 220 Q460 248 620 214 Q780 184 940 222 Q1080 250 1200 218 L1200 300 L0 300 Z" fill="#2c3252"/>
+        </svg>
+      </div>
+      <!-- 中景：田野、向日葵、小站、终点 -->
+      <div class="layer mid" id="layMid">
+        <svg viewBox="0 0 2200 300">
+          <rect x="0" y="212" width="2200" height="88" fill="#35503f"/>
+          <path d="M0 244 Q1100 230 2200 246 L2200 300 L0 300 Z" fill="#2f4a38"/>
+          <!-- 向日葵田 -->
+          <g>
+            <g transform="translate(60,212)"><line x1="0" y1="0" x2="0" y2="26" stroke="#2f4a38" stroke-width="3"/><circle r="12" fill="#e8b54a"/><circle r="6" fill="#6e4a28"/></g>
+            <g transform="translate(120,206)"><line x1="0" y1="0" x2="0" y2="30" stroke="#2f4a38" stroke-width="3"/><circle r="13" fill="#d9a53f"/><circle r="6.5" fill="#6e4a28"/></g>
+            <g transform="translate(185,214)"><line x1="0" y1="0" x2="0" y2="22" stroke="#2f4a38" stroke-width="3"/><circle r="11" fill="#e8b54a"/><circle r="5.5" fill="#6e4a28"/></g>
+            <g transform="translate(250,208)"><line x1="0" y1="0" x2="0" y2="28" stroke="#2f4a38" stroke-width="3"/><circle r="12" fill="#d9a53f"/><circle r="6" fill="#6e4a28"/></g>
+            <g transform="translate(1580,212)"><line x1="0" y1="0" x2="0" y2="24" stroke="#2f4a38" stroke-width="3"/><circle r="11" fill="#e8b54a"/><circle r="5.5" fill="#6e4a28"/></g>
+            <g transform="translate(1645,206)"><line x1="0" y1="0" x2="0" y2="30" stroke="#2f4a38" stroke-width="3"/><circle r="12" fill="#d9a53f"/><circle r="6" fill="#6e4a28"/></g>
+          </g>
+          <!-- 小站一 -->
+          <g transform="translate(420,150)">
+            <rect x="0" y="30" width="56" height="40" rx="4" fill="#242c48"/>
+            <path d="M-6 30 L28 12 L62 30 Z" fill="#1c2136"/>
+            <rect class="stlamp" id="lamp1" x="24" y="20" width="8" height="8" rx="2" fill="#ffd98a"/>
+            <rect class="stlamp" x="26" y="28" width="4" height="10" fill="#8d92ab"/>
+            <circle class="stlamp" cx="28" cy="24" r="14" fill="#ffd98a" opacity=".1"/>
+          </g>
+          <!-- 小站二 -->
+          <g transform="translate(940,152)">
+            <rect x="0" y="28" width="64" height="44" rx="4" fill="#242c48"/>
+            <path d="M-8 28 L32 8 L72 28 Z" fill="#1c2136"/>
+            <rect x="10" y="38" width="14" height="12" rx="2" fill="#2f3a5c"/>
+            <rect class="stlamp" id="lamp2" x="40" y="16" width="8" height="8" rx="2" fill="#ffd98a"/>
+            <rect class="stlamp" x="42" y="24" width="4" height="12" fill="#8d92ab"/>
+            <circle class="stlamp" cx="44" cy="20" r="14" fill="#ffd98a" opacity=".1"/>
+          </g>
+          <!-- 小站三 -->
+          <g transform="translate(1460,150)">
+            <rect x="0" y="30" width="52" height="40" rx="4" fill="#242c48"/>
+            <path d="M-6 30 L26 14 L58 30 Z" fill="#1c2136"/>
+            <rect class="stlamp" id="lamp3" x="22" y="20" width="8" height="8" rx="2" fill="#ffd98a"/>
+            <rect class="stlamp" x="24" y="28" width="4" height="10" fill="#8d92ab"/>
+            <circle class="stlamp" cx="26" cy="24" r="14" fill="#ffd98a" opacity=".1"/>
+          </g>
+          <!-- 终点：兔窝镇站台 -->
+          <g transform="translate(1900,80)">
+            <rect x="0" y="160" width="300" height="18" rx="4" fill="#2c3252"/>
+            <!-- 站牌 -->
+            <rect x="60" y="96" width="86" height="30" rx="5" fill="#1c2136" stroke="#3a3450" stroke-width="2"/>
+            <text x="103" y="117" text-anchor="middle" font-size="17" fill="#ece5d3" letter-spacing="4" style="font-family:var(--serif)">兔窝镇</text>
+            <line x1="103" y1="126" x2="103" y2="160" stroke="#3a3450" stroke-width="3"/>
+            <!-- 大灯 -->
+            <circle class="stlamp" id="lampEnd" cx="200" cy="112" r="11" fill="#ffd98a"/>
+            <circle class="stlamp" cx="200" cy="112" r="26" fill="#ffd98a" opacity=".18"/>
+            <circle class="stlamp" cx="200" cy="112" r="44" fill="#ffd98a" opacity=".08"/>
+            <line x1="200" y1="123" x2="200" y2="160" stroke="#8d92ab" stroke-width="4"/>
+            <!-- 灯下：等着的家人们（剪影） -->
+            <g fill="#161b2e">
+              <rect x="146" y="126" width="4" height="16" rx="2" transform="rotate(-8 148 134)"/>
+              <rect x="154" y="124" width="4" height="16" rx="2" transform="rotate(8 156 132)"/>
+              <circle cx="151" cy="146" r="8"/>
+              <ellipse cx="151" cy="162" rx="9" ry="10"/>
+              <rect x="164" y="124" width="4.5" height="18" rx="2.2" transform="rotate(-7 166 133)"/>
+              <rect x="173" y="122" width="4.5" height="18" rx="2.2" transform="rotate(7 175 131)"/>
+              <circle cx="170" cy="145" r="9"/>
+              <ellipse cx="170" cy="162" rx="10" ry="10"/>
+              <g>
+                <rect x="216" y="140" width="3" height="12" rx="1.5" transform="rotate(-9 217 146)"/>
+                <rect x="222" y="139" width="3" height="12" rx="1.5" transform="rotate(9 223 145)"/>
+                <circle cx="219.5" cy="154" r="5.5"/><ellipse cx="219.5" cy="164" rx="6" ry="7"/>
+                <rect x="232" y="141" width="3" height="11" rx="1.5" transform="rotate(-9 233 146)"/>
+                <rect x="238" y="140" width="3" height="11" rx="1.5" transform="rotate(9 239 145)"/>
+                <circle cx="235" cy="154" r="5"/><ellipse cx="235" cy="163" rx="5.5" ry="6.5"/>
+                <rect x="246" y="142" width="2.6" height="10" rx="1.3" transform="rotate(-9 247 147)"/>
+                <rect x="251" y="141" width="2.6" height="10" rx="1.3" transform="rotate(9 252 146)"/>
+                <circle cx="248.5" cy="154" r="4.6"/><ellipse cx="248.5" cy="162" rx="5" ry="6"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <!-- 近景：电线杆 -->
+      <div class="layer near" id="layNear">
+        <svg viewBox="0 0 1400 300">
+          <rect x="0" y="266" width="1400" height="34" fill="#22303c"/>
+          <g fill="#1c2136">
+            <g transform="translate(80,120)"><rect x="0" y="0" width="7" height="150" rx="3"/><rect x="-16" y="10" width="39" height="5" rx="2.5"/><rect x="-10" y="24" width="27" height="4" rx="2"/></g>
+            <g transform="translate(430,124)"><rect x="0" y="0" width="7" height="146" rx="3"/><rect x="-16" y="10" width="39" height="5" rx="2.5"/><rect x="-10" y="24" width="27" height="4" rx="2"/></g>
+            <g transform="translate(780,120)"><rect x="0" y="0" width="7" height="150" rx="3"/><rect x="-16" y="10" width="39" height="5" rx="2.5"/><rect x="-10" y="24" width="27" height="4" rx="2"/></g>
+            <g transform="translate(1130,124)"><rect x="0" y="0" width="7" height="146" rx="3"/><rect x="-16" y="10" width="39" height="5" rx="2.5"/><rect x="-10" y="24" width="27" height="4" rx="2"/></g>
+          </g>
+        </svg>
+      </div>
+      <!-- 玻璃反光 -->
+      <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.05) 0%,transparent 30%),linear-gradient(295deg,rgba(255,255,255,.04) 0%,transparent 26%);pointer-events:none"></div>
+    </div>
+  </div>
+  <!-- 窗台上的两杯胡萝卜汁 -->
+  <div class="sill reveal" style="--d:.7s">
+    <svg viewBox="0 0 30 40" aria-hidden="true"><rect x="3" y="14" width="24" height="17" rx="3.5" fill="#e8973f"/><rect x="0.5" y="13" width="29" height="3.5" rx="1.75" fill="#c97a2e"/></svg>
+    <svg viewBox="0 0 30 40" aria-hidden="true" style="height:30px"><rect x="5" y="16" width="17" height="12" rx="3" fill="#d98a4e"/><rect x="3" y="15" width="21" height="3" rx="1.5" fill="#b8712e"/></svg>
+  </div>
+  <div class="lines" id="journey-lines">
+    <p data-at="8"><span>慢一点，没关系。</span></p>
+    <p data-at="8"><span>你的那一站，灯一直亮着。</span></p>
+  </div>
+</section>
+
+<!-- ════════════ 六 · 到站 ════════════ -->
+<section id="s7" class="scene">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">陆</span><span>到站</span></div>
+    <p class="reveal" style="--d:.15s">到兔窝镇的时候，天刚擦黑。</p>
+    <p class="reveal" style="--d:.35s">小站台上亮着一盏灯。灯下面，站着爸爸妈妈，还有乌泱泱一大片兄弟姐妹。</p>
+    <div class="bubble reveal" style="--d:.6s">
+      <span class="who">妈妈接过行李，说的第一句话</span>
+      “慢车好呀。慢车到的人，晚饭都是热的。”
+    </div>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 320" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="320" fill="#1c2136"/>
+      <g fill="#fff">
+        <circle cx="60" cy="36" r="1.4" opacity=".6"/><circle cx="140" cy="20" r="1.1" opacity=".45"/>
+        <circle cx="230" cy="42" r="1.3" opacity=".55"/><circle cx="320" cy="24" r="1.2" opacity=".5"/>
+        <circle cx="290" cy="80" r="1" opacity=".4"/>
+      </g>
+      <!-- 火车（车门开着） -->
+      <g>
+        <rect x="-20" y="96" width="130" height="104" rx="12" fill="#33406a"/>
+        <rect x="-16" y="146" width="122" height="8" rx="4" fill="#ece5d3" opacity=".2"/>
+        <rect x="66" y="112" width="36" height="66" rx="5" fill="#242c48"/>
+        <rect x="72" y="120" width="24" height="52" rx="3" fill="#ffd98a" opacity=".9"/>
+        <circle cx="10" cy="206" r="10" fill="#1a2036"/>
+        <circle cx="46" cy="206" r="10" fill="#1a2036"/>
+        <circle cx="96" cy="206" r="10" fill="#1a2036"/>
+        <!-- 车门口的台阶 -->
+        <rect x="70" y="178" width="30" height="6" fill="#2c3252"/>
+      </g>
+      <!-- 站台 -->
+      <rect x="0" y="200" width="380" height="14" rx="4" fill="#2c3252"/>
+      <rect x="0" y="214" width="380" height="106" fill="#161b2e"/>
+      <!-- 站牌 -->
+      <rect x="238" y="52" width="88" height="30" rx="5" fill="#1c2136" stroke="#3a3450" stroke-width="2"/>
+      <text x="282" y="73" text-anchor="middle" font-size="16" fill="#ece5d3" letter-spacing="4" style="font-family:var(--serif)">兔窝镇</text>
+      <line x1="282" y1="82" x2="282" y2="118" stroke="#3a3450" stroke-width="3"/>
+      <!-- 路灯 -->
+      <rect x="318" y="118" width="4" height="84" fill="#2c3252"/>
+      <path d="M300 118 L340 118 L320 100 Z" fill="#2c3252"/>
+      <circle cx="320" cy="122" r="7" fill="#ffd98a"/>
+      <circle cx="320" cy="122" r="15" fill="#ffd98a" opacity=".25"/>
+      <path d="M320 126 L262 202 L378 202 Z" fill="#ffd98a" opacity=".09"/>
+      <!-- 灯下的家人们 -->
+      <g fill="#161b2e">
+        <rect x="286" y="130" width="4.5" height="20" rx="2.2" transform="rotate(-8 288 140)"/>
+        <rect x="295" y="128" width="4.5" height="20" rx="2.2" transform="rotate(8 297 138)"/>
+        <circle cx="291" cy="154" r="9.5"/>
+        <ellipse cx="291" cy="174" rx="11" ry="12"/>
+        <rect x="304" y="126" width="5" height="23" rx="2.5" transform="rotate(-7 306 137)"/>
+        <rect x="314" y="124" width="5" height="23" rx="2.5" transform="rotate(7 316 135)"/>
+        <circle cx="310" cy="152" r="11"/>
+        <ellipse cx="310" cy="174" rx="12" ry="12"/>
+        <g>
+          <rect x="266" y="152" width="3" height="13" rx="1.5" transform="rotate(-9 267 158)"/>
+          <rect x="272" y="151" width="3" height="13" rx="1.5" transform="rotate(9 273 157)"/>
+          <circle cx="269.5" cy="167" r="6"/><ellipse cx="269.5" cy="179" rx="6.5" ry="7.5"/>
+          <rect x="252" y="153" width="2.8" height="12" rx="1.4" transform="rotate(-9 253 159)"/>
+          <rect x="258" y="152" width="2.8" height="12" rx="1.4" transform="rotate(9 259 158)"/>
+          <circle cx="255" cy="167" r="5.5"/><ellipse cx="255" cy="178" rx="6" ry="7"/>
+        </g>
+      </g>
+      <!-- 走下车的朱迪和尼克 -->
+      <g>
+        <ellipse cx="176" cy="200" rx="26" ry="4.5" fill="#0d1120" opacity=".6"/>
+        <!-- 朱迪（彩色，耳朵竖起来） -->
+        <g>
+          <circle cx="152" cy="162" r="7.5" fill="#EDEFF4"/>
+          <ellipse cx="174" cy="164" rx="19" ry="24" fill="#2B3556"/>
+          <rect x="163" y="176" width="22" height="4.5" rx="2.2" fill="#1D2540"/>
+          <path d="M160 148 Q152 160 155 172" stroke="#B8C6E4" stroke-width="7.5" fill="none" stroke-linecap="round"/>
+          <path d="M188 148 Q197 158 199 168" stroke="#B8C6E4" stroke-width="7.5" fill="none" stroke-linecap="round"/>
+          <circle cx="155" cy="174" r="4.6" fill="#A6ABBB"/>
+          <circle cx="198" cy="170" r="4.6" fill="#A6ABBB"/>
+          <circle cx="174" cy="156" r="5.2" fill="#E8B54A"/>
+          <ellipse cx="170" cy="180" rx="6.5" ry="3.6" fill="#222B47"/>
+          <ellipse cx="180" cy="180" rx="6.5" ry="3.6" fill="#222B47"/>
+          <g transform="rotate(-8 168 118)">
+            <ellipse cx="168" cy="118" rx="5.8" ry="21" fill="#A6ABBB"/>
+            <ellipse cx="168" cy="120" rx="3" ry="15" fill="#E9BCCF"/>
+          </g>
+          <g transform="rotate(8 180 118)">
+            <ellipse cx="180" cy="118" rx="5.8" ry="21" fill="#A6ABBB"/>
+            <ellipse cx="180" cy="120" rx="3" ry="15" fill="#E9BCCF"/>
+          </g>
+          <ellipse cx="174" cy="128" rx="18.5" ry="16.5" fill="#A6ABBB"/>
+          <ellipse cx="174" cy="133" rx="12" ry="8.5" fill="#CDD1DC"/>
+          <ellipse cx="167.5" cy="126" rx="4.4" ry="5" fill="#6F52BE"/>
+          <ellipse cx="180.5" cy="126" rx="4.4" ry="5" fill="#6F52BE"/>
+          <circle cx="167.5" cy="127.8" r="1.9" fill="#2A2140"/>
+          <circle cx="180.5" cy="127.8" r="1.9" fill="#2A2140"/>
+          <path d="M171.5 137 Q174 135.8 176.5 137 Q175.6 139.8 174 140 Q172.4 139.8 171.5 137 Z" fill="#C4708A"/>
+          <path d="M171 144 Q174 146.6 177 144" stroke="#5A6070" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </g>
+        <!-- 尼克（彩色，提着行李） -->
+        <g>
+          <circle cx="216" cy="168" r="8" fill="#EDEFF4" opacity="01" />
+          <circle cx="222" cy="176" r="8" fill="#F2E3C8"/>
+          <ellipse cx="222" cy="188" rx="10" ry="10" fill="#B3C28E"/>
+          <ellipse cx="224" cy="166" rx="20" ry="23" fill="#B3C28E"/>
+          <path d="M218 146 L224 156 L230 146 Z" fill="#F2E3C8"/>
+          <path d="M216 145 L220 150 L215 152 Z" fill="#98A873"/>
+          <path d="M232 145 L228 150 L233 152 Z" fill="#98A873"/>
+          <path d="M222 154 L226 154 L227.5 172 L224 176 L220.5 172 Z" fill="#2E3A5C"/>
+          <ellipse cx="224" cy="196" rx="17" ry="14" fill="#3E4A6B"/>
+          <path d="M214 200 L212 216" stroke="#3E4A6B" stroke-width="8" stroke-linecap="round"/>
+          <path d="M234 200 L236 216" stroke="#3E4A6B" stroke-width="8" stroke-linecap="round"/>
+          <ellipse cx="211" cy="218" rx="7" ry="4" fill="#2A2018"/>
+          <ellipse cx="237" cy="218" rx="7" ry="4" fill="#2A2018"/>
+          <!-- 提行李的手 -->
+          <path d="M208 160 Q200 168 200 178" stroke="#B3C28E" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <circle cx="200" cy="180" r="4.4" fill="#DB6E38"/>
+          <rect x="190" y="184" width="22" height="16" rx="3" fill="#6e4a44"/>
+          <path d="M210 156 Q218 152 224 156" stroke="#B3C28E" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <circle cx="226" cy="156" r="4.4" fill="#DB6E38"/>
+          <!-- 头 -->
+          <g>
+            <g transform="rotate(-14 208 122)">
+              <ellipse cx="208" cy="122" rx="6.6" ry="15" fill="#DB6E38"/>
+              <ellipse cx="207.5" cy="114" rx="5.2" ry="4.5" fill="#4A2C1C"/>
+            </g>
+            <g transform="rotate(14 240 122)">
+              <ellipse cx="240" cy="122" rx="6.6" ry="15" fill="#DB6E38"/>
+              <ellipse cx="240.5" cy="114" rx="5.2" ry="4.5" fill="#4A2C1C"/>
+            </g>
+            <ellipse cx="224" cy="140" rx="19" ry="16.5" fill="#DB6E38"/>
+            <path d="M209 144 Q197 146 199 154 Q207 156 212 150 Z" fill="#F2E3C8"/>
+            <path d="M239 144 Q251 146 249 154 Q241 156 236 150 Z" fill="#F2E3C8"/>
+            <ellipse cx="224" cy="148" rx="10.5" ry="7" fill="#F2E3C8"/>
+            <path d="M220.5 144 Q224 142.4 227.5 144 Q226.8 147 224 147.4 Q221.2 147 220.5 144 Z" fill="#4E3430"/>
+            <path d="M219.5 153 Q224 156.4 228.5 153" stroke="#4E3430" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+            <path d="M214.5 136 A4.8 4.8 0 0 0 224.1 136 Z" fill="#6E9E55"/>
+            <path d="M227 136 A4.8 4.8 0 0 0 236.6 136 Z" fill="#6E9E55"/>
+            <circle cx="219" cy="137.5" r="1.7" fill="#2E2016"/>
+            <circle cx="231.8" cy="137.5" r="1.7" fill="#2E2016"/>
+            <path d="M213.5 128.5 Q219 126.5 224 129 M228.5 129 Q233.5 126.5 239 128.5" stroke="#8A4A26" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 七 · 尾声 ════════════ -->
+<section id="s8" class="scene">
+  <div class="art">
+    <svg viewBox="0 0 380 260" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="260" fill="#33283a"/>
+      <!-- 屋里的暖 -->
+      <ellipse cx="190" cy="248" rx="200" ry="40" fill="#e8a870" opacity=".05"/>
+      <!-- 窗 -->
+      <rect x="118" y="42" width="144" height="116" rx="12" fill="#1c2136"/>
+      <rect x="118" y="42" width="144" height="116" rx="12" fill="none" stroke="#4a3f52" stroke-width="7"/>
+      <line x1="190" y1="46" x2="190" y2="154" stroke="#4a3f52" stroke-width="5"/>
+      <g fill="#fff">
+        <circle cx="140" cy="62" r="1.3" opacity=".55"/><circle cx="238" cy="56" r="1.2" opacity=".5"/><circle cx="226" cy="88" r="1" opacity=".4"/>
+      </g>
+      <!-- 远处：站台那盏灯，还亮着 -->
+      <line x1="252" y1="92" x2="252" y2="146" stroke="#2c3252" stroke-width="2.6"/>
+      <circle cx="252" cy="90" r="3.6" fill="#ffd98a"/>
+      <circle cx="252" cy="90" r="9" fill="#ffd98a" opacity=".3"/>
+      <circle cx="252" cy="90" r="16" fill="#ffd98a" opacity=".12"/>
+      <!-- 窗台上：喝了一半的胡萝卜汁 -->
+      <rect x="158" y="160" width="26" height="18" rx="4" fill="#e8973f"/>
+      <rect x="155" y="159" width="32" height="3.6" rx="1.8" fill="#c97a2e"/>
+      <!-- 窗帘一角 -->
+      <path d="M112 42 Q104 100 116 158 L104 158 Q92 96 104 40 Z" fill="#4a3f52"/>
+      <path d="M268 42 Q276 100 264 158 L276 158 Q288 96 276 40 Z" fill="#4a3f52"/>
+    </svg>
+  </div>
+  <div class="words">
+    <div class="kicker reveal"><span class="num">柒</span><span>尾声</span></div>
+    <p class="reveal" style="--d:.15s">那晚的饭桌很长很长。汤是热的，闹哄哄的，暖烘烘的。</p>
+    <p class="reveal" style="--d:.35s">朱迪想起白天那班快车。</p>
+    <p class="reveal dim" style="--d:.55s">它大概，吃不上这一口热的。</p>
+    <p class="reveal" style="--d:.8s">睡前，她又扒着窗户看了一眼——<br>站台上的那盏灯，还亮着。</p>
+    <div class="dedic reveal" style="--d:.95s">
+      <div class="to">送给亲爱的 Lin</div>
+      <div class="from">—— 永远站在你这边的 Zhe</div>
+    </div>
+    <div class="nextup reveal" style="--d:1.15s">
+      <div class="win-mini">
+        <svg viewBox="0 0 60 80" aria-hidden="true">
+          <rect x="4" y="4" width="52" height="72" rx="6" fill="#2a3149"/>
+          <rect x="10" y="10" width="40" height="60" rx="3" fill="#3a4266"/>
+          <circle cx="24" cy="40" r="2.6" fill="#8d92ab"/>
+          <circle cx="36" cy="40" r="2.6" fill="#8d92ab"/>
+          <circle cx="30" cy="30" r="2.6" fill="#8d92ab"/>
+        </svg>
+      </div>
+      <div class="next-text">下一夜，正在来的路上</div>
+      <a class="back-study" href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">回到书房 · 看看其它的窗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">回到书房</a>
+  第 二 夜 · 完
+</footer>
+</main>
+
+<script src="../assets/story.js"></script>
+<script>
+/* 本页专属：车窗互动 —— 点一点，把火车开到兔窝镇 */
+(function(){
+  var MAXS=8,prog=0;
+  var view=document.getElementById("winview");
+  var far=document.getElementById("layFar"),
+      mid=document.getElementById("layMid"),
+      near=document.getElementById("layNear");
+  var skyB=document.getElementById("skyB");
+  var hint=document.getElementById("s6hint");
+  var lines=[].slice.call(document.querySelectorAll("#journey-lines p"));
+  var lamps=[["lamp1",2],["lamp2",4],["lamp3",6],["lampEnd",8]];
+
+  function move(instant){
+    var p=prog/MAXS;
+    if(instant){far.style.transition="none";mid.style.transition="none";near.style.transition="none";}
+    far.style.transform="translateX(-"+(p*24)+"%)";
+    mid.style.transform="translateX(-"+(p*56)+"%)";
+    near.style.transform="translateX(-"+(p*64)+"%)";
+    skyB.classList.toggle("on",p>.45);
+    lamps.forEach(function(l){
+      var el=document.getElementById(l[0]);
+      if(el&&prog>=l[1])el.classList.add("on");
+    });
+    if(prog>=MAXS){
+      lines.forEach(function(pl){pl.classList.add("on")});
+      if(hint)hint.innerHTML="到 站 了 。";
+      var f=document.getElementById("winframe");
+      if(f)f.classList.add("arrived");
+    }
+  }
+  if(view)view.addEventListener("pointerdown",function(){
+    if(prog>=MAXS)return;
+    prog++;move(false);
+  });
+  /* 截图调试：?stage=final 直接到站 */
+  if(new URLSearchParams(location.search).get("stage")==="final"){prog=MAXS;move(true);}
+})();
+
+ZStory.init({
+  storyId:"train",
+  audio:{
+    tempo:4600, delayTime:.5, feedback:.3, wetness:.5,
+    chords:[
+      {bass:98.00, notes:[196.00,246.94,293.66,392.00],spark:[493.88,587.33]},
+      {bass:82.41, notes:[164.81,196.00,246.94,329.63],spark:[392.00,493.88]},
+      {bass:130.81,notes:[196.00,261.63,329.63,392.00],spark:[523.25,392.00]},
+      {bass:146.83,notes:[220.00,293.66,369.99,440.00],spark:[587.33,440.00]}
+    ]
+  }
+});
+</script>
+</body>
+</html>
