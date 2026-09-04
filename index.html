@@ -7,19 +7,6 @@
 <title>动物城睡前故事</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%99%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/common.css">
-<script>
-/* 单故事自动进入：系列里还只有《动物城的雨》、且还没读过时，
-   打开书房直接进故事（老链接体验不变）。读完或从故事返回后，停在书房。 */
-(function(){
-  try{
-    if(/[?&]stay=1/.test(location.search))return;
-    if(sessionStorage.getItem("zs_seen"))return;
-    if(localStorage.getItem("zs_read_rain"))return;
-    sessionStorage.setItem("zs_seen","1");
-    location.replace("rain/");
-  }catch(e){}
-})();
-</script>
 <style>
 #home{
   justify-content:flex-start;align-items:center;text-align:center;
