@@ -279,7 +279,7 @@ body.static #s4 .paw{transform:none}
 
 <canvas id="rain"></canvas>
 <div id="vignette"></div>
-<button id="sndBtn" aria-label="雨声开关">雨声</button>
+<button id="sndBtn" aria-label="背景音乐开关">声音</button>
 
 <main>
 
@@ -1149,37 +1149,110 @@ body.static #s4 .paw{transform:none}
   }
   requestAnimationFrame(frame);
 
-  /* ---------- 雨声（可选，默认关闭） ---------- */
-  var AC=null,gainN=null,soundOn=false;
+  /* ---------- BGM：轻雨声 + 五声琴音（默认开启） ---------- */
+  var AC=null,master=null,rainGain=null,soundOn=true,started=false;
   var btn=document.getElementById("sndBtn");
-  function initAudio(){
-    try{
-      AC=new (window.AudioContext||window.webkitAudioContext)();
-      var len=AC.sampleRate*2,buf=AC.createBuffer(1,len,AC.sampleRate);
-      var ch=buf.getChannelData(0);
-      for(var i=0;i<len;i++)ch[i]=Math.random()*2-1;
-      var src=AC.createBufferSource();src.buffer=buf;src.loop=true;
-      var lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.value=850;lp.Q.value=0.6;
-      gainN=AC.createGain();gainN.gain.value=0;
-      src.connect(lp);lp.connect(gainN);gainN.connect(AC.destination);
-      src.start();
-    }catch(e){AC=null;}
+  if(btn)btn.classList.add("on");
+
+  function pinkBuffer(ac,sec){
+    var len=ac.sampleRate*sec,buf=ac.createBuffer(1,len,ac.sampleRate),ch=buf.getChannelData(0);
+    var b0=0,b1=0,b2=0;
+    for(var i=0;i<len;i++){
+      var w=Math.random()*2-1;
+      b0=0.997*b0+0.0299*w;b1=0.985*b1+0.0332*w;b2=0.95*b2+0.0479*w;
+      ch[i]=(b0+b1+b2+w*0.05)*0.3;
+    }
+    return buf;
   }
-  var sndTick=0;
-  function updateSound(){
-    if(!soundOn||!gainN||!AC)return;
-    if(++sndTick%12)return;   // 约 0.2s 更新一次，足够平顺
-    var v=Math.max(0.015,density)*0.16;
-    gainN.gain.setTargetAtTime(v,AC.currentTime,0.25);
+
+  function startAudio(){
+    if(started)return;started=true;
+    try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){AC=null;return;}
+    master=AC.createGain();master.gain.value=0;master.connect(AC.destination);
+    master.gain.setTargetAtTime(soundOn?1:0,AC.currentTime+0.1,1.2);
+
+    /* 雨声层：粉噪声（比白噪柔软），带缓慢的强弱起伏 */
+    var src=AC.createBufferSource();src.buffer=pinkBuffer(AC,4);src.loop=true;
+    var hp=AC.createBiquadFilter();hp.type="highpass";hp.frequency.value=200;
+    var lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.value=950;lp.Q.value=0.4;
+    rainGain=AC.createGain();rainGain.gain.value=0.32;
+    var lfo=AC.createOscillator();lfo.frequency.value=0.07;
+    var lfoG=AC.createGain();lfoG.gain.value=0.09;
+    lfo.connect(lfoG);lfoG.connect(rainGain.gain);
+    src.connect(hp);hp.connect(lp);lp.connect(rainGain);rainGain.connect(master);
+    src.start();lfo.start();
+
+    /* 琴声层：五声音阶的"雨滴"，随机落在琴键上，带回声 */
+    var delay=AC.createDelay(1.5);delay.delayTime.value=0.42;
+    var fb=AC.createGain();fb.gain.value=0.34;
+    var wet=AC.createGain();wet.gain.value=0.55;
+    delay.connect(fb);fb.connect(delay);delay.connect(wet);wet.connect(master);
+    var SCALE=[220,246.94,277.18,329.63,369.99,440,493.88,554.37,659.25];
+    function plink(t){
+      var f=SCALE[Math.floor(Math.random()*SCALE.length)]*(Math.random()<0.25?0.5:1);
+      var o=AC.createOscillator(),g=AC.createGain();
+      o.type="sine";o.frequency.value=f;
+      g.gain.setValueAtTime(0,t);
+      g.gain.linearRampToValueAtTime(0.055+Math.random()*0.045,t+0.012);
+      g.gain.exponentialRampToValueAtTime(0.0001,t+1.5+Math.random());
+      o.connect(g);g.connect(master);g.connect(delay);
+      o.start(t);o.stop(t+2.8);
+      var o2=AC.createOscillator(),g2=AC.createGain();
+      o2.type="sine";o2.frequency.value=f*2;
+      g2.gain.setValueAtTime(0,t);
+      g2.gain.linearRampToValueAtTime(0.016,t+0.01);
+      g2.gain.exponentialRampToValueAtTime(0.0001,t+0.9);
+      o2.connect(g2);g2.connect(master);g2.connect(delay);
+      o2.start(t);o2.stop(t+1.3);
+    }
+    (function loop(){
+      setTimeout(function(){
+        if(soundOn&&AC.state==="running"&&document.visibilityState!=="hidden")plink(AC.currentTime);
+        loop();
+      },420+Math.random()*1500);
+    })();
+  }
+
+  function tryStart(){
+    if(!started)startAudio();
+    if(AC&&AC.state==="suspended")AC.resume();
+  }
+  /* 打开页面就尝试播放（部分环境直接允许） */
+  tryStart();
+  /* 微信内置浏览器：桥就绪后允许出声 */
+  document.addEventListener("WeixinJSBridgeReady",tryStart,false);
+  if(window.WeixinJSBridge)tryStart();
+  /* 兜底：第一次碰到屏幕立刻响起 */
+  var kick=function(){tryStart();};
+  document.addEventListener("touchstart",kick,{passive:true});
+  document.addEventListener("pointerdown",kick,{passive:true});
+
+  function applySound(){
+    if(btn)btn.classList.toggle("on",soundOn);
+    if(!AC)return;
+    master.gain.setTargetAtTime(soundOn?1:0,AC.currentTime,0.35);
   }
   if(btn)btn.addEventListener("click",function(){
-    if(!AC)initAudio();
-    if(!AC)return;
-    if(AC.state==="suspended")AC.resume();
+    if(!started)startAudio();
+    if(AC&&AC.state==="suspended")AC.resume();
     soundOn=!soundOn;
-    btn.classList.toggle("on",soundOn);
-    if(!soundOn)gainN.gain.setTargetAtTime(0,AC.currentTime,0.1);
+    applySound();
   });
+  /* 切到后台暂停，回来继续 */
+  document.addEventListener("visibilitychange",function(){
+    if(!AC)return;
+    if(document.hidden){AC.suspend();}
+    else if(soundOn){AC.resume();}
+  });
+
+  /* 雨声大小跟随故事里的雨势 */
+  var sndTick=0;
+  function updateSound(){
+    if(!soundOn||!rainGain||!AC||AC.state!=="running")return;
+    if(++sndTick%18)return;
+    var v=0.13+Math.min(1,density)*0.4;
+    rainGain.gain.setTargetAtTime(v,AC.currentTime,0.8);
+  }
 })();
 </script>
 </body>
