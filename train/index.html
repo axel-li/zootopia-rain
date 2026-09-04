@@ -33,7 +33,7 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
 #s0 h1{
   font-family:var(--serif);font-weight:400;
   font-size:clamp(32px,10vw,50px);
-  letter-spacing:.12em;text-indent:.06em;color:var(--cream);
+  letter-spacing:.12em;text-indent:.12em;color:var(--cream);
   text-shadow:0 2px 24px rgba(0,0,0,.45);
 }
 #s0 .sub{margin-top:18px;color:var(--cream-dim);font-size:14px;letter-spacing:.32em}
@@ -106,7 +106,7 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
 #s6 .hint b{font-weight:400;color:var(--amber);animation:hintp 2.4s ease-in-out infinite}
 @keyframes hintp{0%,100%{opacity:.55}50%{opacity:1}}
 .winframe{
-  position:relative;z-index:2;width:min(86vw,400px);margin:4.5vh auto 0;
+  position:relative;z-index:2;width:min(100%,400px);margin:4.5vh auto 0;
   border-radius:18px;padding:9px;background:#3a3450;
   box-shadow:0 10px 40px rgba(0,0,0,.5), inset 0 0 0 2px #2c2840;
   cursor:pointer;user-select:none;-webkit-user-select:none;
@@ -125,8 +125,14 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
 .stlamp{opacity:.18;transition:opacity 1.2s ease}
 .stlamp.on{opacity:1}
 .sill{
+  position:relative;
   margin:14px auto 0;width:min(60vw,240px);
   display:flex;justify-content:center;gap:22px;align-items:flex-end;
+  padding-bottom:9px;
+}
+.sill::after{
+  content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:0;
+  width:min(46vw,190px);height:4px;border-radius:2px;background:#3a3450;
 }
 .sill svg{width:auto;height:34px;display:block}
 #s6 .lines{min-height:5.4em;margin-top:4.5vh}
@@ -386,10 +392,8 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
         <ellipse cx="152" cy="256" rx="4" ry="2.5" fill="#c9b8a0" opacity=".3"/>
       </g>
       <!-- 车头一角 -->
-      <g>
-        <path d="M-30 208 L-14 190 L4 190 L4 208 Z" fill="#33406a"/>
-        <rect x="-6" y="192" width="10" height="9" rx="2" fill="#ffd98a"/>
-      </g>
+      <path d="M-34 208 L-14 184 L16 184 Q22 184 22 190 L22 208 Z" fill="#33406a"/>
+      <rect x="2" y="190" width="11" height="9" rx="2" fill="#ffd98a"/>
     </svg>
   </div>
 </section>
@@ -527,16 +531,22 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
       <rect x="70" y="20" width="100" height="120" rx="12" fill="none" stroke="#3a3450" stroke-width="6"/>
       <ellipse cx="120" cy="80" rx="76" ry="66" fill="#ffd98a" opacity=".08"/>
       <!-- 窗里两个依偎的剪影 -->
-      <g fill="#6e5a3a">
-        <rect x="96" y="52" width="5" height="18" rx="2.5" transform="rotate(10 98 60)"/>
-        <rect x="106" y="50" width="5" height="18" rx="2.5" transform="rotate(-10 108 60)"/>
-        <circle cx="103" cy="74" r="8"/>
-        <path d="M120 68 L116 54 L128 66 Z"/>
-        <path d="M132 66 L138 52 L126 64 Z"/>
-        <circle cx="128" cy="76" r="9"/>
-        <ellipse cx="103" cy="98" rx="11" ry="12"/>
-        <ellipse cx="130" cy="100" rx="12" ry="12"/>
-        <path d="M142 102 Q156 98 160 88 Q163 98 154 106 Z"/>
+      <g fill="#5c4630">
+        <!-- 朱迪侧影：圆圆的头，长长的耳朵 -->
+        <ellipse cx="101" cy="74" rx="9" ry="8.5"/>
+        <ellipse cx="95" cy="58" rx="3.4" ry="10.5" transform="rotate(-9 95 58)"/>
+        <ellipse cx="106" cy="57" rx="3.4" ry="10.5" transform="rotate(8 106 57)"/>
+        <!-- 尼克侧影：尖耳朵尖鼻子，头轻轻靠过来 -->
+        <ellipse cx="129" cy="77" rx="10" ry="9"/>
+        <path d="M122 68 L119 53 L130 63 Z"/>
+        <path d="M136 66 L143 52 L131 63 Z"/>
+        <path d="M138 75 L149 78 L138 81 Z"/>
+        <!-- 依偎在一起的身体 -->
+        <ellipse cx="103" cy="99" rx="12" ry="13"/>
+        <ellipse cx="131" cy="101" rx="13" ry="13"/>
+        <!-- 大尾巴卷过来 -->
+        <path d="M144 106 Q159 102 163 90 Q167 102 157 110 Q149 113 142 110 Z"/>
+        <ellipse cx="162" cy="92" rx="4.5" ry="4" fill="#c9a878"/>
       </g>
       <g fill="#8d92ab" opacity=".5">
         <circle cx="24" cy="30" r="2"/><circle cx="216" cy="26" r="1.6"/><circle cx="222" cy="120" r="1.8"/><circle cx="18" cy="128" r="1.6"/>
@@ -776,12 +786,13 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
           <path d="M171.5 137 Q174 135.8 176.5 137 Q175.6 139.8 174 140 Q172.4 139.8 171.5 137 Z" fill="#C4708A"/>
           <path d="M171 144 Q174 146.6 177 144" stroke="#5A6070" stroke-width="1.6" fill="none" stroke-linecap="round"/>
         </g>
-        <!-- 尼克（彩色，提着行李） -->
-        <g>
-          <circle cx="216" cy="168" r="8" fill="#EDEFF4" opacity="01" />
-          <circle cx="222" cy="176" r="8" fill="#F2E3C8"/>
-          <ellipse cx="222" cy="188" rx="10" ry="10" fill="#B3C28E"/>
-          <ellipse cx="224" cy="166" rx="20" ry="23" fill="#B3C28E"/>
+      <!-- 尼克（彩色，提着行李） -->
+      <g>
+        <ellipse cx="224" cy="221" rx="18" ry="3.5" fill="#0d1120" opacity=".6"/>
+        <!-- 大尾巴翘在身后 -->
+        <path d="M244 196 Q257 190 261 178 Q266 190 257 200 Q250 204 242 200 Z" fill="#DB6E38"/>
+        <ellipse cx="260" cy="180" rx="5" ry="4.5" fill="#F2E3C8"/>
+        <ellipse cx="224" cy="166" rx="20" ry="23" fill="#B3C28E"/>
           <path d="M218 146 L224 156 L230 146 Z" fill="#F2E3C8"/>
           <path d="M216 145 L220 150 L215 152 Z" fill="#98A873"/>
           <path d="M232 145 L228 150 L233 152 Z" fill="#98A873"/>
@@ -900,10 +911,14 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
 
   function move(instant){
     var p=prog/MAXS;
+    /* 按每层的实际可滚动像素位移，保证终点（兔窝镇）一定进画面 */
+    var fw=Math.max(0,far.scrollWidth-view.clientWidth),
+        mw=Math.max(0,mid.scrollWidth-view.clientWidth),
+        nw=Math.max(0,near.scrollWidth-view.clientWidth);
     if(instant){far.style.transition="none";mid.style.transition="none";near.style.transition="none";}
-    far.style.transform="translateX(-"+(p*24)+"%)";
-    mid.style.transform="translateX(-"+(p*56)+"%)";
-    near.style.transform="translateX(-"+(p*64)+"%)";
+    far.style.transform="translateX(-"+(p*fw)+"px)";
+    mid.style.transform="translateX(-"+(p*mw)+"px)";
+    near.style.transform="translateX(-"+(p*nw)+"px)";
     skyB.classList.toggle("on",p>.45);
     lamps.forEach(function(l){
       var el=document.getElementById(l[0]);
