@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#161b2e">
+<title>动物城的雨 · 第一夜</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%A7%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/common.css">
+<style>
+/* ============================================================
+   第一夜 ·《动物城的雨》 —— 本页专属样式（场景与插画）
+   ============================================================ */
+/* 场景底色，随故事推进在夜色里缓慢过渡 */
+#s0,#s1{background:var(--night-1)}
+#s2{background:#171c30}
+#s3{background:#1d1930}
+#s4{background:#1a1b31}
+#s5{background:#1c2038}
+#s6{background:#202743}
+#s7{background:var(--night-3)}
+#s8{background:linear-gradient(#2b3050 0%, #4a4262 26%, #8c6f6d 55%, #d9a98c 80%, #f2d9bb 100%)}
+footer{
+  background:#f2d9bb;color:#6b5747;text-align:center;
+  padding:26px 0 40px;letter-spacing:.5em;font-size:13px;
+}
+footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;margin-right:1em}
+
+/* ---------- 封面 ---------- */
+#s0{align-items:center;text-align:center;justify-content:flex-end;padding-bottom:16vh}
+#s0 .art svg{width:126%;max-width:620px}
+#s0 .cover-block{position:relative;z-index:2;margin-bottom:5vh}
+#s0 h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(34px,10.5vw,52px);
+  letter-spacing:.14em;text-indent:.07em;color:var(--cream);
+  text-shadow:0 2px 24px rgba(0,0,0,.45);
+}
+#s0 .sub{
+  margin-top:18px;color:var(--cream-dim);
+  font-size:14px;letter-spacing:.32em;
+}
+#s0 .series-badge{
+  margin-top:26px;color:#8d92ab;font-size:11.5px;letter-spacing:.42em;
+}
+.back-home{
+  position:absolute;top:18px;left:16px;z-index:3;
+  color:var(--cream-dim);text-decoration:none;
+  font-size:12px;letter-spacing:.22em;opacity:.8;
+  padding:6px 10px;
+}
+#s0 .cue{
+  position:relative;z-index:2;
+  margin-top:9vh;display:inline-flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--cream);font-size:12px;letter-spacing:.4em;
+  text-shadow:0 1px 10px rgba(10,13,24,.95),0 0 3px rgba(10,13,24,.9);
+}
+#s0 .cue i{
+  width:1px;height:34px;background:linear-gradient(var(--cream),transparent);
+  animation:cue 2.2s ease-in-out infinite;
+}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* ---------- s2：路灯下（文字在上，插画跟随其后） ---------- */
+#s2{justify-content:flex-start;padding-top:14vh}
+#s2 .artflow{position:relative;z-index:1;width:100%;max-width:460px;margin:3vh auto 0}
+#s2 .artflow svg{width:100%;height:auto;display:block}
+
+/* ---------- s3：屋内 · 沙发 ---------- */
+#s3 .art svg{width:112%;max-width:540px;top:8%;bottom:auto;transform:translateX(-50%)}
+#s3 .words{margin-top:52vh}
+#tail{transform-origin:60% 40%;animation:tailbreath 4.6s ease-in-out infinite}
+@keyframes tailbreath{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.035) translateY(1px)}}
+
+/* ---------- s4：她终于说了 ---------- */
+#s4 .art svg{width:66%;max-width:300px;top:16%;bottom:auto;left:50%}
+#s4 .words{margin-top:46vh}
+#s4 .big{
+  font-family:var(--serif);font-size:clamp(21px,6vw,27px);
+  line-height:2;letter-spacing:.06em;color:var(--cream);
+}
+#s4 .paw{transition:transform 1.4s ease .5s;transform:translateX(26px)}
+#s4.in .paw{transform:translateX(0)}
+
+/* ---------- s5：雨声变化 ---------- */
+#s5 .words p{margin-bottom:1.4em}
+.rainword{font-family:var(--serif);letter-spacing:.14em}
+.rainword.ww{font-size:22px;color:var(--cream)}
+.rainword.dd{font-size:17px;color:var(--cream-dim);margin-left:2.2em}
+.rainword.quiet{font-size:14px;color:#7d8299;margin-left:4.4em;letter-spacing:.5em}
+#s5 .say{margin-top:2.4em;border-left:2px solid rgba(244,184,96,.5);padding-left:18px}
+#s5 .say .who{display:block;font-size:11.5px;letter-spacing:.3em;color:#a3854f;margin-bottom:4px}
+.eaves{position:relative;height:0;z-index:2;margin-bottom:24px}
+.eaves .bar{position:absolute;top:0;left:8%;width:38%;height:2px;background:#2c3252;border-radius:2px}
+.eaves .drop{
+  position:absolute;top:2px;width:5px;height:9px;border-radius:50% 50% 60% 60%;
+  background:rgba(180,195,235,.75);
+  animation:drip 2.6s ease-in infinite;
+}
+.eaves .drop.d2{left:5%;animation-delay:1.3s}
+.eaves .drop.d1{left:30%;animation-delay:.2s}
+@keyframes drip{
+  0%{transform:translateY(0) scaleY(.4);opacity:0}
+  22%{opacity:.9}
+  70%{transform:translateY(26px) scaleY(1.15);opacity:.85}
+  100%{transform:translateY(34px) scaleY(.5);opacity:0}
+}
+
+/* ---------- s6：点灯互动 ---------- */
+#s6{justify-content:flex-start;padding-top:9vh}
+#s6 .words{text-align:center;max-width:26em}
+#s6 .hint{font-size:13px;letter-spacing:.34em;color:var(--cream-dim)}
+#s6 .hint b{font-weight:400;color:var(--amber);animation:hintp 2.4s ease-in-out infinite}
+@keyframes hintp{0%,100%{opacity:.55}50%{opacity:1}}
+#s6 .bld-wrap{
+  position:relative;z-index:2;width:min(84vw,380px);margin:5vh auto 0;
+  cursor:pointer;user-select:none;-webkit-user-select:none;
+}
+#s6 .bld-wrap svg{width:100%;height:auto;display:block}
+.wing{cursor:pointer}
+.wing .halo{opacity:0;transition:opacity .8s ease}
+.wing .glass{fill:#242a45;transition:fill .8s ease}
+.wing.lit .halo{opacity:.85}
+.wing.lit .glass{fill:var(--amber-soft)}
+#s6 .lines{min-height:9.2em;margin-top:5.5vh}
+#s6 .lines p{
+  font-family:var(--serif);font-size:16.5px;line-height:2.2;letter-spacing:.1em;
+  margin-bottom:.35em;
+}
+#s6 .lines p span{opacity:0;transform:translateY(10px);display:inline-block;
+  transition:opacity 1.3s ease,transform 1.3s ease}
+#s6 .lines p.on span{opacity:1;transform:none}
+#s6 .lines p:last-child span{color:var(--amber-soft)}
+#rooftwo{opacity:0;transition:opacity 1.8s ease .3s}
+#rooftwo.on{opacity:1}
+#alllit{max-height:0;overflow:hidden;transition:max-height 1.6s ease;text-align:center;
+  color:var(--cream-dim);font-size:13px;letter-spacing:.5em}
+#alllit.on{max-height:4em;padding-top:14px}
+
+/* ---------- s7：星星街（文字在上，插画跟随其后） ---------- */
+#s7{justify-content:flex-start;padding-top:12vh}
+#s7 .artflow{position:relative;z-index:1;width:100%;max-width:520px;margin:5vh auto 0}
+#s7 .artflow svg{width:100%;height:auto;display:block}
+.puddle-glow{animation:shimmer 4.2s ease-in-out infinite}
+.puddle-glow:nth-child(2n){animation-delay:1.4s}
+.puddle-glow:nth-child(3n){animation-delay:2.6s}
+@keyframes shimmer{0%,100%{opacity:.45}50%{opacity:.95}}
+#umbrella{transform-origin:50% 100%;animation:umbfloat 5s ease-in-out infinite}
+@keyframes umbfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3.5px)}}
+
+/* ---------- s8：第二天早上 ---------- */
+#s8{justify-content:flex-end;padding-bottom:8vh}
+#s8 .art svg{width:120%;max-width:580px;top:6%;bottom:auto}
+#s8 .words{margin-top:40vh;text-align:center;max-width:28em}
+#s8 .kicker{justify-content:center}
+#s8 .kicker::before{content:"";flex:0 0 44px;height:1px;background:currentColor;opacity:.55}
+#s8 .words p{color:#5d4c3d}
+#s8 .words p.dim{color:#8a7360}
+.dedic{
+  margin-top:3.2em;font-family:var(--serif);letter-spacing:.12em;
+}
+.dedic .to{font-size:19px;color:#4a392b;line-height:2}
+.dedic .from{margin-top:1em;font-size:14.5px;color:#8a7360}
+.nextup{
+  margin-top:4em;padding-top:2.4em;border-top:1px solid rgba(107,87,71,.25);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.nextup .win-mini{width:44px;opacity:.85}
+.nextup .win-mini svg{width:100%;height:auto;display:block}
+.nextup .next-text{font-size:13px;color:#8a7360;letter-spacing:.28em}
+.nextup .back-study{
+  margin-top:1.4em;font-size:12.5px;color:#a5826a;text-decoration:none;
+  letter-spacing:.3em;border-bottom:1px solid rgba(165,130,106,.4);
+  padding-bottom:3px;
+}
+</style>
+</head>
+<body>
+
+<canvas id="rain"></canvas>
+<div id="vignette"></div>
+<button id="sndBtn" aria-label="声音开关">声音</button>
+
+<main>
+
+<!-- ════════════ 封面 ════════════ -->
+<section id="s0" class="scene" data-rain="0.55">
+  <a class="back-home" href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">◂ 书房</a>
+  <div class="art">
+    <svg viewBox="0 0 380 520" aria-hidden="true">
+      <!-- 雨云后面，月亮还是圆的 -->
+      <circle cx="224" cy="128" r="38" fill="#d8d9e8" opacity=".07"/>
+      <circle cx="224" cy="128" r="26" fill="#d8d9e8" opacity=".13"/>
+      <circle cx="224" cy="128" r="16" fill="#d8d9e8" opacity=".26"/>
+      <!-- 远层天际线 -->
+      <g fill="#1a2036">
+        <rect x="18" y="300" width="46" height="220" rx="2"/>
+        <rect x="70" y="262" width="34" height="258" rx="2"/>
+        <rect x="112" y="322" width="58" height="198" rx="2"/>
+        <rect x="258" y="308" width="40" height="212" rx="2"/>
+        <rect x="306" y="270" width="52" height="250" rx="2"/>
+      </g>
+      <!-- 近层天际线 -->
+      <g fill="#141829">
+        <rect x="0" y="356" width="64" height="164"/>
+        <rect x="132" y="340" width="46" height="180" rx="2"/>
+        <rect x="184" y="386" width="66" height="134" rx="2"/>
+        <rect x="222" y="330" width="40" height="190" rx="2"/>
+        <rect x="336" y="396" width="44" height="124"/>
+      </g>
+      <!-- 塔尖 -->
+      <path d="M155 340 L155 300 L162 288 L169 300 L169 340 Z" fill="#141829"/>
+      <!-- 零星暖窗 -->
+      <g fill="#f4b860">
+        <rect class="winlit" x="30" y="380" width="7" height="9" rx="1"/>
+        <rect class="winlit" x="46" y="412" width="7" height="9" rx="1"/>
+        <rect class="winlit" x="86" y="290" width="7" height="9" rx="1"/>
+        <rect class="winlit" x="145" y="366" width="7" height="9" rx="1"/>
+        <rect class="winlit" x="236" y="352" width="7" height="9" rx="1"/>
+        <rect class="winlit" x="252" y="388" width="7" height="9" rx="1"/>
+        <rect class="winlit" x="322" y="300" width="7" height="9" rx="1"/>
+        <rect class="winlit" x="352" y="424" width="7" height="9" rx="1"/>
+        <rect class="winlit" x="196" y="410" width="7" height="9" rx="1"/>
+      </g>
+      <!-- 云 -->
+      <g fill="#232a47" opacity=".9">
+        <ellipse cx="90" cy="208" rx="58" ry="12"/>
+        <ellipse cx="300" cy="236" rx="66" ry="13"/>
+        <ellipse cx="200" cy="180" rx="40" ry="9" opacity=".7"/>
+      </g>
+    </svg>
+  </div>
+  <div class="cover-block">
+    <h1>动物城的雨</h1>
+    <div class="sub">一 个 小 小 的 睡 前 故 事</div>
+    <div class="series-badge">动物城睡前故事 · 第一夜</div>
+  </div>
+  <div class="cue"><span>往下滑</span><i></i></div>
+</section>
+
+<!-- ════════════ 一 · 雨来了 ════════════ -->
+<section id="s1" class="scene" data-rain="1">
+  <div class="art">
+    <svg viewBox="0 0 380 300" aria-hidden="true">
+      <g fill="#1a2036">
+        <rect x="10" y="150" width="52" height="150" rx="2"/>
+        <rect x="120" y="128" width="60" height="172" rx="2"/>
+        <rect x="236" y="158" width="46" height="142" rx="2"/>
+        <rect x="312" y="136" width="56" height="164" rx="2"/>
+      </g>
+      <g fill="#12161f">
+        <rect x="0" y="196" width="88" height="104"/>
+        <rect x="192" y="212" width="72" height="88" rx="2"/>
+        <rect x="292" y="216" width="88" height="84"/>
+      </g>
+      <g fill="#f4b860">
+        <rect class="winlit" x="32" y="210" width="9" height="12" rx="1.5"/>
+        <rect class="winlit" x="138" y="148" width="9" height="12" rx="1.5"/>
+        <rect class="winlit" x="156" y="174" width="9" height="12" rx="1.5"/>
+        <rect class="winlit" x="252" y="180" width="9" height="12" rx="1.5"/>
+        <rect class="winlit" x="328" y="160" width="9" height="12" rx="1.5"/>
+      </g>
+      <!-- 两把小小的伞 -->
+      <g>
+        <path d="M138 254 a27 27 0 0 1 54 0 Z" fill="#c05a52"/>
+        <rect x="164" y="254" width="2" height="38" rx="1" fill="#8d8577"/>
+        <!-- 打伞的小兔子 -->
+        <line x1="159.5" y1="293" x2="158.5" y2="281" stroke="#A6ABBB" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="164.5" y1="293" x2="165.5" y2="281" stroke="#A6ABBB" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="162" cy="297" r="4.6" fill="#A6ABBB"/>
+        <ellipse cx="162" cy="307" rx="6.5" ry="7" fill="#2B3556"/>
+      </g>
+      <g>
+        <path d="M212 258 a22 22 0 0 1 44 0 Z" fill="#5a7f95"/>
+        <rect x="232.5" y="258" width="2" height="34" rx="1" fill="#8d8577"/>
+        <!-- 打伞的小狐狸 -->
+        <g transform="rotate(-16 229 287)">
+          <ellipse cx="229" cy="287" rx="2" ry="5" fill="#DB6E38"/>
+        </g>
+        <g transform="rotate(16 240 287)">
+          <ellipse cx="240" cy="287" rx="2" ry="5" fill="#DB6E38"/>
+        </g>
+        <circle cx="234.5" cy="293" r="4.8" fill="#DB6E38"/>
+        <ellipse cx="234.5" cy="303" rx="7" ry="7" fill="#B3C28E"/>
+        <path d="M242 306 Q252 304 255 296 Q257 305 249 309 Z" fill="#DB6E38"/>
+        <circle cx="254" cy="297" r="2" fill="#F2E3C8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="words">
+    <div class="kicker reveal"><span class="num">壹</span><span>雨，来了</span></div>
+    <p class="reveal" style="--d:.15s">动物城很久没有下过雨了。</p>
+    <p class="reveal" style="--d:.35s">这场雨不打招呼，说来就来。它落在雨林区，落在冰川区，落在每一把来不及撑开的伞上。</p>
+    <p class="reveal dim" style="--d:.55s">雨落在每一只动物的头上——<br>它不是冲谁来的。</p>
+  </div>
+</section>
+
+<!-- ════════════ 二 · 坏一天 ════════════ -->
+<section id="s2" class="scene" data-rain="1">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">贰</span><span>坏了一天</span></div>
+    <p class="reveal" style="--d:.15s">朱迪到家的时候，耳朵是耷拉着的。</p>
+    <p class="reveal" style="--d:.35s">平时她的耳朵像两根小天线，走路带风，警徽锃亮。</p>
+    <p class="reveal" style="--d:.55s">今天耳朵垂成了两条小毛巾，警徽也没那么亮了，脚步轻得像怕吵醒地板。</p>
+    <p class="reveal dim" style="--d:.75s">她没有说今天发生了什么。<br>也没有人问。</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 340" aria-hidden="true">
+      <!-- 地面 -->
+      <rect x="0" y="300" width="380" height="40" fill="#131828"/>
+      <!-- 路灯 -->
+      <rect x="272" y="96" width="4" height="208" fill="#2c3252"/>
+      <path d="M252 96 L296 96 L274 76 Z" fill="#2c3252"/>
+      <circle cx="274" cy="100" r="7" fill="#f4b860"/>
+      <circle cx="274" cy="100" r="16" fill="#f4b860" opacity=".22"/>
+      <!-- 灯的光锥 -->
+      <path d="M274 104 L216 300 L332 300 Z" fill="#f4b860" opacity=".1"/>
+      <!-- 朱迪：站在灯光里，耳朵垂成两条小毛巾 -->
+      <g>
+        <ellipse cx="252" cy="302" rx="34" ry="5" fill="#0d1120" opacity=".7"/>
+        <!-- 白色小圆尾 -->
+        <circle cx="230" cy="272" r="7.5" fill="#EDEFF4"/>
+        <!-- 身体：深蓝警服背心 -->
+        <ellipse cx="252" cy="274" rx="20" ry="26" fill="#2B3556"/>
+        <rect x="239" y="288" width="26" height="5" rx="2.5" fill="#1D2540"/>
+        <rect x="249" y="288" width="6" height="5" rx="1.5" fill="#C9A24B"/>
+        <!-- 手臂：浅蓝衬衫袖 -->
+        <path d="M236 258 Q230 272 234 286" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <path d="M268 258 Q274 272 270 286" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="234" cy="288" r="5" fill="#A6ABBB"/>
+        <circle cx="270" cy="288" r="5" fill="#A6ABBB"/>
+        <!-- 胸前警徽（不那么亮了） -->
+        <circle cx="252" cy="264" r="5.5" fill="#E8B54A" opacity=".55"/>
+        <circle cx="252" cy="264" r="2.2" fill="#B9883A" opacity=".6"/>
+        <!-- 脚 -->
+        <ellipse cx="244" cy="300" rx="7" ry="4" fill="#222B47"/>
+        <ellipse cx="260" cy="300" rx="7" ry="4" fill="#222B47"/>
+        <!-- 耷拉的耳朵：垂在身侧 -->
+        <path d="M243 232 Q226 238 222 262" stroke="#A6ABBB" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <path d="M243 236 Q231 242 228 258" stroke="#E9BCCF" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M261 232 Q278 240 276 264" stroke="#A6ABBB" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <path d="M261 236 Q273 243 272 260" stroke="#E9BCCF" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <!-- 头 -->
+        <ellipse cx="252" cy="244" rx="21" ry="18.5" fill="#A6ABBB"/>
+        <ellipse cx="252" cy="250" rx="13.5" ry="9.5" fill="#CDD1DC"/>
+        <!-- 低垂的紫眼睛 -->
+        <ellipse cx="244.5" cy="242" rx="5" ry="5.4" fill="#6F52BE"/>
+        <ellipse cx="259.5" cy="242" rx="5" ry="5.4" fill="#6F52BE"/>
+        <path d="M239 241 Q244.5 238.4 250 241" stroke="#4A5060" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M254 241 Q259.5 238.4 265 241" stroke="#4A5060" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <circle cx="244.5" cy="243.8" r="2.1" fill="#2A2140"/>
+        <circle cx="259.5" cy="243.8" r="2.1" fill="#2A2140"/>
+        <!-- 担心的眉毛 -->
+        <path d="M239.5 233.5 Q244.5 231.7 249.5 233.2" stroke="#6A7080" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M254.5 233.2 Q259.5 231.7 264.5 233.5" stroke="#6A7080" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <!-- 鼻子、抿着的嘴 -->
+        <path d="M249 251.5 Q252 250 255 251.5 Q254 254.3 252 254.6 Q250 254.3 249 251.5 Z" fill="#C4708A"/>
+        <path d="M248.8 258.6 Q252 257.2 255.2 258.6" stroke="#5A6070" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- 远处楼影 -->
+      <g fill="#161b2e">
+        <rect x="0" y="188" width="70" height="112" rx="2"/>
+        <rect x="330" y="204" width="50" height="96" rx="2"/>
+      </g>
+      <g fill="#f4b860" opacity=".8">
+        <rect class="winlit" x="16" y="212" width="6" height="8" rx="1"/>
+        <rect class="winlit" x="42" y="238" width="6" height="8" rx="1"/>
+        <rect class="winlit" x="346" y="226" width="6" height="8" rx="1"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 三 · 热可可与大尾巴 ════════════ -->
+<section id="s3" class="scene" data-rain="0">
+  <div class="art">
+    <svg viewBox="0 0 380 330" aria-hidden="true">
+      <!-- 墙 -->
+      <rect x="0" y="0" width="380" height="330" fill="#282234"/>
+      <!-- 挂画 -->
+      <rect x="42" y="34" width="44" height="34" rx="3" fill="#312b42"/>
+      <circle cx="64" cy="48" r="7" fill="#4a4160"/>
+      <path d="M48 62 L58 52 L66 58 L76 48 L82 54" stroke="#4a4160" stroke-width="2.4" fill="none"/>
+      <!-- 窗：夜雨 -->
+      <rect x="196" y="26" width="150" height="126" rx="12" fill="#1d2340"/>
+      <rect x="196" y="26" width="150" height="126" rx="12" fill="none" stroke="#3a3450" stroke-width="7"/>
+      <line x1="271" y1="30" x2="271" y2="148" stroke="#3a3450" stroke-width="5"/>
+      <circle cx="234" cy="58" r="9" fill="#d8d9e8" opacity=".85"/>
+      <g stroke="#6f7fb0" stroke-width="1.6" stroke-linecap="round" opacity=".6">
+        <line class="winline" x1="216" y1="30" x2="210" y2="66"/>
+        <line class="winline" x1="248" y1="30" x2="243" y2="72" style="animation-delay:.2s"/>
+        <line class="winline" x1="290" y1="30" x2="285" y2="60" style="animation-delay:.45s"/>
+        <line class="winline" x1="320" y1="30" x2="315" y2="76" style="animation-delay:.1s"/>
+        <line class="winline" x1="302" y1="80" x2="297" y2="120" style="animation-delay:.6s"/>
+        <line class="winline" x1="252" y1="84" x2="247" y2="124" style="animation-delay:.35s"/>
+      </g>
+      <g fill="#161c30">
+        <rect x="200" y="120" width="26" height="32" rx="2"/>
+        <rect x="236" y="108" width="20" height="44" rx="2"/>
+        <rect x="292" y="116" width="26" height="36" rx="2"/>
+      </g>
+      <!-- 落地灯 -->
+      <rect x="86" y="120" width="4" height="130" fill="#3a3450"/>
+      <path d="M70 122 L106 122 L96 92 L80 92 Z" fill="#c8973f"/>
+      <ellipse cx="88" cy="252" rx="26" ry="6" fill="#312b42"/>
+      <ellipse cx="88" cy="128" rx="34" ry="30" fill="#f4b860" opacity=".13"/>
+      <!-- 沙发 -->
+      <rect x="96" y="196" width="210" height="58" rx="14" fill="#3d5a5e"/>
+      <rect x="104" y="184" width="194" height="40" rx="13" fill="#47696e"/>
+      <rect x="108" y="252" width="10" height="14" rx="2" fill="#2c4245"/>
+      <rect x="284" y="252" width="10" height="14" rx="2" fill="#2c4245"/>
+      <rect x="100" y="266" width="202" height="8" rx="4" fill="#2c4245" opacity=".6"/>
+      <!-- 小边几 + 热可可 -->
+      <rect x="322" y="216" width="40" height="6" rx="3" fill="#3a3450"/>
+      <rect x="338" y="222" width="5" height="28" fill="#3a3450"/>
+      <rect x="328" y="198" width="26" height="20" rx="4" fill="#c98d5f"/>
+      <path class="steam" d="M338 194 q4 -7 0 -13 q-3 -6 1 -11" stroke="#ece5d3" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <path class="steam" d="M346 194 q3 -6 0 -11 q-2 -5 2 -9" stroke="#ece5d3" stroke-width="1.4" fill="none" stroke-linecap="round" style="animation-delay:1.6s"/>
+
+      <!-- 朱迪（左，情绪低落） -->
+      <g>
+        <!-- 白色小圆尾 -->
+        <circle cx="126" cy="236" r="7" fill="#EDEFF4"/>
+        <!-- 身体：深蓝警服背心 -->
+        <ellipse cx="152" cy="224" rx="21" ry="25" fill="#2B3556"/>
+        <!-- 腰带 -->
+        <rect x="139" y="239" width="26" height="5" rx="2.5" fill="#1D2540"/>
+        <!-- 手臂：浅蓝制服衬衫 -->
+        <path d="M138 208 Q135 220 145 226" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="148" cy="227" r="4.5" fill="#A6ABBB"/>
+        <!-- 捧在手里的热可可 -->
+        <rect x="142" y="217" width="13" height="11" rx="2.5" fill="#8A5A3A"/>
+        <rect x="140" y="216" width="17" height="3.5" rx="1.75" fill="#6E4630"/>
+        <path class="steam" d="M146 212 q3 -5 0 -9" stroke="#ece5d3" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <!-- 脚 -->
+        <ellipse cx="145" cy="251" rx="6" ry="3.5" fill="#222B47"/>
+        <ellipse cx="159" cy="251" rx="6" ry="3.5" fill="#222B47"/>
+        <!-- 耷拉的耳朵（垂在脸旁） -->
+        <path d="M143 182 Q127 190 123 212" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M143 186 Q132 193 129 207" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <path d="M161 182 Q173 194 171 214" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M160 186 Q169 195 168 209" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <!-- 头 -->
+        <ellipse cx="152" cy="192" rx="17.5" ry="15.5" fill="#A6ABBB"/>
+        <ellipse cx="152" cy="197" rx="11" ry="8" fill="#CDD1DC"/>
+        <!-- 低垂的紫眼睛 -->
+        <ellipse cx="145.5" cy="190" rx="4.6" ry="5" fill="#6F52BE"/>
+        <ellipse cx="158.5" cy="190" rx="4.6" ry="5" fill="#6F52BE"/>
+        <path d="M140.5 189 Q145.5 186.5 150.5 189" stroke="#4A5060" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M153.5 189 Q158.5 186.5 163.5 189" stroke="#4A5060" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <circle cx="145.5" cy="191.5" r="1.9" fill="#2A2140"/>
+        <circle cx="158.5" cy="191.5" r="1.9" fill="#2A2140"/>
+        <!-- 担心的眉毛 -->
+        <path d="M141 182.5 Q145.5 180.8 150 182.2" stroke="#6A7080" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M154 182.2 Q158.5 180.8 163 182.5" stroke="#6A7080" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- 鼻子和抿着的嘴 -->
+        <path d="M149.5 196.5 Q152 195.2 154.5 196.5 Q153.6 199 152 199.2 Q150.4 199 149.5 196.5 Z" fill="#C4708A"/>
+        <path d="M149 202.5 Q152 201.2 155 202.5" stroke="#5A6070" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- 尼克（右） -->
+      <g>
+        <!-- 坐姿（牛仔裤） -->
+        <ellipse cx="240" cy="234" rx="23" ry="20" fill="#3E4A6B"/>
+        <path d="M226 242 Q216 246 213 252" stroke="#3E4A6B" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <ellipse cx="212" cy="255" rx="7" ry="4" fill="#2A2018"/>
+        <!-- 身体：绿衬衫 + 露出的白毛 + 领带 -->
+        <ellipse cx="242" cy="212" rx="23" ry="23" fill="#B3C28E"/>
+        <path d="M236 198 L242 208 L248 198 Z" fill="#F2E3C8"/>
+        <path d="M234 197 L238 202 L233 204 Z" fill="#98A873"/>
+        <path d="M250 197 L246 202 L251 204 Z" fill="#98A873"/>
+        <path d="M240 206 L244 206 L245.5 222 L242 226 L238.5 222 Z" fill="#2E3A5C"/>
+        <path d="M239.2 212 L245 214 L245 216.5 L239.2 214.5 Z" fill="#B0552F"/>
+        <!-- 搭在沙发靠背上的手 -->
+        <path d="M258 208 Q264 218 260 228" stroke="#B3C28E" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="259" cy="230" r="4.5" fill="#DB6E38"/>
+        <!-- 递冰棍的手（伸向朱迪） -->
+        <path d="M230 204 Q214 197 198 189" stroke="#B3C28E" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="195" cy="188" r="4.5" fill="#DB6E38"/>
+        <line x1="191" y1="186" x2="184" y2="180" stroke="#CAA16B" stroke-width="2.5" stroke-linecap="round"/>
+        <g transform="rotate(-32 177 174)">
+          <rect x="171" y="167" width="12" height="15" rx="5.5" fill="#D98A9F"/>
+          <circle cx="174.5" cy="166" r="2.6" fill="#D98A9F"/>
+          <circle cx="179" cy="165" r="2.6" fill="#D98A9F"/>
+          <circle cx="183" cy="167.5" r="2.3" fill="#D98A9F"/>
+        </g>
+        <!-- 头 -->
+        <g>
+          <!-- 耳朵（尖尖的，深色耳尖） -->
+          <g transform="rotate(-14 228 156)">
+            <ellipse cx="228" cy="156" rx="7" ry="16" fill="#DB6E38"/>
+            <ellipse cx="228" cy="158" rx="3.6" ry="10" fill="#F2E3C8"/>
+            <ellipse cx="227" cy="144" rx="5.6" ry="4.8" fill="#4A2C1C"/>
+          </g>
+          <g transform="rotate(14 254 156)">
+            <ellipse cx="254" cy="156" rx="7" ry="16" fill="#DB6E38"/>
+            <ellipse cx="254" cy="158" rx="3.6" ry="10" fill="#F2E3C8"/>
+            <ellipse cx="255" cy="144" rx="5.6" ry="4.8" fill="#4A2C1C"/>
+          </g>
+          <ellipse cx="241" cy="176" rx="20.5" ry="17" fill="#DB6E38"/>
+          <!-- 脸颊的奶白绒毛 -->
+          <path d="M226 180 Q214 182 216 190 Q224 192 229 186 Z" fill="#F2E3C8"/>
+          <path d="M256 180 Q268 182 266 190 Q258 192 253 186 Z" fill="#F2E3C8"/>
+          <!-- 口鼻 -->
+          <ellipse cx="241" cy="184" rx="11.5" ry="7.5" fill="#F2E3C8"/>
+          <path d="M237 180 Q241 178 245 180 Q244.2 183.4 241 183.8 Q237.8 183.4 237 180 Z" fill="#4E3430"/>
+          <path d="M236 189 Q241 192.5 246 189" stroke="#4E3430" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+          <!-- 温柔的眯眯眼（绿色） -->
+          <path d="M231 172 A5.2 5.2 0 0 0 241.4 172 Z" fill="#6E9E55"/>
+          <path d="M246.6 172 A5.2 5.2 0 0 0 257 172 Z" fill="#6E9E55"/>
+          <path d="M230.5 172 Q236 169.5 241.5 172" stroke="#7A3E20" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M246.5 172 Q252 169.5 257.5 172" stroke="#7A3E20" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <circle cx="236" cy="173.5" r="1.8" fill="#2E2016"/>
+          <circle cx="251.8" cy="173.5" r="1.8" fill="#2E2016"/>
+          <!-- 眉毛 -->
+          <path d="M230 164 Q236 162 241 164.5" stroke="#8A4A26" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <path d="M246.5 164.5 Q251.5 162 257 164" stroke="#8A4A26" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        </g>
+      </g>
+
+      <!-- 大尾巴：盖在朱迪腿上（最后画） -->
+      <g id="tail">
+        <path d="M260 226 Q240 252 208 252 Q180 252 166 236 Q161 227 168 220 Q178 214 192 221 Q222 234 258 218 Z" fill="#DB6E38"/>
+        <circle cx="196" cy="222" r="9" fill="#DB6E38"/>
+        <circle cx="216" cy="238" r="10" fill="#DB6E38"/>
+        <circle cx="236" cy="246" r="10" fill="#DB6E38"/>
+        <ellipse cx="166" cy="226" rx="10" ry="9" fill="#F2E3C8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="words">
+    <div class="kicker reveal"><span class="num">叁</span><span>尼克什么都没问</span></div>
+    <p class="reveal" style="--d:.15s">他递来一杯热可可，杯壁正好是暖手的温度。然后在沙发另一头坐下，把毛茸茸的大尾巴，轻轻盖在她的腿上。</p>
+    <div class="bubble reveal" style="--d:.4s">
+      <span class="who">尼克小声说</span>
+      抱歉，狐狸的尾巴只会这一招——当不了伞，也变不成毯子，勉强算个……会呼吸的暖水袋？
+    </div>
+    <p class="reveal" style="--d:.65s">朱迪没有笑。但耳朵动了一下。</p>
+    <p class="reveal dim" style="--d:.85s">狐狸不擅长安慰人。<br>但狐狸很擅长陪着。</p>
+  </div>
+</section>
+
+<!-- ════════════ 四 · 她终于说了 ════════════ -->
+<section id="s4" class="scene" data-rain="0">
+  <div class="art">
+    <svg viewBox="0 0 260 220" aria-hidden="true">
+      <g class="paw">
+        <!-- 爪爪冰棍（往她那边递了递） -->
+        <rect x="122" y="128" width="9" height="74" rx="4.5" fill="#caa16b"/>
+        <g fill="#d98a9f">
+          <ellipse cx="112" cy="118" rx="30" ry="36"/>
+          <circle cx="94" cy="76" r="10.5"/>
+          <circle cx="112" cy="70" r="10.5"/>
+          <circle cx="129" cy="76" r="10.5"/>
+          <circle cx="142" cy="92" r="9"/>
+        </g>
+        <ellipse cx="100" cy="104" rx="8" ry="14" fill="#e8a9bb" opacity=".7"/>
+      </g>
+      <!-- 尾巴的一角，盖得更严了一点 -->
+      <path d="M-20 190 Q60 214 180 198 L190 214 Q60 236 -20 210 Z" fill="#DB6E38"/>
+      <path d="M-20 190 Q30 202 78 202 L74 214 Q20 214 -20 210 Z" fill="#F2E3C8" opacity=".9"/>
+    </svg>
+  </div>
+  <div class="words">
+    <div class="kicker reveal"><span class="num">肆</span><span>她终于说了</span></div>
+    <p class="reveal dim" style="--d:.15s">热可可喝到一半，她终于开口，声音很小很小：</p>
+    <p class="reveal big" style="--d:.4s">“我明明，那么努力了。<br>为什么结果，还是不好？”</p>
+    <p class="reveal" style="--d:.7s">尼克没有回答。</p>
+    <p class="reveal" style="--d:.9s">他只是把冰棍往她那边又递了递，把尾巴盖得更严了一点。</p>
+    <p class="reveal dim" style="--d:1.1s">有些问题不用马上有答案。<br>就像有些雨，不用马上停。</p>
+  </div>
+</section>
+
+<!-- ════════════ 五 · 雨声在变 ════════════ -->
+<section id="s5" class="scene" data-rain="0.7>0">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">伍</span><span>雨声在变</span></div>
+    <div class="eaves reveal" style="--d:.2s">
+      <div class="bar"></div>
+      <div class="drop d1"></div>
+      <div class="drop d2"></div>
+    </div>
+    <p class="reveal rainword" style="--d:.35s"><span class="ww">哗哗。</span></p>
+    <p class="reveal rainword" style="--d:.7s"><span class="dd">滴答。</span></p>
+    <p class="reveal rainword" style="--d:1.05s"><span class="dd">滴、答。</span></p>
+    <p class="reveal rainword" style="--d:1.4s"><span class="quiet">—— 然后，安静了。</span></p>
+    <p class="reveal dim" style="--d:1.75s">雨是自己退场的，谁也没有劝它。</p>
+    <p class="reveal say" style="--d:2.1s">
+      <span class="who">那天晚上，尼克一共只说了两句话。</span>
+      “我跟雨打了三十多年交道，还没输过一次——它每次都来得挺凶，最后走的，都是它。”
+    </p>
+  </div>
+</section>
+
+<!-- ════════════ 互动 · 对面的窗 ════════════ -->
+<section id="s6" class="scene" data-rain="0">
+  <div class="words">
+    <div class="kicker reveal" style="justify-content:center"><span class="num">陆</span><span>你看对面</span></div>
+    <p class="reveal dim" style="--d:.15s">第二句是——</p>
+    <p class="reveal say" style="--d:.3s;margin:0 0 1em">“你看对面。夜再深，<em>总有窗还亮着</em>。”</p>
+    <p class="hint reveal" id="s6hint" style="--d:.6s"><b>点一点，把窗一盏一盏点亮</b></p>
+  </div>
+  <div class="bld-wrap reveal" id="bld" style="--d:.8s">
+    <svg viewBox="0 0 380 400" aria-label="对面的居民楼，窗户可以点亮">
+      <defs>
+        <filter id="wglow" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur stdDeviation="6"/>
+        </filter>
+      </defs>
+      <!-- 楼体 -->
+      <rect x="58" y="52" width="264" height="348" rx="10" fill="#1c2135"/>
+      <rect x="58" y="44" width="264" height="14" rx="6" fill="#232a47"/>
+      <!-- 屋顶上的两个小家伙（点亮全部后出现） -->
+      <g id="rooftwo">
+        <circle cx="196" cy="20" r="3" fill="#fff" opacity=".8"/>
+        <circle cx="258" cy="12" r="2.2" fill="#fff" opacity=".6"/>
+        <!-- 朱迪：耳朵竖起来了 -->
+        <g>
+          <g transform="rotate(-7 171 12)">
+            <ellipse cx="171" cy="12" rx="2.6" ry="7.5" fill="#A6ABBB"/>
+            <ellipse cx="171" cy="13.5" rx="1.3" ry="4.5" fill="#E9BCCF"/>
+          </g>
+          <g transform="rotate(7 179 12)">
+            <ellipse cx="179" cy="12" rx="2.6" ry="7.5" fill="#A6ABBB"/>
+            <ellipse cx="179" cy="13.5" rx="1.3" ry="4.5" fill="#E9BCCF"/>
+          </g>
+          <circle cx="175" cy="24" r="6" fill="#A6ABBB"/>
+          <ellipse cx="175" cy="37" rx="8" ry="9" fill="#2B3556"/>
+        </g>
+        <!-- 尼克：大尾巴卷过来 -->
+        <g>
+          <g transform="rotate(-14 192 20)">
+            <ellipse cx="192" cy="20" rx="3" ry="7" fill="#DB6E38"/>
+            <ellipse cx="191.6" cy="15" rx="2.4" ry="2.2" fill="#4A2C1C"/>
+          </g>
+          <g transform="rotate(14 204 20)">
+            <ellipse cx="204" cy="20" rx="3" ry="7" fill="#DB6E38"/>
+            <ellipse cx="204.4" cy="15" rx="2.4" ry="2.2" fill="#4A2C1C"/>
+          </g>
+          <circle cx="198" cy="27" r="7" fill="#DB6E38"/>
+          <ellipse cx="200" cy="40" rx="9.5" ry="9.5" fill="#B3C28E"/>
+          <path d="M212 42 Q228 40 234 30 Q238 40 230 47 Q218 51 208 46 Z" fill="#DB6E38"/>
+          <ellipse cx="233" cy="32" rx="4.5" ry="4" fill="#F2E3C8"/>
+        </g>
+      </g>
+      <!-- 窗（由共享引擎生成，交错排布） -->
+      <g id="wins"></g>
+      <!-- 底部门厅 -->
+      <rect x="158" y="352" width="64" height="48" rx="8" fill="#161b2c"/>
+      <rect x="170" y="360" width="40" height="40" rx="4" fill="#2a3149"/>
+      <circle cx="210" cy="380" r="2.2" fill="#f4b860" opacity=".8"/>
+    </svg>
+    <div id="alllit">都 亮 了 。</div>
+  </div>
+  <div class="lines" id="finale-lines">
+    <p data-at="6"><span>生活嘛，雨说来就来。</span></p>
+    <p data-at="12"><span>可雨会自己走，灯会一盏一盏亮起来。</span></p>
+    <p data-at="18"><span>冰棍甜的那半，永远有人给你留着。</span></p>
+    <p data-at="24"><span>一切，总会好起来的。</span></p>
+  </div>
+</section>
+
+<!-- ════════════ 七 · 星星街 ════════════ -->
+<section id="s7" class="scene" data-rain="0">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">柒</span><span>星星街</span></div>
+    <p class="reveal" style="--d:.15s">雨停了，他们出了门。</p>
+    <p class="reveal" style="--d:.35s">湿漉漉的街道倒映着满街的灯，一整条街，像撒了一地星星。</p>
+    <p class="reveal dim" style="--d:.55s">白天闯了祸的雨，到了夜里，变成了星星。</p>
+    <p class="reveal" style="--d:.8s">街角的冰棍车还没收摊。尼克买了一支爪爪冰棍，掰成两半，把大的、甜的那半，递到她手里。</p>
+    <div class="bubble reveal" style="--d:1.05s">
+      <span class="who">尼克说</span>
+      一人一半，甜的给你。这可是狐狸的店里，最高级的待遇。
+    </div>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 300" aria-hidden="true">
+      <!-- 夜空 -->
+      <rect x="0" y="0" width="380" height="300" fill="#202741"/>
+      <circle cx="312" cy="52" r="13" fill="#d8d9e8" opacity=".9"/>
+      <circle cx="298" cy="44" r="2" fill="#202741" opacity=".01"/>
+      <g fill="#fff">
+        <circle cx="52" cy="40" r="1.4" opacity=".7"/>
+        <circle cx="96" cy="66" r="1.1" opacity=".5"/>
+        <circle cx="150" cy="34" r="1.3" opacity=".6"/>
+        <circle cx="234" cy="58" r="1.1" opacity=".5"/>
+        <circle cx="270" cy="26" r="1.4" opacity=".65"/>
+        <circle cx="350" cy="30" r="1.2" opacity=".55"/>
+      </g>
+      <!-- 两侧楼 -->
+      <g fill="#181d31">
+        <rect x="0" y="86" width="86" height="214" rx="3"/>
+        <rect x="312" y="72" width="68" height="228" rx="3"/>
+      </g>
+      <g fill="#f4b860">
+        <rect x="16" y="108" width="8" height="11" rx="1.5" opacity=".9"/>
+        <rect x="44" y="132" width="8" height="11" rx="1.5" opacity=".75"/>
+        <rect x="68" y="108" width="8" height="11" rx="1.5" opacity=".85"/>
+        <rect x="30" y="168" width="8" height="11" rx="1.5" opacity=".7"/>
+        <rect x="326" y="94" width="8" height="11" rx="1.5" opacity=".85"/>
+        <rect x="352" y="120" width="8" height="11" rx="1.5" opacity=".75"/>
+        <rect x="332" y="156" width="8" height="11" rx="1.5" opacity=".8"/>
+      </g>
+      <!-- 湿漉漉的街道 -->
+      <rect x="0" y="218" width="380" height="82" fill="#151a2c"/>
+      <ellipse cx="120" cy="252" rx="64" ry="12" fill="#1f2742"/>
+      <ellipse cx="292" cy="268" rx="78" ry="13" fill="#1f2742"/>
+      <ellipse cx="60" cy="284" rx="44" ry="9" fill="#1f2742"/>
+      <!-- 倒影：一地星星 -->
+      <g>
+        <rect class="puddle-glow" x="98" y="240" width="3" height="22" rx="1.5" fill="#f4b860" opacity=".8"/>
+        <rect class="puddle-glow" x="128" y="246" width="3" height="18" rx="1.5" fill="#e8b4c8"/>
+        <rect class="puddle-glow" x="152" y="242" width="3" height="24" rx="1.5" fill="#9fc0e8"/>
+        <rect class="puddle-glow" x="268" y="258" width="3" height="20" rx="1.5" fill="#f4b860"/>
+        <rect class="puddle-glow" x="296" y="262" width="3" height="24" rx="1.5" fill="#e8b4c8"/>
+        <rect class="puddle-glow" x="322" y="256" width="3" height="18" rx="1.5" fill="#9fc0e8"/>
+        <rect class="puddle-glow" x="44" y="276" width="3" height="14" rx="1.5" fill="#f4b860" opacity=".7"/>
+        <rect class="puddle-glow" x="74" y="278" width="3" height="12" rx="1.5" fill="#9fc0e8"/>
+      </g>
+      <!-- 一把大大的伞 -->
+      <g id="umbrella">
+        <line x1="188" y1="158" x2="188" y2="168" stroke="#8d8577" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M146 208 a42 42 0 0 1 84 0 Z" fill="#ece5d3"/>
+        <path d="M146 208 a28 42 0 0 1 28 0 a28 42 0 0 1 28 0 a28 42 0 0 1 28 0 Z" fill="#d9cdb4"/>
+        <line x1="188" y1="208" x2="188" y2="252" stroke="#8d8577" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+      <!-- 朱迪 -->
+      <g>
+        <ellipse cx="174" cy="288" rx="16" ry="3.5" fill="#0d1120" opacity=".6"/>
+        <!-- 白色小圆尾 -->
+        <circle cx="162" cy="262" r="5.5" fill="#EDEFF4"/>
+        <!-- 身体 -->
+        <ellipse cx="174" cy="264" rx="10.5" ry="13.5" fill="#2B3556"/>
+        <path d="M167 252 Q163 262 166 271" stroke="#B8C6E4" stroke-width="4.6" fill="none" stroke-linecap="round"/>
+        <path d="M181 252 Q187 260 188 268" stroke="#B8C6E4" stroke-width="4.6" fill="none" stroke-linecap="round"/>
+        <circle cx="166" cy="272" r="2.8" fill="#A6ABBB"/>
+        <circle cx="188" cy="270" r="2.8" fill="#A6ABBB"/>
+        <ellipse cx="171" cy="286" rx="5" ry="2.6" fill="#222B47"/>
+        <ellipse cx="177" cy="285" rx="5" ry="2.6" fill="#222B47"/>
+        <!-- 竖起来的耳朵 -->
+        <g transform="rotate(-7 169 238)">
+          <ellipse cx="169" cy="238" rx="3.6" ry="12" fill="#A6ABBB"/>
+          <ellipse cx="169" cy="239.5" rx="1.9" ry="8" fill="#E9BCCF"/>
+        </g>
+        <g transform="rotate(7 179 238)">
+          <ellipse cx="179" cy="238" rx="3.6" ry="12" fill="#A6ABBB"/>
+          <ellipse cx="179" cy="239.5" rx="1.9" ry="8" fill="#E9BCCF"/>
+        </g>
+        <!-- 头 -->
+        <ellipse cx="174" cy="247" rx="10.5" ry="9.2" fill="#A6ABBB"/>
+        <ellipse cx="174" cy="249.5" rx="6.8" ry="4.6" fill="#CDD1DC"/>
+        <ellipse cx="170.5" cy="245.5" rx="2.5" ry="2.7" fill="#6F52BE"/>
+        <ellipse cx="177.5" cy="245.5" rx="2.5" ry="2.7" fill="#6F52BE"/>
+        <circle cx="170.5" cy="246.3" r="1" fill="#2A2140"/>
+        <circle cx="177.5" cy="246.3" r="1" fill="#2A2140"/>
+        <path d="M172 251.5 Q174 250.3 176 251.5 Q175.5 252.8 174 253 Q172.5 252.8 172 251.5 Z" fill="#C4708A"/>
+        <path d="M171.8 254.8 Q174 256.2 176.2 254.8" stroke="#5A6070" stroke-width="1" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- 尼克 -->
+      <g>
+        <ellipse cx="206" cy="289" rx="20" ry="4" fill="#0d1120" opacity=".6"/>
+        <!-- 翘着的大尾巴（奶白尾巴尖） -->
+        <circle cx="226" cy="258" r="8" fill="#DB6E38"/>
+        <circle cx="234" cy="246" r="8.5" fill="#DB6E38"/>
+        <circle cx="239" cy="233" r="7" fill="#DB6E38"/>
+        <circle cx="242" cy="224" r="5" fill="#F2E3C8"/>
+        <!-- 腿（牛仔裤） -->
+        <path d="M199 262 L197 283" stroke="#3E4A6B" stroke-width="8" stroke-linecap="round"/>
+        <path d="M211 262 L213 283" stroke="#3E4A6B" stroke-width="8" stroke-linecap="round"/>
+        <ellipse cx="196" cy="286" rx="6" ry="3.2" fill="#2A2018"/>
+        <ellipse cx="214" cy="286" rx="6" ry="3.2" fill="#2A2018"/>
+        <!-- 身体：绿衬衫+领带 -->
+        <ellipse cx="205" cy="248" rx="13.5" ry="16" fill="#B3C28E"/>
+        <path d="M201 236 L205 243 L209 236 Z" fill="#F2E3C8"/>
+        <path d="M203.6 244 L206.4 244 L207 258 L205 260.5 L203 258 Z" fill="#2E3A5C"/>
+        <!-- 握着伞柄的手 -->
+        <path d="M195 244 Q190 240 189 234" stroke="#B3C28E" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="188" cy="232" r="3.2" fill="#DB6E38"/>
+        <!-- 另一只手插兜 -->
+        <path d="M215 246 Q220 252 219 258" stroke="#B3C28E" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="219" cy="259" r="2.8" fill="#DB6E38"/>
+        <!-- 头 -->
+        <g>
+          <g transform="rotate(-14 198 222)">
+            <ellipse cx="198" cy="222" rx="4.2" ry="9.5" fill="#DB6E38"/>
+            <ellipse cx="197.5" cy="214.5" rx="3.4" ry="3" fill="#4A2C1C"/>
+          </g>
+          <g transform="rotate(14 212 222)">
+            <ellipse cx="212" cy="222" rx="4.2" ry="9.5" fill="#DB6E38"/>
+            <ellipse cx="212.5" cy="214.5" rx="3.4" ry="3" fill="#4A2C1C"/>
+          </g>
+          <ellipse cx="205" cy="232" rx="12" ry="10" fill="#DB6E38"/>
+          <ellipse cx="205" cy="236.5" rx="7" ry="4.8" fill="#F2E3C8"/>
+          <path d="M202.8 233.8 Q205 232.8 207.2 233.8 Q206.6 235.6 205 235.8 Q203.4 235.6 202.8 233.8 Z" fill="#4E3430"/>
+          <path d="M201.6 239.5 Q205 241.6 208.4 239.5" stroke="#4E3430" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M199.4 229 A3.4 3.4 0 0 0 206.2 229 Z" fill="#6E9E55"/>
+          <path d="M206.6 229 A3.4 3.4 0 0 0 213.4 229 Z" fill="#6E9E55"/>
+          <circle cx="202.8" cy="230" r="1.2" fill="#2E2016"/>
+          <circle cx="210.2" cy="230" r="1.2" fill="#2E2016"/>
+          <path d="M198.8 224.5 Q202.4 223 205.8 224.5 M206.6 224.5 Q210 223 213.6 224.5" stroke="#8A4A26" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 八 · 第二天 ════════════ -->
+<section id="s8" class="scene" data-rain="0">
+  <div class="art">
+    <svg viewBox="0 0 380 260" aria-hidden="true">
+      <!-- 清晨天空 -->
+      <rect x="0" y="0" width="380" height="260" fill="#f2e0cd"/>
+      <circle cx="300" cy="74" r="26" fill="#ffd98e"/>
+      <circle cx="300" cy="74" r="40" fill="#ffd98e" opacity=".28"/>
+      <!-- 云 -->
+      <g fill="#fff" opacity=".65">
+        <ellipse cx="80" cy="58" rx="40" ry="8"/>
+        <ellipse cx="196" cy="40" rx="30" ry="6"/>
+      </g>
+      <!-- 小鸟 -->
+      <path d="M150 66 q5 -6 10 0 q5 -6 10 0" stroke="#8a7360" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <!-- 远处屋顶 -->
+      <g fill="#b08d78">
+        <path d="M0 130 L58 130 L70 118 L110 118 L110 108 L150 108 L150 130 Z" opacity=".55"/>
+        <path d="M240 126 L240 104 L268 88 L296 104 L296 126 Z" opacity=".55"/>
+        <path d="M330 128 L380 128 L380 96 L352 96 Z" opacity=".55"/>
+      </g>
+      <!-- 地面 -->
+      <rect x="0" y="180" width="380" height="80" fill="#c9a184"/>
+      <rect x="0" y="180" width="380" height="10" fill="#b78f74"/>
+      <!-- 朱迪：耳朵竖起来了，走路带风 -->
+      <g>
+        <ellipse cx="95" cy="227" rx="30" ry="5" fill="#a5826a" opacity=".5"/>
+        <!-- 白色小圆尾 -->
+        <circle cx="74" cy="198" r="7" fill="#EDEFF4"/>
+        <!-- 身体：深蓝警服背心 -->
+        <ellipse cx="95" cy="200" rx="19" ry="24" fill="#2B3556"/>
+        <rect x="83" y="212" width="24" height="4.5" rx="2.2" fill="#1D2540"/>
+        <!-- 摆动的手臂（浅蓝袖） -->
+        <path d="M80 186 Q73 198 76 210" stroke="#B8C6E4" stroke-width="7.5" fill="none" stroke-linecap="round"/>
+        <path d="M110 186 Q119 196 122 204" stroke="#B8C6E4" stroke-width="7.5" fill="none" stroke-linecap="round"/>
+        <circle cx="76" cy="212" r="4.6" fill="#A6ABBB"/>
+        <circle cx="123" cy="206" r="4.6" fill="#A6ABBB"/>
+        <!-- 口袋里偷偷多出来的糖 -->
+        <circle cx="84" cy="205" r="4.6" fill="#D98A9F"/>
+        <path class="badge-star" style="animation-delay:1.2s" d="M76.5 198 l1.1 3 3 1.1 -3 1.1 -1.1 3 -1.1 -3 -3 -1.1 3 -1.1 Z" fill="#ffb8c9"/>
+        <!-- 闪闪发亮的警徽 -->
+        <circle cx="95" cy="192" r="5.5" fill="#E8B54A"/>
+        <path class="badge-star" d="M95 183 l1.5 4.2 4.2 1.5 -4.2 1.5 -1.5 4.2 -1.5 -4.2 -4.2 -1.5 4.2 -1.5 Z" fill="#ffe6ae"/>
+        <!-- 走路的脚 -->
+        <ellipse cx="87" cy="224" rx="7" ry="4" fill="#222B47"/>
+        <ellipse cx="103" cy="222" rx="7" ry="4" fill="#222B47"/>
+        <!-- 竖起来的耳朵（粉粉的内耳） -->
+        <g transform="rotate(-8 86 162)">
+          <ellipse cx="86" cy="162" rx="6.2" ry="22" fill="#A6ABBB"/>
+          <ellipse cx="86" cy="164" rx="3.2" ry="15.5" fill="#E9BCCF"/>
+        </g>
+        <g transform="rotate(8 104 162)">
+          <ellipse cx="104" cy="162" rx="6.2" ry="22" fill="#A6ABBB"/>
+          <ellipse cx="104" cy="164" rx="3.2" ry="15.5" fill="#E9BCCF"/>
+        </g>
+        <!-- 头 -->
+        <ellipse cx="95" cy="172" rx="19.5" ry="17" fill="#A6ABBB"/>
+        <ellipse cx="95" cy="177.5" rx="12.5" ry="8.5" fill="#CDD1DC"/>
+        <!-- 亮亮的紫眼睛 -->
+        <ellipse cx="88" cy="170" rx="4.8" ry="5.4" fill="#6F52BE"/>
+        <ellipse cx="102" cy="170" rx="4.8" ry="5.4" fill="#6F52BE"/>
+        <circle cx="89.6" cy="168.2" r="1.4" fill="#fff"/>
+        <circle cx="103.6" cy="168.2" r="1.4" fill="#fff"/>
+        <circle cx="88" cy="171.8" r="2" fill="#2A2140"/>
+        <circle cx="102" cy="171.8" r="2" fill="#2A2140"/>
+        <!-- 开心的眉毛 -->
+        <path d="M83.5 162.5 Q88 160.5 92.5 162" stroke="#6A7080" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M97.5 162 Q102 160.5 106.5 162.5" stroke="#6A7080" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- 鼻子和大大的笑 -->
+        <path d="M92.5 179.5 Q95 178 97.5 179.5 Q96.6 182.2 95 182.5 Q93.4 182.2 92.5 179.5 Z" fill="#C4708A"/>
+        <path d="M91 186 Q95 189.5 99 186" stroke="#5A6070" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <!-- 带风的脚步 -->
+        <path d="M64 218 q-8 4 -14 2 M66 226 q-9 5 -16 4 M124 212 q8 -3 13 -1" stroke="#a5826a" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".55"/>
+      </g>
+    </svg>
+  </div>
+  <div class="words">
+    <div class="kicker reveal"><span class="num">捌</span><span>第二天</span></div>
+    <p class="reveal" style="--d:.15s">第二天早上，阳光好得过分。</p>
+    <p class="reveal" style="--d:.35s">出门的时候，朱迪摸到口袋里多了一颗糖——不知道是什么时候，被谁偷偷塞进去的。</p>
+    <p class="reveal dim" style="--d:.55s">耳朵又竖起来了，还是像两根小天线。<br>走路，带风。</p>
+    <div class="dedic reveal" style="--d:.9s">
+      <div class="to">送给亲爱的 Lin</div>
+      <div class="from">—— 永远站在你这边的 Zhe</div>
+    </div>
+    <div class="nextup reveal" style="--d:1.15s">
+      <div class="win-mini">
+        <svg viewBox="0 0 60 80" aria-hidden="true">
+          <rect x="4" y="4" width="52" height="72" rx="6" fill="#2a3149"/>
+          <rect x="10" y="10" width="40" height="60" rx="3" fill="#3a4266"/>
+          <circle cx="24" cy="40" r="2.6" fill="#8d92ab"/>
+          <circle cx="36" cy="40" r="2.6" fill="#8d92ab"/>
+          <circle cx="30" cy="30" r="2.6" fill="#8d92ab"/>
+        </svg>
+      </div>
+      <div class="next-text">下一夜，正在来的路上</div>
+      <a class="back-study" href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">回到书房 · 看看其它的窗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">回到书房</a>
+  第 一 夜 · 完
+</footer>
+</main>
+
+<script src="../assets/story.js"></script>
+<script>
+ZStory.init({
+  storyId:"rain",
+  weather:"rain",
+  audio:{
+    tempo:4000, delayTime:.46, feedback:.32, wetness:.5,
+    chords:[
+      {bass:110.00,notes:[164.81,220.00,277.18,329.63],spark:[440.00,554.37]},
+      {bass:92.50, notes:[138.59,185.00,220.00,277.18],spark:[440.00,369.99]},
+      {bass:146.83,notes:[220.00,293.66,369.99,440.00],spark:[587.33,440.00]},
+      {bass:164.81,notes:[246.94,329.63,415.30,493.88],spark:[659.25,554.37]}
+    ]
+  },
+  finale:{
+    cols:[84,134,184,234,284], rows:[76,126,176,226,296],
+    skip:[[1,2],[3,0],[4,3],[0,4]], glow:"wglow",
+    wins:"#wins", wrap:"#bld", lines:"#finale-lines",
+    roof:"#rooftwo", alllit:"#alllit", hint:"#s6hint",
+    hintDone:"夜再深，总有窗还亮着"
+  }
+});
+</script>
+</body>
+</html>
