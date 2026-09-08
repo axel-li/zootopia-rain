@@ -131,15 +131,38 @@ window.ZStory=(function(){
       }
 
       function playChord(ci,base){
-        var c=cfg.chords[ci];
+        var c=cfg.chords[ci],style=cfg.style||"lullaby";
         key(c.bass,base,3.6,0.06);
-        for(var i=0;i<c.notes.length;i++){
-          if(i===2&&Math.random()<0.25)continue;
-          key(c.notes[i],base+0.75+i*0.78+(Math.random()*0.08-0.04),2.4,0.055+Math.random()*0.02);
-        }
-        if(Math.random()<0.8){
-          var s=c.spark[Math.floor(Math.random()*c.spark.length)];
-          key(s,base+0.75+c.notes.length*0.78+0.4,2.2,0.034);
+        if(style==="sparse"){
+          /* 晚安式：几乎齐奏的长音，偶尔一颗高音星 */
+          for(var s=0;s<c.notes.length;s++){
+            key(c.notes[s],base+0.3+s*0.14,4.6,0.042);
+          }
+          if(Math.random()<0.5)key(c.spark[0],base+2.4,3,0.028);
+        }else if(style==="sway"){
+          /* 摇摆式：低音之后两三个音轻轻荡开，像车轮或摇篮 */
+          key(c.notes[1],base+0.95,2.8,0.052);
+          key(c.notes[2],base+1.95,2.6,0.046);
+          key(c.notes[3],base+2.5,2.4,0.04);
+          if(Math.random()<0.4)key(c.spark[0],base+3.5,2,0.03);
+        }else if(style==="bright"){
+          /* 明亮式：小而轻快的短琶音，星星更勤 */
+          for(var b=0;b<c.notes.length;b++){
+            key(c.notes[b],base+0.38+b*0.3,1.8,0.048);
+          }
+          if(Math.random()<0.9){
+            key(c.spark[Math.floor(Math.random()*c.spark.length)],base+1.85,1.5,0.034);
+          }
+        }else{
+          /* 摇篮式（默认）：低音铺底，音符依次落下 */
+          for(var i=0;i<c.notes.length;i++){
+            if(i===2&&Math.random()<0.25)continue;
+            key(c.notes[i],base+0.75+i*0.78+(Math.random()*0.08-0.04),2.4,0.055+Math.random()*0.02);
+          }
+          if(Math.random()<0.8){
+            var sp=c.spark[Math.floor(Math.random()*c.spark.length)];
+            key(sp,base+0.75+c.notes.length*0.78+0.4,2.2,0.034);
+          }
         }
       }
 

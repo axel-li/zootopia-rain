@@ -66,15 +66,17 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
 #s2 .artflow{position:relative;z-index:1;width:100%;max-width:460px;margin:3vh auto 0}
 #s2 .artflow svg{width:100%;height:auto;display:block}
 
-/* ---------- s3：屋内 · 沙发 ---------- */
-#s3 .art svg{width:112%;max-width:540px;top:8%;bottom:auto;transform:translateX(-50%)}
-#s3 .words{margin-top:52vh}
+/* ---------- s3：屋内 · 沙发（插画在上，文字跟随） ---------- */
+#s3{justify-content:flex-start;padding-top:7vh}
+#s3 .art{position:static;inset:auto;width:min(100%,540px);margin:0 auto 3vh}
+#s3 .art svg{position:static;transform:none;width:100%;max-width:none;height:auto}
 #tail{transform-origin:60% 40%;animation:tailbreath 4.6s ease-in-out infinite}
 @keyframes tailbreath{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.035) translateY(1px)}}
 
-/* ---------- s4：她终于说了 ---------- */
-#s4 .art svg{width:66%;max-width:300px;top:16%;bottom:auto;left:50%}
-#s4 .words{margin-top:46vh}
+/* ---------- s4：她终于说了（插画在上，文字跟随） ---------- */
+#s4{justify-content:flex-start;padding-top:9vh}
+#s4 .art{position:static;inset:auto;width:66%;max-width:300px;margin:0 auto 3.5vh}
+#s4 .art svg{position:static;transform:none;width:100%;max-width:none;height:auto}
 #s4 .big{
   font-family:var(--serif);font-size:clamp(21px,6vw,27px);
   line-height:2;letter-spacing:.06em;color:var(--cream);
@@ -917,12 +919,12 @@ ZStory.init({
   storyId:"rain",
   weather:"rain",
   audio:{
-    tempo:4000, delayTime:.46, feedback:.32, wetness:.5,
+    tempo:4200, delayTime:.48, feedback:.32, wetness:.5, style:"lullaby",
     chords:[
-      {bass:110.00,notes:[164.81,220.00,277.18,329.63],spark:[440.00,554.37]},
-      {bass:92.50, notes:[138.59,185.00,220.00,277.18],spark:[440.00,369.99]},
-      {bass:146.83,notes:[220.00,293.66,369.99,440.00],spark:[587.33,440.00]},
-      {bass:164.81,notes:[246.94,329.63,415.30,493.88],spark:[659.25,554.37]}
+      {bass:82.41, notes:[164.81,246.94,329.63,415.30],spark:[493.88,554.37]},
+      {bass:110.00,notes:[220.00,277.18,329.63,440.00],spark:[554.37,493.88]},
+      {bass:69.30, notes:[164.81,207.65,277.18,329.63],spark:[415.30,493.88]},
+      {bass:123.47,notes:[246.94,311.13,369.99,493.88],spark:[554.37,622.25]}
     ]
   },
   finale:{
