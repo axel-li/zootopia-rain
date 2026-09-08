@@ -106,14 +106,18 @@
       <!-- 主楼 -->
       <rect x="98" y="180" width="184" height="290" rx="10" fill="#1c2135"/>
       <rect x="90" y="166" width="200" height="14" rx="6" fill="#232a47"/>
-      <!-- 阁楼：下一夜，敬请期待 -->
+      <!-- 阁楼：第四夜 · 彩排 -->
       <rect x="128" y="100" width="124" height="80" rx="8" fill="#1c2135"/>
       <rect x="118" y="86" width="144" height="14" rx="6" fill="#232a47"/>
-      <g class="futurewin" id="futurewin" role="button" aria-label="下一夜 · 敬请期待">
-        <circle class="glass" cx="190" cy="136" r="17"/>
-        <path class="dot" d="M193 124 a9.5 9.5 0 1 0 6 16 a7.5 7.5 0 0 1 -6 -16 Z"/>
-        <circle class="dot" cx="183" cy="141" r="1.6"/>
-        <text x="190" y="172" text-anchor="middle" font-size="10" fill="#6f7488" letter-spacing="3" style="font-family:var(--sans)">敬请期待</text>
+      <g class="storywin" id="rehearsewin" role="link" aria-label="第四夜 · 彩排">
+        <rect class="halo" x="158" y="98" width="64" height="62" rx="7" fill="#ffcf7e" filter="url(#hglow)"/>
+        <rect class="glass" x="164" y="104" width="52" height="50" rx="4"/>
+        <!-- 小纸飞机 -->
+        <g fill="#ece5d3">
+          <path d="M174 134 L206 112 L190 138 Z"/>
+          <path d="M190 138 L206 112 L194 142 Z" fill="#c9bfa5"/>
+        </g>
+        <path d="M168 138 q-6 5 -12 4" stroke="#8d92ab" stroke-width="1.4" fill="none" stroke-dasharray="2 4" stroke-linecap="round"/>
       </g>
       <!-- 楼顶上的两个小家伙 -->
       <g transform="translate(0,-110)">
@@ -176,17 +180,23 @@
         </g>
         <rect x="217" y="243" width="9" height="7" rx="1.5" fill="#3a4266"/>
       </g>
-      <!-- 一楼：第三扇窗 · 明天的天气预报 -->
+      <!-- 一楼：第三夜 · 明天的天气预报（左） + 下一夜敬请期待（右） -->
       <g class="storywin" id="weatherwin" role="link" aria-label="第三夜 · 明天的天气预报">
-        <rect class="halo" x="152" y="290" width="76" height="98" rx="9" fill="#ffcf7e" filter="url(#hglow)"/>
-        <rect class="glass" x="158" y="296" width="64" height="86" rx="5"/>
+        <rect class="halo" x="138" y="290" width="76" height="98" rx="9" fill="#ffcf7e" filter="url(#hglow)"/>
+        <rect class="glass" x="144" y="296" width="64" height="86" rx="5"/>
         <!-- 云朵和小太阳 -->
         <g>
-          <circle cx="178" cy="322" r="9" fill="#f4b860" opacity=".9"/>
-          <circle cx="178" cy="322" r="14" fill="#f4b860" opacity=".18"/>
-          <ellipse cx="196" cy="334" rx="14" ry="9" fill="#ece5d3" opacity=".9"/>
-          <ellipse cx="182" cy="338" rx="11" ry="7" fill="#ece5d3" opacity=".75"/>
+          <circle cx="164" cy="322" r="9" fill="#f4b860" opacity=".9"/>
+          <circle cx="164" cy="322" r="14" fill="#f4b860" opacity=".18"/>
+          <ellipse cx="182" cy="334" rx="14" ry="9" fill="#ece5d3" opacity=".9"/>
+          <ellipse cx="168" cy="338" rx="11" ry="7" fill="#ece5d3" opacity=".75"/>
         </g>
+      </g>
+      <g class="futurewin" id="futurewin" role="button" aria-label="下一夜 · 敬请期待">
+        <circle class="glass" cx="252" cy="336" r="19"/>
+        <path class="dot" d="M255 326 a8.5 8.5 0 1 0 5.2 14.4 a7 7 0 0 1 -5.2 -14.4 Z"/>
+        <circle class="dot" cx="242" cy="332" r="1.4"/>
+        <text x="252" y="374" text-anchor="middle" font-size="9" fill="#6f7488" letter-spacing="2.5" style="font-family:var(--sans)">敬请期待</text>
       </g>
       <!-- 门 -->
       <rect x="165" y="420" width="50" height="50" rx="6" fill="#161b2c"/>
@@ -208,7 +218,8 @@
 var STORIES=[
   {id:"rain",url:"rain/",win:document.getElementById("rainwin")},
   {id:"train",url:"train/",win:document.getElementById("trainwin")},
-  {id:"weather",url:"weather/",win:document.getElementById("weatherwin")}
+  {id:"weather",url:"weather/",win:document.getElementById("weatherwin")},
+  {id:"rehearse",url:"rehearse/",win:document.getElementById("rehearsewin")}
 ];
 
 /* 已读的窗，进来就是亮的 */

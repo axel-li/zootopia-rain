@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1d1930">
+<title>彩排 · 第四夜</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AD%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/common.css">
+<style>
+/* ============================================================
+   第四夜 ·《彩排》 —— 本页专属样式
+   客厅小剧场 · 翻剧本
+   ============================================================ */
+#s0,#s1{background:#1a1d31}
+#s2{background:#1d1930}
+#s3{background:#241d2e}
+#s4{background:#1c1828}
+#s5{background:#171c30}
+#s6{background:#1a2036}
+#s7{background:#262032}
+#s8{background:linear-gradient(#221c2c 0%, #2e2637 100%)}
+footer{
+  background:#f2e3c8;color:#6b5747;text-align:center;
+  padding:26px 0 40px;letter-spacing:.5em;font-size:13px;
+}
+footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;margin-right:1em}
+
+/* ---------- 封面 ---------- */
+#s0{align-items:center;text-align:center;justify-content:flex-end;padding-bottom:16vh}
+#s0 .art svg{width:118%;max-width:580px}
+#s0 .cover-block{position:relative;z-index:2;margin-bottom:5vh}
+#s0 h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(34px,10.5vw,52px);
+  letter-spacing:.14em;text-indent:.14em;color:var(--cream);
+  text-shadow:0 2px 24px rgba(0,0,0,.45);
+}
+#s0 .sub{margin-top:18px;color:var(--cream-dim);font-size:14px;letter-spacing:.32em}
+#s0 .series-badge{margin-top:26px;color:#8d92ab;font-size:11.5px;letter-spacing:.42em}
+.back-home{
+  position:absolute;top:18px;left:16px;z-index:3;
+  color:var(--cream-dim);text-decoration:none;
+  font-size:12px;letter-spacing:.22em;opacity:.8;padding:6px 10px;
+}
+#s0 .cue{
+  position:relative;z-index:2;margin-top:9vh;
+  display:inline-flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--cream);font-size:12px;letter-spacing:.4em;
+  text-shadow:0 1px 10px rgba(10,13,24,.95),0 0 3px rgba(10,13,24,.9);
+}
+#s0 .cue i{
+  width:1px;height:34px;background:linear-gradient(var(--cream),transparent);
+  animation:cue 2.2s ease-in-out infinite;
+}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+.spotlight{animation:spotbreathe 6s ease-in-out infinite}
+@keyframes spotbreathe{0%,100%{opacity:.1}50%{opacity:.17}}
+#plane-cov{animation:planedrift 5s ease-in-out infinite}
+@keyframes planedrift{0%,100%{transform:translate(0,0)}50%{transform:translate(5px,-4px)}}
+
+/* ---------- 正文场景：统一“文字在上，插画跟随” ---------- */
+.flowtop{justify-content:flex-start;padding-top:11vh}
+.flowtop .artflow{position:relative;z-index:1;width:100%;max-width:540px;margin:4vh auto 0}
+.flowtop .artflow svg{width:100%;height:auto;display:block}
+#s2 .big{
+  font-family:var(--serif);font-size:clamp(20px,5.6vw,26px);
+  line-height:2;letter-spacing:.06em;color:var(--cream);
+}
+#s4 .big{
+  font-family:var(--serif);font-size:clamp(21px,6vw,27px);
+  line-height:2;letter-spacing:.08em;color:var(--amber-soft);
+}
+
+/* ---------- s6：翻剧本 ---------- */
+#s6{justify-content:flex-start;padding-top:9vh}
+#s6 .words{text-align:center;max-width:26em}
+#s6 .hint{font-size:13px;letter-spacing:.34em;color:var(--cream-dim)}
+#s6 .hint b{font-weight:400;color:var(--amber);animation:hintp 2.4s ease-in-out infinite}
+@keyframes hintp{0%,100%{opacity:.55}50%{opacity:1}}
+#book{
+  position:relative;z-index:2;width:min(100%,340px);margin:4.5vh auto 0;
+  cursor:pointer;user-select:none;-webkit-user-select:none;
+}
+.bk{position:relative;width:100%;aspect-ratio:3/4;perspective:1100px}
+.pg{
+  position:absolute;inset:0;border-radius:8px;
+  background:
+    repeating-linear-gradient(transparent 0 30px, rgba(138,115,96,.14) 30px 31px),
+    #f2e8d0;
+  box-shadow:0 10px 36px rgba(0,0,0,.5);
+  padding:26px 20px;
+  transform-origin:left center;
+  transition:transform 1s cubic-bezier(.55,0,.7,.5),opacity .9s ease;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  color:#5c4632;
+}
+.pg.turn{transform:rotateY(-108deg);opacity:0;pointer-events:none}
+.bk.notrans .pg{transition:none}
+.pg .ttl{font-family:var(--serif);font-size:19px;letter-spacing:.12em;color:#4a392b}
+.pg .sub{font-size:13px;letter-spacing:.1em;color:#8a7360;line-height:2}
+.pg .illus{width:min(64%,190px)}
+.pg .illus svg{width:100%;height:auto;display:block}
+.pg .blankline{
+  font-family:var(--serif);font-size:14.5px;line-height:2.1;letter-spacing:.08em;
+  color:#6b5747;text-align:center;
+}
+#s6 .lines{min-height:5.4em;margin-top:4.5vh}
+#s6 .lines p{
+  font-family:var(--serif);font-size:16.5px;line-height:2.2;letter-spacing:.1em;margin-bottom:.35em;
+}
+#s6 .lines p span{opacity:0;transform:translateY(10px);display:inline-block;
+  transition:opacity 1.3s ease,transform 1.3s ease}
+#s6 .lines p.on span{opacity:1;transform:none}
+#s6 .lines p:last-child span{color:var(--amber-soft)}
+
+/* ---------- s8：尾声 ---------- */
+#s8{justify-content:flex-start;padding-top:10vh}
+#s8 .art{position:static;inset:auto;width:min(100%,440px);margin:0 auto 3vh}
+#s8 .art svg{position:static;inset:auto;transform:none;width:100%;max-width:none;height:auto}
+#s8 .words{margin-top:0;text-align:center;max-width:28em}
+#s8 .kicker{justify-content:center;color:#c9a24b}
+#s8 .kicker::before{content:"";flex:0 0 44px;height:1px;background:currentColor;opacity:.55}
+#s8 .words p{color:#d9cdb4}
+#s8 .words p.dim{color:#a9a08c}
+.dedic{margin-top:3.2em;font-family:var(--serif);letter-spacing:.12em}
+.dedic .to{font-size:19px;color:#f2e3c8;line-height:2}
+.dedic .from{margin-top:1em;font-size:14.5px;color:#b3a68e}
+.nextup{
+  margin-top:4em;padding-top:2.4em;border-top:1px solid rgba(217,205,180,.2);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.nextup .win-mini{width:44px;opacity:.85}
+.nextup .win-mini svg{width:100%;height:auto;display:block}
+.nextup .next-text{font-size:13px;color:#b3a68e;letter-spacing:.28em}
+.nextup .back-study{
+  margin-top:1.4em;font-size:12.5px;color:#c9b995;text-decoration:none;
+  letter-spacing:.3em;border-bottom:1px solid rgba(201,185,149,.4);padding-bottom:3px;
+}
+</style>
+</head>
+<body>
+
+<div id="vignette"></div>
+<button id="sndBtn" aria-label="声音开关">声音</button>
+
+<main>
+
+<!-- ════════════ 封面 ════════════ -->
+<section id="s0" class="scene">
+  <a class="back-home" href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">◂ 书房</a>
+  <div class="art">
+    <svg viewBox="0 0 380 520" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="520" fill="#1a1d31"/>
+      <!-- 窗与夜 -->
+      <rect x="36" y="60" width="130" height="110" rx="10" fill="#141829"/>
+      <rect x="36" y="60" width="130" height="110" rx="10" fill="none" stroke="#3a3450" stroke-width="6"/>
+      <line x1="101" y1="64" x2="101" y2="166" stroke="#3a3450" stroke-width="4"/>
+      <circle cx="66" cy="92" r="9" fill="#d8d9e8" opacity=".75"/>
+      <g fill="#f4b860">
+        <circle cx="130" cy="120" r="1.6" opacity=".7"/><circle cx="150" cy="88" r="1.3" opacity=".5"/>
+      </g>
+      <!-- 飞出窗的纸飞机 -->
+      <g id="plane-cov">
+        <path d="M186 128 L224 108 L204 134 Z" fill="#ece5d3"/>
+        <path d="M204 134 L224 108 L210 138 Z" fill="#c9bfa5"/>
+        <path d="M182 136 q-6 6 -12 5" stroke="#8d92ab" stroke-width="1.6" fill="none" stroke-dasharray="2 5" stroke-linecap="round" opacity=".7"/>
+      </g>
+      <!-- 落地灯（舞台聚光灯） -->
+      <rect x="284" y="120" width="5" height="150" fill="#3a3450"/>
+      <path d="M262 122 L311 122 L298 88 L275 88 Z" fill="#c8973f"/>
+      <ellipse class="spotlight" cx="286" cy="300" rx="96" ry="120" fill="#ffd98a"/>
+      <!-- 地毯舞台 -->
+      <ellipse cx="200" cy="410" rx="130" ry="34" fill="#3d5a5e"/>
+      <ellipse cx="200" cy="410" rx="96" ry="24" fill="#47696e"/>
+      <!-- 小凳子上的剧本和汤勺 -->
+      <rect x="150" y="330" width="44" height="34" rx="4" fill="#6e4a44"/>
+      <rect x="136" y="318" width="72" height="14" rx="3" fill="#3a3450"/>
+      <g transform="rotate(-8 190 312)">
+        <rect x="162" y="304" width="52" height="16" rx="3" fill="#f2e8d0"/>
+        <rect x="162" y="304" width="52" height="5" rx="2" fill="#5c3f28"/>
+      </g>
+      <line x1="218" y1="316" x2="224" y2="296" stroke="#c9cfdd" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="224.5" cy="293" rx="5" ry="7" fill="#c9cfdd"/>
+      <!-- 城市地平线 -->
+      <g fill="#141829">
+        <rect x="0" y="440" width="80" height="80"/>
+        <rect x="300" y="452" width="80" height="68"/>
+      </g>
+      <rect x="0" y="476" width="380" height="44" fill="#10131f"/>
+    </svg>
+  </div>
+  <div class="cover-block">
+    <h1>彩排</h1>
+    <div class="sub">一 个 小 小 的 睡 前 故 事</div>
+    <div class="series-badge">动物城睡前故事 · 第四夜</div>
+  </div>
+  <div class="cue"><span>往下滑</span><i></i></div>
+</section>
+
+<!-- ════════════ 一 · 又是那种晚上 ════════════ -->
+<section id="s1" class="scene flowtop">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">壹</span><span>又是那种晚上</span></div>
+    <p class="reveal" style="--d:.15s">朱迪趴在桌上写写画画，写了又划掉，划掉又写。</p>
+    <p class="reveal" style="--d:.35s">尼克凑过去看。不是报告，不是笔记——是一本剧本。封面上写着：<em>《如果最坏发生》</em>。第一页只有三个字：“万一……”</p>
+    <div class="bubble reveal" style="--d:.6s">
+      <span class="who">尼克评价道</span>
+      “排版不行。我干这行的时候，剧本至少得有个主角。”
+    </div>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 300" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="300" fill="#1a1d31"/>
+      <!-- 台灯 -->
+      <rect x="64" y="106" width="4" height="84" fill="#3a3450"/>
+      <path d="M50 108 L84 108 L76 84 L58 84 Z" fill="#c8973f"/>
+      <ellipse cx="66" cy="196" rx="30" ry="7" fill="#312b42"/>
+      <ellipse class="spotlight" cx="130" cy="150" rx="80" ry="60" fill="#ffd98a"/>
+      <!-- 书桌 -->
+      <rect x="40" y="188" width="300" height="14" rx="5" fill="#4a3a30"/>
+      <rect x="60" y="202" width="12" height="90" fill="#3a2c24"/>
+      <rect x="316" y="202" width="12" height="90" fill="#3a2c24"/>
+      <!-- 剧本 -->
+      <g transform="rotate(-4 200 176)">
+        <rect x="168" y="166" width="64" height="20" rx="3" fill="#5c3f28"/>
+        <rect x="168" y="166" width="64" height="6" rx="2" fill="#f2e8d0"/>
+        <text x="200" y="181" text-anchor="middle" font-size="9.5" fill="#f2e8d0" letter-spacing="1" style="font-family:var(--serif)">如果最坏发生</text>
+      </g>
+      <!-- 铅笔 -->
+      <g transform="rotate(28 258 184)">
+        <rect x="240" y="180" width="34" height="7" rx="2" fill="#c9a24b"/>
+        <path d="M274 180 L284 183.5 L274 187 Z" fill="#8a6a4e"/>
+      </g>
+      <!-- 写字的朱迪 -->
+      <g>
+        <ellipse cx="130" cy="182" rx="24" ry="22" fill="#2B3556"/>
+        <path d="M112 164 Q104 176 108 188" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="109" cy="190" r="4.6" fill="#A6ABBB"/>
+        <path d="M146 166 Q154 176 152 186" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="152" cy="188" r="4.6" fill="#A6ABBB"/>
+        <!-- 微垂的耳朵 -->
+        <path d="M120 136 Q106 144 104 166" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M120 140 Q110 147 108 162" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <path d="M140 136 Q152 146 150 168" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M139 140 Q149 148 148 164" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <circle cx="130" cy="148" r="17" fill="#A6ABBB"/>
+        <ellipse cx="130" cy="154" rx="11" ry="8" fill="#CDD1DC"/>
+        <!-- 皱着眉写字 -->
+        <ellipse cx="123.5" cy="147" rx="4.6" ry="5" fill="#6F52BE"/>
+        <ellipse cx="136.5" cy="147" rx="4.6" ry="5" fill="#6F52BE"/>
+        <path d="M119 144.5 Q123.5 143 128 144.5" stroke="#4A5060" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M132 144.5 Q136.5 143 141 144.5" stroke="#4A5060" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <circle cx="123.5" cy="148.5" r="1.9" fill="#2A2140"/>
+        <circle cx="136.5" cy="148.5" r="1.9" fill="#2A2140"/>
+        <path d="M128 159 Q130 158 132 159 Q131.4 161.6 130 161.8 Q128.6 161.6 128 159 Z" fill="#C4708A"/>
+      </g>
+      <!-- 沙发后偷看的尼克 -->
+      <g>
+        <rect x="286" y="120" width="94" height="90" rx="14" fill="#3d5a5e"/>
+        <rect x="292" y="106" width="82" height="30" rx="12" fill="#47696e"/>
+        <circle cx="326" cy="130" r="15" fill="#DB6E38"/>
+        <path d="M316 120 L310 104 L326 116 Z" fill="#DB6E38"/>
+        <path d="M336 118 L346 103 L330 115 Z" fill="#DB6E38"/>
+        <path d="M315 122 L309 110 L323 119 Z" fill="#4A2C1C"/>
+        <path d="M338 121 L346 108 L332 119 Z" fill="#4A2C1C"/>
+        <path d="M318 129 A5 5 0 0 0 328 129 Z" fill="#6E9E55"/>
+        <path d="M330 129 A5 5 0 0 0 340 129 Z" fill="#6E9E55"/>
+        <path d="M323 134 Q328 137 333 134" stroke="#4E3430" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 二 · 提议 ════════════ -->
+<section id="s2" class="scene flowtop">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">贰</span><span>提议</span></div>
+    <p class="reveal big" style="--d:.15s">“想一半的剧本，最吓人。<br>——咱把它演完。”</p>
+    <p class="reveal" style="--d:.4s">朱迪把笔一放：“笑吧。”</p>
+    <p class="reveal" style="--d:.6s">“我不笑。”尼克把剧本拿起来，翻了翻，把它拍回桌上——要么别写，要么，演完。</p>
+    <p class="reveal dim" style="--d:.8s">“我当骗子那几年，每一种最坏，都排练过。排练过的局，就不慌了。”</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 260" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="260" fill="#1d1930"/>
+      <!-- 摊开的剧本特写 -->
+      <g transform="rotate(-2 190 130)">
+        <rect x="96" y="52" width="84" height="140" rx="5" fill="#5c3f28"/>
+        <rect x="188" y="52" width="84" height="140" rx="5" fill="#5c3f28"/>
+        <path d="M96 52 Q138 40 180 52 L180 192 Q138 180 96 192 Z" fill="#f2e8d0"/>
+        <path d="M188 52 Q230 40 272 52 L272 192 Q230 180 188 192 Z" fill="#f2e8d0"/>
+        <line x1="184" y1="46" x2="184" y2="198" stroke="#c9bfa5" stroke-width="2"/>
+        <!-- 封面页 -->
+        <text x="138" y="98" text-anchor="middle" font-size="15" fill="#4a392b" letter-spacing="2" style="font-family:var(--serif)">如果</text>
+        <text x="138" y="122" text-anchor="middle" font-size="15" fill="#4a392b" letter-spacing="2" style="font-family:var(--serif)">最坏发生</text>
+        <line x1="112" y1="136" x2="164" y2="136" stroke="#8a7360" stroke-width="1.4"/>
+        <text x="138" y="156" text-anchor="middle" font-size="9.5" fill="#8a7360" letter-spacing="1">编剧：朱迪</text>
+        <!-- 第一页：万一…… -->
+        <text x="230" y="96" text-anchor="middle" font-size="14" fill="#6b5747" letter-spacing="3" style="font-family:var(--serif)">“万一……”</text>
+        <g stroke="#c9bfa5" stroke-width="1.3">
+          <line x1="204" y1="118" x2="256" y2="118"/>
+          <line x1="204" y1="138" x2="256" y2="138"/>
+          <line x1="204" y1="158" x2="256" y2="158"/>
+        </g>
+      </g>
+      <!-- 拿着剧本的狐狸爪 -->
+      <g>
+        <path d="M282 158 Q300 150 316 156" stroke="#B3C28E" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <circle cx="320" cy="158" r="5.5" fill="#DB6E38"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 三 · 客厅变片场 ════════════ -->
+<section id="s3" class="scene flowtop">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">叁</span><span>客厅变片场</span></div>
+    <p class="reveal" style="--d:.15s">茶几推到墙边，热可可当道具，大尾巴拉过来——当幕布。（“这尾巴倒是越来越全能了。”狐狸表示很得意。）</p>
+    <p class="reveal" style="--d:.35s">朱迪演“那一天的自己”。尼克演“全世界最凶的领导”：戴上老花镜，汤勺当权杖，嗓子压低八度——</p>
+    <p class="reveal say" style="--d:.55s">“霍普斯！你！怎么回事！！”</p>
+    <p class="reveal" style="--d:.75s">朱迪笑场了。第二次没忍住。第三次还是没忍住。</p>
+    <div class="bubble reveal" style="--d:.95s">
+      <span class="who">“卡！”她笑得直不起腰 / 尼克扶了扶老花镜</span>
+      “我领导才没有你演得这么好笑。”<br>“谢谢，我尽力了。”
+    </div>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 320" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="320" fill="#241d2e"/>
+      <!-- 尾巴幕布 -->
+      <path d="M60 26 Q120 6 190 12 Q260 6 320 26 L332 150 Q260 128 190 140 Q120 128 48 150 Z" fill="#DB6E38" opacity=".35"/>
+      <path d="M60 26 Q120 6 190 12 Q260 6 320 26" stroke="#DB6E38" stroke-width="14" fill="none" stroke-linecap="round" opacity=".8"/>
+      <!-- 地毯舞台 -->
+      <ellipse cx="190" cy="250" rx="140" ry="36" fill="#3d5a5e"/>
+      <ellipse cx="190" cy="250" rx="100" ry="25" fill="#47696e"/>
+      <!-- 场记板 -->
+      <g transform="rotate(12 88 286)">
+        <rect x="62" y="278" width="52" height="32" rx="3" fill="#8a6a4e"/>
+        <rect x="62" y="270" width="52" height="10" rx="2" fill="#ece5d3"/>
+        <path d="M70 270 L76 278 M82 270 L88 278 M94 270 L100 278" stroke="#8a6a4e" stroke-width="3"/>
+      </g>
+      <!-- 道具：两杯热可可 -->
+      <g>
+        <rect x="290" y="232" width="22" height="16" rx="3" fill="#c98d5f"/>
+        <rect x="288" y="231" width="26" height="3.4" rx="1.7" fill="#6E4630"/>
+        <rect x="322" y="236" width="16" height="12" rx="3" fill="#c98d5f"/>
+      </g>
+      <!-- 演凶领导的尼克 -->
+      <g>
+        <ellipse cx="256" cy="228" rx="22" ry="20" fill="#B3C28E"/>
+        <path d="M250 210 L256 220 L262 210 Z" fill="#F2E3C8"/>
+        <path d="M254 216 L258 216 L259 232 L256 235 L253 232 Z" fill="#2E3A5C"/>
+        <!-- 叉腰的手 + 汤勺权杖 -->
+        <path d="M272 214 Q282 222 280 234" stroke="#B3C28E" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="281" cy="236" r="4.6" fill="#DB6E38"/>
+        <path d="M240 216 Q230 224 232 236" stroke="#B3C28E" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <line x1="232" y1="240" x2="224" y2="206" stroke="#c9cfdd" stroke-width="4" stroke-linecap="round"/>
+        <ellipse cx="223" cy="201" rx="7" ry="10" fill="#c9cfdd"/>
+        <!-- 头 -->
+        <circle cx="256" cy="192" r="19" fill="#DB6E38"/>
+        <path d="M244 180 L238 160 L254 176 Z" fill="#DB6E38"/>
+        <path d="M268 178 L278 159 L259 174 Z" fill="#DB6E38"/>
+        <path d="M243 182 L236 164 L252 177 Z" fill="#4A2C1C"/>
+        <path d="M270 180 L280 162 L262 177 Z" fill="#4A2C1C"/>
+        <!-- 老花镜 -->
+        <g fill="none" stroke="#3a3450" stroke-width="2.2">
+          <circle cx="249" cy="190" r="6"/>
+          <circle cx="263" cy="190" r="6"/>
+          <line x1="255" y1="190" x2="257" y2="190"/>
+        </g>
+        <!-- 瞪圆的眼 -->
+        <circle cx="249" cy="190" r="2.6" fill="#2E2016"/>
+        <circle cx="263" cy="190" r="2.6" fill="#2E2016"/>
+        <!-- 夸张的八字眉 -->
+        <path d="M243 180 L254 184 M269 180 L258 184" stroke="#8A4A26" stroke-width="2.6" stroke-linecap="round"/>
+        <!-- 喊话的嘴 -->
+        <ellipse cx="256" cy="202" rx="5" ry="4" fill="#4E3430"/>
+        <path d="M247 198 L241 196 M265 198 L271 196" stroke="#4E3430" stroke-width="1.6" stroke-linecap="round"/>
+      </g>
+      <!-- 笑倒的朱迪 -->
+      <g>
+        <ellipse cx="126" cy="234" rx="20" ry="18" fill="#2B3556"/>
+        <!-- 笑弯的手 -->
+        <path d="M110 218 Q102 226 104 238" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="105" cy="240" r="4.6" fill="#A6ABBB"/>
+        <path d="M140 220 Q148 230 146 242" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="146" cy="244" r="4.6" fill="#A6ABBB"/>
+        <!-- 笑得歪向一边的耳朵 -->
+        <path d="M116 186 Q100 194 98 214" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M116 190 Q104 197 102 210" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <path d="M136 186 Q150 198 148 218" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M135 190 Q147 199 146 214" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <g transform="rotate(-10 126 198)">
+          <ellipse cx="126" cy="198" rx="17.5" ry="15.5" fill="#A6ABBB"/>
+          <ellipse cx="126" cy="204" rx="11" ry="8" fill="#CDD1DC"/>
+          <!-- 笑弯的眼 -->
+          <path d="M116 197 Q120.5 200.5 125 197" stroke="#4A5060" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M129 197 Q133.5 200.5 138 197" stroke="#4A5060" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <!-- 张大的笑嘴 -->
+          <path d="M120 209 Q126 216 132 209 Q129 213.5 126 213.8 Q123 213.5 120 209 Z" fill="#C4708A"/>
+          <!-- 笑出的泪 -->
+          <path d="M138 199 q3 1.5 1.5 4.5" stroke="#9fc0e8" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 四 · 然后呢 ════════════ -->
+<section id="s4" class="scene flowtop">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">肆</span><span>然后呢</span></div>
+    <p class="reveal" style="--d:.15s">演着演着，就不像玩了。“记过。”“调去贴罚单。”最后一页，朱迪念得很轻：“交回警徽。”</p>
+    <p class="reveal" style="--d:.35s">客厅安静下来。老花镜摘了，汤勺放下了。尼克看着她，轻轻问：</p>
+    <p class="reveal big" style="--d:.55s">“然后呢？”</p>
+    <p class="reveal" style="--d:.8s">朱迪愣住了。然后呢？——然后，还有这间小公寓，明早的热可可，冰箱上贴着周末的慢车票，窗外气候墙顶的灯还亮着。还有一只狐狸，正把大尾巴，盖到她的腿上。</p>
+    <p class="reveal say" style="--d:1.05s">“最坏的剧本翻到底，每一页，都还有我。”</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 280" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="280" fill="#1c1828"/>
+      <!-- 台灯暖光 -->
+      <rect x="70" y="60" width="4" height="70" fill="#3a3450"/>
+      <path d="M56 62 L90 62 L82 38 L64 38 Z" fill="#c8973f"/>
+      <ellipse class="spotlight" cx="150" cy="130" rx="100" ry="80" fill="#ffd98a"/>
+      <!-- 桌上的警徽 -->
+      <g>
+        <rect x="40" y="128" width="230" height="12" rx="5" fill="#4a3a30"/>
+        <circle cx="140" cy="122" r="12" fill="#E8B54A"/>
+        <circle cx="140" cy="122" r="8" fill="#c9a24b"/>
+        <path d="M140 112 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2 Z" fill="#ffe6ae"/>
+      </g>
+      <!-- 坐着的朱迪 -->
+      <g>
+        <ellipse cx="106" cy="196" rx="22" ry="24" fill="#2B3556"/>
+        <path d="M90 178 Q84 190 88 200" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <!-- 微垂安静的耳朵 -->
+        <path d="M96 146 Q82 154 80 174" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M96 150 Q86 157 84 170" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <path d="M116 146 Q128 156 126 176" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M115 150 Q125 158 124 172" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <circle cx="106" cy="158" r="16.5" fill="#A6ABBB"/>
+        <ellipse cx="106" cy="164" rx="10.5" ry="7.5" fill="#CDD1DC"/>
+        <ellipse cx="100" cy="157" rx="4.4" ry="4.8" fill="#6F52BE"/>
+        <ellipse cx="112" cy="157" rx="4.4" ry="4.8" fill="#6F52BE"/>
+        <circle cx="100" cy="158.8" r="1.8" fill="#2A2140"/>
+        <circle cx="112" cy="158.8" r="1.8" fill="#2A2140"/>
+        <path d="M98 149.5 Q102 151.5 106 150 M110 150 Q114 151.5 118 149.5" stroke="#6A7080" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- 出戏的尼克（老花镜挂在领口） -->
+      <g>
+        <ellipse cx="212" cy="196" rx="22" ry="22" fill="#B3C28E"/>
+        <path d="M206 178 L212 188 L218 178 Z" fill="#F2E3C8"/>
+        <path d="M210 184 L214 184 L215 200 L212 203 L209 200 Z" fill="#2E3A5C"/>
+        <!-- 搭在朱迪腿上的手 -->
+        <path d="M192 184 Q178 192 172 202" stroke="#B3C28E" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="170" cy="204" r="4.6" fill="#DB6E38"/>
+        <circle cx="214" cy="170" r="17" fill="#DB6E38"/>
+        <path d="M204 158 L198 140 L214 154 Z" fill="#DB6E38"/>
+        <path d="M224 156 L234 137 L216 152 Z" fill="#DB6E38"/>
+        <path d="M203 160 L196 143 L212 155 Z" fill="#4A2C1C"/>
+        <path d="M226 158 L235 140 L219 155 Z" fill="#4A2C1C"/>
+        <!-- 温柔的眯眯眼 -->
+        <path d="M204 167 A5 5 0 0 0 214 167 Z" fill="#6E9E55"/>
+        <path d="M216 167 A5 5 0 0 0 226 167 Z" fill="#6E9E55"/>
+        <circle cx="209" cy="168.5" r="1.7" fill="#2E2016"/>
+        <circle cx="221" cy="168.5" r="1.7" fill="#2E2016"/>
+        <path d="M204 176 Q214 179 224 176" stroke="#4E3430" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <!-- 挂在领口的老花镜 -->
+        <g fill="none" stroke="#3a3450" stroke-width="1.8">
+          <circle cx="207" cy="188" r="4"/>
+          <circle cx="215" cy="188" r="4"/>
+          <line x1="211" y1="188" x2="212" y2="188"/>
+        </g>
+      </g>
+      <!-- 大尾巴盖住她的膝盖 -->
+      <g>
+        <path d="M232 200 Q214 226 182 226 Q156 226 144 212 Q140 203 148 198 Q158 193 172 199 Q200 210 232 194 Z" fill="#DB6E38"/>
+        <ellipse cx="150" cy="203" rx="9" ry="8" fill="#F2E3C8"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 五 · 杀青 ════════════ -->
+<section id="s5" class="scene flowtop">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">伍</span><span>杀青</span></div>
+    <p class="reveal" style="--d:.15s">那天夜里，剧本被折成了一只纸飞机，从阳台飞出去，晃晃悠悠，消失在灯光里。</p>
+    <div class="bubble reveal" style="--d:.4s">
+      <span class="who">尼克宣布 / 评分</span>
+      “本季最差剧本，杀青。”<br>“评分？”<br>“零星。幸好，只播一集。”
+    </div>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 280" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="280" fill="#171c30"/>
+      <!-- 夜空与月 -->
+      <circle cx="80" cy="52" r="20" fill="#d8d9e8" opacity=".85"/>
+      <g fill="#fff">
+        <circle cx="180" cy="34" r="1.4" opacity=".6"/><circle cx="250" cy="60" r="1.2" opacity=".5"/>
+        <circle cx="320" cy="30" r="1.4" opacity=".55"/>
+      </g>
+      <!-- 远处城市灯火 -->
+      <g fill="#f4b860">
+        <circle cx="140" cy="120" r="2" opacity=".7"/><circle cx="220" cy="104" r="2.2" opacity=".75"/>
+        <circle cx="300" cy="122" r="1.8" opacity=".6"/><circle cx="340" cy="96" r="1.6" opacity=".55"/>
+      </g>
+      <!-- 纸飞机 -->
+      <g>
+        <path d="M232 96 L268 78 L250 102 Z" fill="#ece5d3"/>
+        <path d="M250 102 L268 78 L254 106 Z" fill="#c9bfa5"/>
+        <path d="M226 106 q-8 8 -18 8 q4 -10 12 -12" stroke="#8d92ab" stroke-width="1.6" fill="none" stroke-dasharray="2 5" stroke-linecap="round" opacity=".7"/>
+      </g>
+      <!-- 阳台栏杆与两个背影 -->
+      <rect x="0" y="200" width="380" height="80" fill="#141829"/>
+      <g stroke="#2c3252" stroke-width="5" stroke-linecap="round">
+        <line x1="70" y1="170" x2="70" y2="230"/>
+        <line x1="130" y1="170" x2="130" y2="230"/>
+        <line x1="190" y1="170" x2="190" y2="230"/>
+        <line x1="250" y1="170" x2="250" y2="230"/>
+        <line x1="310" y1="170" x2="310" y2="230"/>
+        <line x1="56" y1="182" x2="330" y2="182"/>
+      </g>
+      <!-- 朱迪背影 -->
+      <g>
+        <circle cx="150" cy="212" r="4.5" fill="#EDEFF4"/>
+        <ellipse cx="164" cy="212" rx="15" ry="18" fill="#2B3556"/>
+        <circle cx="164" cy="188" r="11" fill="#A6ABBB"/>
+        <ellipse cx="158" cy="172" rx="4.6" ry="13" transform="rotate(-8 158 172)" fill="#A6ABBB"/>
+        <ellipse cx="170" cy="171" rx="4.6" ry="13" transform="rotate(8 170 171)" fill="#A6ABBB"/>
+        <!-- 指着飞机的手 -->
+        <path d="M176 200 Q186 192 194 186" stroke="#B8C6E4" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- 尼克背影 -->
+      <g>
+        <ellipse cx="206" cy="214" rx="17" ry="19" fill="#B3C28E"/>
+        <circle cx="206" cy="188" r="12" fill="#DB6E38"/>
+        <path d="M200 180 L196 166 L208 178 Z" fill="#DB6E38"/>
+        <path d="M212 178 L220 164 L207 177 Z" fill="#DB6E38"/>
+        <path d="M221 218 Q235 214 240 202 Q244 214 235 222 Z" fill="#DB6E38"/>
+        <ellipse cx="238" cy="204" rx="4.5" ry="4" fill="#F2E3C8"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 互动 · 翻剧本 ════════════ -->
+<section id="s6" class="scene">
+  <div class="words">
+    <div class="kicker reveal" style="justify-content:center"><span class="num">陆</span><span>如果最坏发生</span></div>
+    <p class="reveal dim" style="--d:.15s;margin-bottom:.6em">这本剧本，现在交给你。翻到最后一页看看。</p>
+    <p class="hint reveal" id="s6hint" style="--d:.4s"><b>点一下，翻过一页</b></p>
+  </div>
+  <div id="book" class="reveal" style="--d:.55s">
+    <div class="bk" id="bk">
+      <div class="pg" style="z-index:1">
+        <div class="blankline">真实的那天，会自己写。</div>
+        <div class="blankline">它通常，比这一页温柔。</div>
+        <div class="illus">
+          <svg viewBox="0 0 120 80" aria-hidden="true">
+            <path d="M30 52 L94 20 L64 58 Z" fill="#c9bfa5"/>
+            <path d="M30 52 L64 58 L58 68 Z" fill="#8a7360"/>
+            <path d="M20 60 q-6 8 -14 8" stroke="#8a7360" stroke-width="2" fill="none" stroke-dasharray="2 6" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="pg" style="z-index:2">
+        <div class="ttl">最后一幕</div>
+        <div class="sub">“交回警徽。”</div>
+        <div class="illus">
+          <svg viewBox="0 0 120 90" aria-hidden="true">
+            <rect x="10" y="70" width="100" height="6" rx="3" fill="#8a6a4e"/>
+            <circle cx="60" cy="52" r="16" fill="#E8B54A"/>
+            <circle cx="60" cy="52" r="11" fill="#c9a24b"/>
+            <path d="M60 38 l2.6 8 8 2.6 -8 2.6 -2.6 8 -2.6 -8 -8 -2.6 8 -2.6 Z" fill="#ffe6ae"/>
+          </svg>
+        </div>
+      </div>
+      <div class="pg" style="z-index:3">
+        <div class="ttl">第二幕 · 第三幕</div>
+        <div class="sub">“被记过。”“调去贴罚单。”</div>
+        <div class="illus">
+          <svg viewBox="0 0 120 90" aria-hidden="true">
+            <rect x="30" y="16" width="60" height="58" rx="4" fill="#ece5d3"/>
+            <rect x="38" y="26" width="44" height="10" rx="2" fill="#c05a52" opacity=".85"/>
+            <line x1="38" y1="46" x2="82" y2="46" stroke="#8a7360" stroke-width="2"/>
+            <line x1="38" y1="58" x2="82" y2="58" stroke="#8a7360" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+      <div class="pg" style="z-index:4">
+        <div class="ttl">第一幕</div>
+        <div class="sub">“领导板起脸。”</div>
+        <div class="illus">
+          <svg viewBox="0 0 120 90" aria-hidden="true">
+            <circle cx="60" cy="40" r="22" fill="#DB6E38"/>
+            <path d="M46 26 L40 8 L58 22 Z" fill="#DB6E38"/>
+            <path d="M74 24 L84 6 L64 20 Z" fill="#DB6E38"/>
+            <g fill="none" stroke="#5c4632" stroke-width="2">
+              <circle cx="53" cy="38" r="5"/><circle cx="67" cy="38" r="5"/>
+            </g>
+            <circle cx="53" cy="38" r="2" fill="#2E2016"/>
+            <circle cx="67" cy="38" r="2" fill="#2E2016"/>
+            <path d="M46 28 L56 32 M74 28 L64 32" stroke="#8A4A26" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M54 52 Q60 49 66 52 Q63 56 60 56.4 Q57 56 54 52 Z" fill="#4E3430"/>
+          </svg>
+        </div>
+      </div>
+      <div class="pg" style="z-index:5">
+        <div class="ttl" style="font-size:22px">如果最坏发生</div>
+        <div class="sub">编剧：朱迪 · 霍普斯</div>
+        <div class="sub" style="opacity:.75">（第一页：“万一……”）</div>
+        <div class="illus">
+          <svg viewBox="0 0 120 90" aria-hidden="true">
+            <rect x="26" y="10" width="68" height="70" rx="5" fill="#5c3f28"/>
+            <rect x="31" y="15" width="58" height="60" rx="3" fill="#f2e8d0"/>
+            <text x="60" y="56" text-anchor="middle" font-size="13" fill="#6b5747" letter-spacing="2" style="font-family:var(--serif)">万一</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lines" id="script-lines">
+    <p><span>最坏的事翻到最后一页，</span></p>
+    <p><span>每一页，都有人陪你。</span></p>
+  </div>
+</section>
+
+<!-- ════════════ 七 · 真实的那一天 ════════════ -->
+<section id="s7" class="scene flowtop">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">柒</span><span>真实的那一天</span></div>
+    <p class="reveal" style="--d:.15s">真实的那一天，来了。</p>
+    <p class="reveal" style="--d:.35s">没有凶领导。没有记过。甚至，比平时还顺了一点点。</p>
+    <p class="reveal dim" style="--d:.55s">晚上，两个人瘫在沙发上，中间放着一杯热可可——大的那杯，在她那边。</p>
+    <p class="reveal" style="--d:.75s">谁也没有再提那本剧本。</p>
+    <p class="reveal say" style="--d:.95s">不需要了。</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 280" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="280" fill="#262032"/>
+      <!-- 暖灯 -->
+      <ellipse class="spotlight" cx="190" cy="180" rx="130" ry="80" fill="#ffd98a"/>
+      <rect x="188" y="40" width="4" height="50" fill="#3a3450"/>
+      <path d="M172 42 L208 42 L200 22 L180 22 Z" fill="#c8973f"/>
+      <!-- 沙发 -->
+      <rect x="86" y="160" width="210" height="52" rx="14" fill="#3d5a5e"/>
+      <rect x="94" y="148" width="194" height="34" rx="12" fill="#47696e"/>
+      <!-- 摊着的朱迪 -->
+      <g>
+        <circle cx="134" cy="192" r="7" fill="#EDEFF4"/>
+        <ellipse cx="152" cy="188" rx="21" ry="25" fill="#2B3556"/>
+        <!-- 松松垂着的耳朵（放松版） -->
+        <path d="M143 148 Q128 156 126 178" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M143 152 Q132 159 130 174" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <path d="M161 148 Q174 158 172 180" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M160 152 Q171 160 170 176" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <g transform="rotate(14 152 158)">
+          <ellipse cx="152" cy="158" rx="17" ry="15.5" fill="#A6ABBB"/>
+          <ellipse cx="152" cy="164" rx="11" ry="8" fill="#CDD1DC"/>
+          <!-- 眯眯笑眼 -->
+          <path d="M142 157 Q146.5 160.5 151 157" stroke="#4A5060" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M155 157 Q159.5 160.5 164 157" stroke="#4A5060" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M148 172 Q152 174.6 156 172" stroke="#5A6070" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </g>
+      </g>
+      <!-- 摊着的尼克 -->
+      <g>
+        <ellipse cx="232" cy="188" rx="23" ry="23" fill="#B3C28E"/>
+        <path d="M226 170 L232 180 L238 170 Z" fill="#F2E3C8"/>
+        <path d="M230 178 L234 178 L235.5 194 L232 197 L228.5 194 Z" fill="#2E3A5C"/>
+        <circle cx="232" cy="162" r="18" fill="#DB6E38"/>
+        <path d="M222 152 L217 136 L231 148 Z" fill="#DB6E38"/>
+        <path d="M243 150 L251 134 L237 147 Z" fill="#DB6E38"/>
+        <path d="M221 155 L215 140 L229 151 Z" fill="#4A2C1C"/>
+        <path d="M244 153 L252 137 L238 150 Z" fill="#4A2C1C"/>
+        <!-- 松弛闭目 -->
+        <path d="M220 158 A5 5 0 0 0 230 158 Z" fill="#6E9E55"/>
+        <path d="M234 158 A5 5 0 0 0 244 158 Z" fill="#6E9E55"/>
+        <path d="M226 168 Q232 170.5 238 168" stroke="#4E3430" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- 搭在沙发背的手 -->
+        <path d="M252 172 Q260 182 256 194" stroke="#B3C28E" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="255" cy="196" r="4.6" fill="#DB6E38"/>
+      </g>
+      <!-- 中间那杯大的热可可 -->
+      <g>
+        <rect x="186" y="216" width="26" height="19" rx="3.5" fill="#c98d5f"/>
+        <rect x="183.5" y="215" width="31" height="3.6" rx="1.8" fill="#6E4630"/>
+        <path class="steam" d="M196 211 q3 -5 0 -9" stroke="#ece5d3" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <path class="steam" d="M203 211 q3 -5 0 -9" stroke="#ece5d3" stroke-width="1.2" fill="none" stroke-linecap="round" style="animation-delay:1.6s"/>
+      </g>
+      <!-- 尾巴从沙发后垂下来 -->
+      <path d="M296 200 Q318 208 326 192 Q332 208 316 218 Q298 220 292 212 Z" fill="#DB6E38"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 尾声 ════════════ -->
+<section id="s8" class="scene">
+  <div class="art">
+    <svg viewBox="0 0 380 260" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="260" fill="#221c2c"/>
+      <!-- 合上的剧本（封底） -->
+      <g transform="rotate(-4 190 120)">
+        <rect x="128" y="46" width="124" height="164" rx="8" fill="#5c3f28"/>
+        <rect x="136" y="54" width="108" height="148" rx="5" fill="#6e4f33"/>
+        <!-- 封底停着的小纸飞机 -->
+        <g>
+          <path d="M158 108 L206 84 L180 118 Z" fill="#ece5d3"/>
+          <path d="M180 118 L206 84 L188 122 Z" fill="#c9bfa5"/>
+          <path d="M150 122 q-8 8 -16 8" stroke="#c9bfa5" stroke-width="2" fill="none" stroke-dasharray="2 6" stroke-linecap="round"/>
+        </g>
+        <text x="190" y="168" text-anchor="middle" font-size="11" fill="#c9bfa5" letter-spacing="4" style="font-family:var(--serif)">剧 终</text>
+      </g>
+      <!-- 暖灯角 -->
+      <ellipse class="spotlight" cx="300" cy="200" rx="70" ry="50" fill="#ffd98a"/>
+    </svg>
+  </div>
+  <div class="words">
+    <div class="kicker reveal"><span class="num">捌</span><span>尾声</span></div>
+    <p class="reveal" style="--d:.15s">把剧本折成纸飞机的那天晚上，风很好。</p>
+    <p class="reveal dim" style="--d:.35s">它晃晃悠悠地飞，谁也不知道落在哪儿。</p>
+    <p class="reveal dim" style="--d:.55s">不过没关系——它已经只是一个故事了。</p>
+    <div class="dedic reveal" style="--d:.8s">
+      <div class="to">送给亲爱的 Lin</div>
+      <div class="from">—— 永远站在你这边的 Zhe</div>
+    </div>
+    <div class="nextup reveal" style="--d:1.05s">
+      <div class="win-mini">
+        <svg viewBox="0 0 60 80" aria-hidden="true">
+          <rect x="4" y="4" width="52" height="72" rx="6" fill="#3a4266"/>
+          <rect x="10" y="10" width="40" height="60" rx="3" fill="#4a5378"/>
+          <circle cx="24" cy="40" r="2.6" fill="#8d92ab"/>
+          <circle cx="36" cy="40" r="2.6" fill="#8d92ab"/>
+          <circle cx="30" cy="30" r="2.6" fill="#8d92ab"/>
+        </svg>
+      </div>
+      <div class="next-text">下一夜，正在来的路上</div>
+      <a class="back-study" href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">回到书房 · 看看其它的窗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">回到书房</a>
+  第 四 夜 · 完
+</footer>
+</main>
+
+<script src="../assets/story.js"></script>
+<script>
+/* 本页专属：翻剧本 —— 点一下翻一页，翻到最后的空白页 */
+(function(){
+  var pages=[].slice.call(document.querySelectorAll("#bk .pg"));   // DOM 顺序 = 翻页顺序
+  var idx=0,
+      hint=document.getElementById("s6hint"),
+      lines=[].slice.call(document.querySelectorAll("#script-lines p"));
+  function done(){
+    lines.forEach(function(p){p.classList.add("on")});
+    if(hint)hint.innerHTML="剧 终 。";
+  }
+  function turn(){
+    if(idx>=pages.length)return;
+    pages[idx].classList.add("turn");
+    idx++;
+    if(idx>=pages.length)done();
+  }
+  var book=document.getElementById("book");
+  if(book)book.addEventListener("pointerdown",turn);
+  var qs=new URLSearchParams(location.search);
+  if(qs.get("stage")==="final"){
+    document.getElementById("bk").classList.add("notrans");
+    pages.forEach(function(p){p.classList.add("turn")});idx=pages.length;done();
+  }
+})();
+
+ZStory.init({
+  storyId:"rehearse",
+  audio:{
+    tempo:4300, delayTime:.47, feedback:.3, wetness:.5,
+    chords:[
+      {bass:130.81,notes:[196.00,261.63,329.63,392.00],spark:[523.25,392.00]},
+      {bass:110.00,notes:[220.00,261.63,329.63,440.00],spark:[523.25,440.00]},
+      {bass:87.31, notes:[174.61,220.00,261.63,349.23],spark:[440.00,523.25]},
+      {bass:98.00, notes:[196.00,246.94,293.66,392.00],spark:[587.33,493.88]}
+    ]
+  }
+});
+</script>
+</body>
+</html>
