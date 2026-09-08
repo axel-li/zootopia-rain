@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#131728">
+<title>明天的天气预报 · 第三夜</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9B%85%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/common.css">
+<style>
+/* ============================================================
+   第三夜 ·《明天的天气预报》 —— 本页专属样式
+   气候墙 · 台账 · 揭预报板
+   ============================================================ */
+#s0,#s1{background:#131728}
+#s2{background:#191d31}
+#s3{background:#171c30}
+#s4{background:#221c2c}
+#s5{background:#1c2038}
+#s6{background:#1a2036}
+#s7{background:#232a44}
+#s8{background:linear-gradient(#1a1622 0%, #2a2331 100%)}
+footer{
+  background:#f2e3c8;color:#6b5747;text-align:center;
+  padding:26px 0 40px;letter-spacing:.5em;font-size:13px;
+}
+footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;margin-right:1em}
+
+/* ---------- 封面 ---------- */
+#s0{align-items:center;text-align:center;justify-content:flex-end;padding-bottom:16vh}
+#s0 .art svg{width:126%;max-width:620px}
+#s0 .cover-block{position:relative;z-index:2;margin-bottom:5vh}
+#s0 h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(27px,8.4vw,41px);
+  letter-spacing:.08em;text-indent:.08em;color:var(--cream);
+  text-shadow:0 2px 24px rgba(0,0,0,.45);
+}
+#s0 .sub{margin-top:18px;color:var(--cream-dim);font-size:14px;letter-spacing:.32em}
+#s0 .series-badge{margin-top:26px;color:#8d92ab;font-size:11.5px;letter-spacing:.42em}
+.back-home{
+  position:absolute;top:18px;left:16px;z-index:3;
+  color:var(--cream-dim);text-decoration:none;
+  font-size:12px;letter-spacing:.22em;opacity:.8;padding:6px 10px;
+}
+#s0 .cue{
+  position:relative;z-index:2;margin-top:9vh;
+  display:inline-flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--cream);font-size:12px;letter-spacing:.4em;
+  text-shadow:0 1px 10px rgba(10,13,24,.95),0 0 3px rgba(10,13,24,.9);
+}
+#s0 .cue i{
+  width:1px;height:34px;background:linear-gradient(var(--cream),transparent);
+  animation:cue 2.2s ease-in-out infinite;
+}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* ---------- s1：刷预报 ---------- */
+#s1 .art svg{width:112%;max-width:540px}
+@keyframes blink{0%,100%{opacity:.15}50%{opacity:.9}}
+.cursor{animation:blink 1.4s ease-in-out infinite}
+
+/* ---------- s2：万一 ---------- */
+#s2{justify-content:flex-start;padding-top:11vh}
+#s2 .artflow{position:relative;z-index:1;width:100%;max-width:440px;margin:3.5vh auto 0}
+#s2 .artflow svg{width:100%;height:auto;display:block}
+#s2 .big{
+  font-family:var(--serif);font-size:clamp(20px,5.6vw,26px);
+  line-height:2;letter-spacing:.06em;color:var(--cream);
+}
+
+/* ---------- s3：去气候墙 ---------- */
+#s3{justify-content:flex-start;padding-top:11vh}
+#s3 .artflow{position:relative;z-index:1;width:100%;max-width:540px;margin:4vh auto 0}
+#s3 .artflow svg{width:100%;height:auto;display:block}
+.cloudfloat{animation:cf 7s ease-in-out infinite}
+.cloudfloat.c2{animation-delay:2.4s}
+.cloudfloat.c3{animation-delay:4.6s}
+@keyframes cf{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* ---------- s4：台账 ---------- */
+#s4 .art svg{width:114%;max-width:560px}
+.lamplight{animation:breath 5s ease-in-out infinite}
+
+/* ---------- s5：放雨 ---------- */
+#s5{justify-content:flex-start;padding-top:11vh}
+#s5 .artflow{position:relative;z-index:1;width:100%;max-width:540px;margin:4vh auto 0}
+#s5 .artflow svg{width:100%;height:auto;display:block}
+.raincurtain{stroke-dasharray:4 10;animation:rc 1s linear infinite}
+@keyframes rc{to{stroke-dashoffset:-28}}
+
+/* ---------- s6：揭预报板 ---------- */
+#s6{justify-content:flex-start;padding-top:9vh}
+#s6 .words{text-align:center;max-width:26em}
+#s6 .hint{font-size:13px;letter-spacing:.34em;color:var(--cream-dim)}
+#s6 .hint b{font-weight:400;color:var(--amber);animation:hintp 2.4s ease-in-out infinite}
+@keyframes hintp{0%,100%{opacity:.55}50%{opacity:1}}
+#board{
+  position:relative;z-index:2;width:100%;max-width:400px;margin:4.5vh auto 0;
+  cursor:pointer;user-select:none;-webkit-user-select:none;
+  overflow:hidden;border-radius:12px;
+}
+#board svg{width:100%;height:auto;display:block}
+.stk{
+  cursor:pointer;
+  transition:opacity .8s ease;
+}
+.stk.peeled{opacity:0;pointer-events:none}
+#sunart{opacity:0;transition:opacity 1.6s ease .2s}
+#sunart.on{opacity:1}
+#s6 .lines{min-height:5.4em;margin-top:4.5vh}
+#s6 .lines p{
+  font-family:var(--serif);font-size:16.5px;line-height:2.2;letter-spacing:.1em;margin-bottom:.35em;
+}
+#s6 .lines p span{opacity:0;transform:translateY(10px);display:inline-block;
+  transition:opacity 1.3s ease,transform 1.3s ease}
+#s6 .lines p.on span{opacity:1;transform:none}
+#s6 .lines p:last-child span{color:var(--amber-soft)}
+
+/* ---------- s7：那天来了 ---------- */
+#s7{justify-content:flex-start;padding-top:11vh}
+#s7 .artflow{position:relative;z-index:1;width:100%;max-width:540px;margin:4vh auto 0}
+#s7 .artflow svg{width:100%;height:auto;display:block}
+.drizzle{stroke-dasharray:3 9;animation:dr 1.2s linear infinite;opacity:.55}
+@keyframes dr{to{stroke-dashoffset:-24}}
+
+/* ---------- s8：尾声 ---------- */
+#s8{justify-content:flex-end;padding-bottom:8vh}
+#s8 .art svg{width:100%;max-width:440px;top:8%;bottom:auto}
+#s8 .words{margin-top:42vh;text-align:center;max-width:28em}
+#s8 .kicker{justify-content:center;color:#c9a24b}
+#s8 .kicker::before{content:"";flex:0 0 44px;height:1px;background:currentColor;opacity:.55}
+#s8 .words p{color:#d9cdb4}
+#s8 .words p.dim{color:#a9a08c}
+.dedic{margin-top:3.2em;font-family:var(--serif);letter-spacing:.12em}
+.dedic .to{font-size:19px;color:#f2e3c8;line-height:2}
+.dedic .from{margin-top:1em;font-size:14.5px;color:#b3a68e}
+.nextup{
+  margin-top:4em;padding-top:2.4em;border-top:1px solid rgba(217,205,180,.2);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.nextup .win-mini{width:44px;opacity:.85}
+.nextup .win-mini svg{width:100%;height:auto;display:block}
+.nextup .next-text{font-size:13px;color:#b3a68e;letter-spacing:.28em}
+.nextup .back-study{
+  margin-top:1.4em;font-size:12.5px;color:#c9b995;text-decoration:none;
+  letter-spacing:.3em;border-bottom:1px solid rgba(201,185,149,.4);padding-bottom:3px;
+}
+</style>
+</head>
+<body>
+
+<div id="vignette"></div>
+<button id="sndBtn" aria-label="声音开关">声音</button>
+
+<main>
+
+<!-- ════════════ 封面 ════════════ -->
+<section id="s0" class="scene">
+  <a class="back-home" href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">◂ 书房</a>
+  <div class="art">
+    <svg viewBox="0 0 380 520" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="520" fill="#131728"/>
+      <g fill="#fff">
+        <circle cx="60" cy="60" r="1.4" opacity=".6"/>
+        <circle cx="150" cy="40" r="1.2" opacity=".5"/>
+        <circle cx="120" cy="150" r="1.1" opacity=".45"/>
+        <circle cx="40" cy="200" r="1.3" opacity=".5"/>
+      </g>
+      <!-- 月牙 -->
+      <path d="M86 96 a22 22 0 1 0 14 36 a17 17 0 0 1 -14 -36 Z" fill="#e8dfc8" opacity=".85"/>
+      <!-- 气候墙 -->
+      <rect x="200" y="130" width="180" height="300" rx="6" fill="#232a47"/>
+      <g stroke="#2a3149" stroke-width="3">
+        <line x1="246" y1="130" x2="246" y2="430"/>
+        <line x1="300" y1="130" x2="300" y2="430"/>
+        <line x1="352" y1="130" x2="352" y2="430"/>
+      </g>
+      <!-- 大通风口 -->
+      <g fill="#161b2e" stroke="#2f3757" stroke-width="8">
+        <circle cx="273" cy="212" r="24"/>
+        <circle cx="327" cy="212" r="24"/>
+        <circle cx="273" cy="330" r="24"/>
+        <circle cx="327" cy="330" r="24"/>
+      </g>
+      <!-- 值班室 -->
+      <rect x="222" y="96" width="56" height="36" rx="4" fill="#2c3252"/>
+      <rect x="240" y="104" width="14" height="14" rx="2" fill="#ffd98a"/>
+      <rect class="lamplight" x="236" y="100" width="22" height="22" rx="4" fill="#ffd98a" opacity=".16"/>
+      <line x1="268" y1="96" x2="268" y2="82" stroke="#2c3252" stroke-width="2.5"/>
+      <circle cx="268" cy="80" r="2" fill="#2c3252"/>
+      <!-- 管道 -->
+      <rect x="206" y="180" width="10" height="250" fill="#1e2438"/>
+      <rect x="368" y="200" width="12" height="230" fill="#1e2438"/>
+      <!-- 云海 -->
+      <g>
+        <ellipse class="cloudfloat" cx="80" cy="408" rx="70" ry="16" fill="#1f2742"/>
+        <ellipse class="cloudfloat c2" cx="220" cy="428" rx="90" ry="18" fill="#202741"/>
+        <ellipse class="cloudfloat c3" cx="340" cy="446" rx="80" ry="16" fill="#1f2742"/>
+        <ellipse cx="140" cy="446" rx="60" ry="13" fill="#232a47"/>
+        <ellipse class="cloudfloat c2" cx="300" cy="396" rx="46" ry="10" fill="#262e4d"/>
+      </g>
+      <rect x="0" y="452" width="380" height="68" fill="#10131f"/>
+    </svg>
+  </div>
+  <div class="cover-block">
+    <h1>明天的天气预报</h1>
+    <div class="sub">一 个 小 小 的 睡 前 故 事</div>
+    <div class="series-badge">动物城睡前故事 · 第三夜</div>
+  </div>
+  <div class="cue"><span>往下滑</span><i></i></div>
+</section>
+
+<!-- ════════════ 一 · 重要的一天 ════════════ -->
+<section id="s1" class="scene">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">壹</span><span>重要的一天</span></div>
+    <p class="reveal" style="--d:.15s">下周，有一个很重要的一天。</p>
+    <p class="reveal" style="--d:.35s">具体是什么，不重要。重要的是从那天晚上起，朱迪多了一个新习惯：每晚刷新明天的天气预报。</p>
+    <p class="reveal dim" style="--d:.55s">动物城的天气是人造的。气候墙把雨分给雨林区，把雪分给冰川镇。</p>
+    <p class="reveal dim" style="--d:.75s">天气是造出来的。可预报，是猜出来的。</p>
+  </div>
+  <div class="art">
+    <svg viewBox="0 0 380 300" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="300" fill="#1a1e30"/>
+      <!-- 预报大屏 -->
+      <rect x="52" y="40" width="230" height="150" rx="12" fill="#10141f" stroke="#2c3252" stroke-width="5"/>
+      <g>
+        <rect x="68" y="56" width="58" height="54" rx="6" fill="#1a2036"/>
+        <rect x="138" y="56" width="58" height="54" rx="6" fill="#1a2036"/>
+        <rect x="208" y="56" width="58" height="54" rx="6" fill="#1a2036"/>
+        <rect x="68" y="120" width="58" height="54" rx="6" fill="#1a2036"/>
+        <rect x="138" y="120" width="58" height="54" rx="6" fill="#1a2036"/>
+        <rect x="208" y="120" width="58" height="54" rx="6" fill="#1a2036"/>
+      </g>
+      <!-- 坏天气图标 -->
+      <g stroke="#8fa0c8" stroke-width="2.4" fill="none" stroke-linecap="round">
+        <path d="M82 88 a9 9 0 0 1 17 -4 a7 7 0 0 1 8 11 l-22 0 Z" fill="#8fa0c8" stroke="none"/>
+        <path d="M156 74 l7 12 l-6 0 l7 12" />
+        <path d="M222 80 a9 9 0 0 1 17 -4 a7 7 0 0 1 8 11 l-22 0 Z" fill="#8fa0c8" stroke="none"/>
+        <line x1="228" y1="94" x2="224" y2="102"/><line x1="238" y1="94" x2="234" y2="102"/>
+        <path d="M82 152 a9 9 0 0 1 17 -4 a7 7 0 0 1 8 11 l-22 0 Z" fill="#8fa0c8" stroke="none"/>
+        <path d="M156 138 a9 9 0 0 1 17 -4 a7 7 0 0 1 8 11 l-22 0 Z" fill="#8fa0c8" stroke="none"/>
+      </g>
+      <rect class="cursor" x="222" y="152" width="8" height="12" fill="#8fa0c8"/>
+      <!-- 朱迪坐在沙发上刷手机 -->
+      <g>
+        <rect x="292" y="128" width="76" height="96" rx="12" fill="#3d5a5e" opacity=".9"/>
+        <rect x="298" y="116" width="64" height="28" rx="10" fill="#47696e"/>
+        <circle cx="344" cy="140" r="5" fill="#ffd98a" opacity=".5"/>
+        <ellipse cx="330" cy="176" rx="20" ry="24" fill="#2B3556"/>
+        <circle cx="330" cy="148" r="14" fill="#A6ABBB"/>
+        <g fill="#A6ABBB">
+          <ellipse cx="323" cy="132" rx="4.4" ry="13" transform="rotate(-8 323 132)"/>
+          <ellipse cx="337" cy="131" rx="4.4" ry="13" transform="rotate(8 337 131)"/>
+        </g>
+        <g fill="#E9BCCF">
+          <ellipse cx="323" cy="134" rx="2.2" ry="9" transform="rotate(-8 323 134)"/>
+          <ellipse cx="337" cy="133" rx="2.2" ry="9" transform="rotate(8 337 133)"/>
+        </g>
+        <ellipse cx="330" cy="152" rx="8" ry="5.5" fill="#CDD1DC"/>
+        <circle cx="326.5" cy="146" r="3.6" fill="#6F52BE"/>
+        <circle cx="333.5" cy="146" r="3.6" fill="#6F52BE"/>
+        <circle cx="326.5" cy="147" r="1.6" fill="#2A2140"/>
+        <circle cx="333.5" cy="147" r="1.6" fill="#2A2140"/>
+        <rect x="337" y="160" width="8" height="13" rx="2" fill="#10141f" stroke="#2c3252" stroke-width="1.5"/>
+      </g>
+      <rect x="0" y="252" width="380" height="48" fill="#141829"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 二 · 万一 ════════════ -->
+<section id="s2" class="scene">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">贰</span><span>万一</span></div>
+    <p class="reveal dim" style="--d:.15s">她的笔记本上，慢慢画满了坏天气。白天想，夜里也想。睡不着的时候，天花板都是阴的。</p>
+    <p class="reveal big" style="--d:.4s">“要是那一天，<br>真的下暴雨怎么办？”</p>
+    <p class="reveal" style="--d:.65s">她问得很小声。尼克在旁边，听见了。</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 280" aria-hidden="true">
+      <!-- 摊开的笔记本 -->
+      <g transform="rotate(-3 190 140)">
+        <rect x="60" y="20" width="260" height="230" rx="8" fill="#e9e2cf"/>
+        <line x1="190" y1="20" x2="190" y2="250" stroke="#c9bfa5" stroke-width="2.5"/>
+        <g stroke="#b3aa90" stroke-width="1.4" opacity=".7">
+          <line x1="80" y1="52" x2="172" y2="52"/><line x1="80" y1="80" x2="172" y2="80"/>
+          <line x1="80" y1="108" x2="150" y2="108"/><line x1="80" y1="164" x2="172" y2="164"/>
+          <line x1="80" y1="192" x2="160" y2="192"/>
+          <line x1="208" y1="52" x2="300" y2="52"/><line x1="208" y1="80" x2="288" y2="80"/>
+          <line x1="208" y1="192" x2="300" y2="192"/>
+        </g>
+        <!-- 涂鸦：乌云闪电 -->
+        <g stroke="#5f6d99" stroke-width="2.6" fill="none" stroke-linecap="round">
+          <path d="M96 132 a10 10 0 0 1 19 -4 a8 8 0 0 1 9 13 l-24 0 Z"/>
+          <path d="M112 146 l6 10 l-5 0 l6 10"/>
+          <path d="M228 118 a11 11 0 0 1 21 -5 a9 9 0 0 1 10 14 l-26 0 Z"/>
+          <path d="M240 104 l5 -9 M247 106 l6 -8"/>
+        </g>
+        <!-- 生气的小龙卷风 -->
+        <g stroke="#5f6d99" stroke-width="2.6" fill="none" stroke-linecap="round">
+          <path d="M246 138 q20 -5 36 2 q-16 4 -30 6 q14 3 22 7 q-18 4 -30 3"/>
+        </g>
+        <circle cx="288" cy="140" r="1.8" fill="#5f6d99"/>
+        <path d="M285 137 l-3 -4 M291 137 l3 -4" stroke="#5f6d99" stroke-width="1.8"/>
+        <!-- 一颗小小的太阳被划掉又画了回来 -->
+        <g stroke="#5f6d99" stroke-width="2.2" fill="none" stroke-linecap="round">
+          <circle cx="110" cy="222" r="8"/>
+          <line x1="110" y1="209" x2="110" y2="204"/><line x1="110" y1="235" x2="110" y2="230"/>
+          <line x1="97" y1="222" x2="92" y2="222"/><line x1="123" y1="222" x2="128" y2="222"/>
+        </g>
+        <g stroke="#b3aa90" stroke-width="1.6" stroke-linecap="round">
+          <line x1="100" y1="212" x2="120" y2="232"/>
+        </g>
+      </g>
+      <!-- 铅笔 -->
+      <g transform="rotate(24 320 210)">
+        <rect x="308" y="200" width="52" height="9" rx="2" fill="#c9a24b"/>
+        <path d="M360 200 L372 204.5 L360 209 Z" fill="#8a6a4e"/>
+        <rect x="302" y="200" width="7" height="9" rx="2" fill="#d98a9f"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 三 · 去气候墙 ════════════ -->
+<section id="s3" class="scene">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">叁</span><span>去气候墙</span></div>
+    <p class="reveal" style="--d:.15s">他没说“别担心”。</p>
+    <div class="bubble reveal" style="--d:.35s">
+      <span class="who">尼克说</span>
+      “走。带你去见一个，写了一辈子天气预报的家伙。”
+    </div>
+    <p class="reveal dim" style="--d:.6s">夜里的升梯慢慢向上。整座动物城在脚下一点点变小，灯火像撒了一地。</p>
+    <p class="reveal say" style="--d:.85s">气候墙的顶楼上，有一盏灯还亮着。</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 460" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="460" fill="#171c30"/>
+      <g fill="#fff">
+        <circle cx="60" cy="40" r="1.3" opacity=".55"/><circle cx="170" cy="26" r="1.1" opacity=".45"/>
+        <circle cx="290" cy="52" r="1.3" opacity=".5"/><circle cx="330" cy="120" r="1.2" opacity=".45"/>
+      </g>
+      <!-- 气候墙（右侧高耸） -->
+      <rect x="228" y="30" width="152" height="330" rx="6" fill="#1f2540"/>
+      <g stroke="#28304e" stroke-width="3">
+        <line x1="268" y1="30" x2="268" y2="360"/>
+        <line x1="316" y1="30" x2="316" y2="360"/>
+      </g>
+      <g fill="#141829" stroke="#2f3757" stroke-width="6">
+        <circle cx="248" cy="100" r="17"/>
+        <circle cx="292" cy="170" r="17"/>
+        <circle cx="340" cy="110" r="17"/>
+        <circle cx="340" cy="240" r="17"/>
+      </g>
+      <!-- 值班室的灯 -->
+      <rect x="246" y="52" width="44" height="28" rx="4" fill="#2c3252"/>
+      <rect x="260" y="59" width="12" height="12" rx="2" fill="#ffd98a"/>
+      <rect class="lamplight" x="256" y="55" width="20" height="20" rx="4" fill="#ffd98a" opacity=".16"/>
+      <!-- 云飘过 -->
+      <ellipse class="cloudfloat" cx="110" cy="120" rx="52" ry="11" fill="#1f2742"/>
+      <ellipse class="cloudfloat c2" cx="250" cy="230" rx="60" ry="12" fill="#1f2742" opacity=".9"/>
+      <ellipse class="cloudfloat c3" cx="90" cy="260" rx="46" ry="10" fill="#232a47"/>
+      <!-- 脚下的城市：越来越小的灯 -->
+      <g fill="#f4b860">
+        <circle cx="40" cy="330" r="2.4" opacity=".85"/><circle cx="76" cy="352" r="2" opacity=".7"/>
+        <circle cx="120" cy="336" r="2.2" opacity=".8"/><circle cx="170" cy="356" r="1.8" opacity=".65"/>
+        <circle cx="212" cy="342" r="2" opacity=".7"/><circle cx="60" cy="384" r="2.2" opacity=".75"/>
+        <circle cx="130" cy="398" r="2" opacity=".65"/><circle cx="190" cy="388" r="1.8" opacity=".6"/>
+        <circle cx="250" cy="398" r="2" opacity=".6"/><circle cx="310" cy="392" r="2" opacity=".55"/>
+      </g>
+      <g fill="#e8b4c8">
+        <circle cx="96" cy="368" r="1.6" opacity=".6"/><circle cx="160" cy="376" r="1.5" opacity=".55"/>
+      </g>
+      <g fill="#9fc0e8">
+        <circle cx="226" cy="368" r="1.6" opacity=".6"/><circle cx="284" cy="382" r="1.5" opacity=".5"/>
+      </g>
+      <!-- 街道 -->
+      <path d="M0 340 Q120 356 250 380 Q330 394 380 402 L380 460 L0 460 Z" fill="#10141f"/>
+      <!-- 升梯栏杆 + 两个小家伙的背影 -->
+      <g stroke="#2c3252" stroke-width="4" stroke-linecap="round">
+        <line x1="30" y1="380" x2="30" y2="460"/>
+        <line x1="88" y1="386" x2="88" y2="460"/>
+        <line x1="146" y1="392" x2="146" y2="460"/>
+        <line x1="22" y1="392" x2="150" y2="404"/>
+      </g>
+      <!-- 朱迪背影（长耳朵） -->
+      <g>
+        <circle cx="200" cy="428" r="4" fill="#EDEFF4"/>
+        <ellipse cx="214" cy="428" rx="15" ry="18" fill="#2B3556"/>
+        <circle cx="214" cy="404" r="11" fill="#A6ABBB"/>
+        <ellipse cx="208" cy="388" rx="4.6" ry="13" transform="rotate(-8 208 388)" fill="#A6ABBB"/>
+        <ellipse cx="220" cy="387" rx="4.6" ry="13" transform="rotate(8 220 387)" fill="#A6ABBB"/>
+        <ellipse cx="208" cy="390" rx="2.2" ry="9" transform="rotate(-8 208 390)" fill="#E9BCCF"/>
+        <ellipse cx="220" cy="389" rx="2.2" ry="9" transform="rotate(8 220 389)" fill="#E9BCCF"/>
+      </g>
+      <!-- 尼克背影（尖耳朵 + 大尾巴） -->
+      <g>
+        <ellipse cx="246" cy="430" rx="17" ry="19" fill="#B3C28E"/>
+        <circle cx="246" cy="404" r="12" fill="#DB6E38"/>
+        <path d="M240 396 L236 382 L248 393 Z" fill="#DB6E38"/>
+        <path d="M252 394 L260 381 L247 392 Z" fill="#DB6E38"/>
+        <path d="M239 401 L233 389 L245 398 Z" fill="#4A2C1C"/>
+        <path d="M254 400 L262 388 L250 398 Z" fill="#4A2C1C"/>
+        <path d="M262 434 Q276 430 280 418 Q285 430 276 438 Z" fill="#DB6E38"/>
+        <ellipse cx="279" cy="420" rx="4.5" ry="4" fill="#F2E3C8"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 四 · 台账 ════════════ -->
+<section id="s4" class="scene">
+  <div class="art">
+    <svg viewBox="0 0 380 330" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="330" fill="#221c2c"/>
+      <!-- 值班室的窗 -->
+      <rect x="240" y="30" width="110" height="90" rx="10" fill="#171c30"/>
+      <rect x="240" y="30" width="110" height="90" rx="10" fill="none" stroke="#3a3450" stroke-width="6"/>
+      <line x1="295" y1="34" x2="295" y2="116" stroke="#3a3450" stroke-width="4"/>
+      <circle cx="272" cy="60" r="8" fill="#d8d9e8" opacity=".8"/>
+      <ellipse class="cloudfloat" cx="300" cy="86" rx="20" ry="5" fill="#262e4d"/>
+      <!-- 台灯 -->
+      <rect x="52" y="120" width="4" height="90" fill="#3a3450"/>
+      <path d="M34 122 L74 122 L62 92 L46 92 Z" fill="#c8973f"/>
+      <ellipse class="lamplight" cx="54" cy="128" rx="38" ry="30" fill="#ffd98a" opacity=".12"/>
+      <!-- 桌子 -->
+      <rect x="20" y="208" width="340" height="14" rx="5" fill="#4a3a30"/>
+      <rect x="34" y="222" width="12" height="94" fill="#3a2c24"/>
+      <rect x="334" y="222" width="12" height="94" fill="#3a2c24"/>
+      <!-- 摊开的大台账 -->
+      <g>
+        <rect x="96" y="176" width="90" height="26" rx="4" fill="#5c3f28"/>
+        <rect x="196" y="176" width="90" height="26" rx="4" fill="#5c3f28"/>
+        <path d="M96 176 Q141 164 186 176 L186 202 Q141 192 96 202 Z" fill="#f2e8d0"/>
+        <path d="M194 176 Q239 164 286 176 L286 202 Q239 192 194 202 Z" fill="#f2e8d0"/>
+        <line x1="190" y1="170" x2="190" y2="204" stroke="#c9bfa5" stroke-width="2"/>
+        <!-- 左页：一条被划掉的暴雨 -->
+        <g stroke="#8a7360" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M116 182 a9 9 0 0 1 17 -4 a7 7 0 0 1 8 11 l-21 0 Z"/>
+          <line x1="122" y1="196" x2="164" y2="196"/>
+        </g>
+        <circle cx="170" cy="182" r="6" fill="none" stroke="#c9863f" stroke-width="2"/>
+        <line x1="166" y1="178" x2="166" y2="174" stroke="#c9863f" stroke-width="2" stroke-linecap="round"/>
+        <!-- 右页：新的一页 -->
+        <g stroke="#8a7360" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M216 182 a9 9 0 0 1 17 -4 a7 7 0 0 1 8 11 l-21 0 Z"/>
+          <line x1="222" y1="196" x2="264" y2="196"/>
+        </g>
+        <circle cx="270" cy="182" r="6" fill="none" stroke="#c9863f" stroke-width="2"/>
+        <line x1="266" y1="178" x2="266" y2="174" stroke="#c9863f" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <!-- 温着的可可和三只杯子 -->
+      <rect x="310" y="188" width="36" height="6" rx="3" fill="#3a3450"/>
+      <rect x="322" y="170" width="16" height="14" rx="3" fill="#c98d5f"/>
+      <path class="steam" d="M328 166 q3 -5 0 -9" stroke="#ece5d3" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+      <!-- 老犰狳 -->
+      <g>
+        <!-- 壳 -->
+        <path d="M196 168 a52 46 0 0 1 104 0 Z" fill="#8a6a4e"/>
+        <path d="M206 168 a42 38 0 0 1 84 0" fill="none" stroke="#6e5238" stroke-width="2.5"/>
+        <path d="M218 168 a32 28 0 0 1 60 0" fill="none" stroke="#6e5238" stroke-width="2.5"/>
+        <path d="M231 168 a22 19 0 0 1 34 0" fill="none" stroke="#6e5238" stroke-width="2.5"/>
+        <!-- 头（从壳里伸出来，低头看册子） -->
+        <g>
+          <path d="M176 158 Q160 158 148 172 Q142 180 148 184 Q156 186 164 180 Q172 174 180 172 Z" fill="#a5826a"/>
+          <circle cx="163" cy="170" r="2" fill="#33281c"/>
+          <!-- 老花镜挂在壳边 -->
+          <circle cx="172" cy="164" r="7" fill="none" stroke="#3a3450" stroke-width="2"/>
+          <line x1="179" y1="164" x2="188" y2="162" stroke="#3a3450" stroke-width="2"/>
+        </g>
+        <!-- 小耳朵 -->
+        <ellipse cx="181" cy="150" rx="5" ry="7" fill="#8a6a4e"/>
+      </g>
+    </svg>
+  </div>
+  <div class="words">
+    <div class="kicker reveal"><span class="num">肆</span><span>台账</span></div>
+    <p class="reveal" style="--d:.15s">管预报的，是一只老犰狳。动作很慢，说话很慢，老花镜挂在壳边上。</p>
+    <p class="reveal" style="--d:.35s">听说来意，他搬出一本厚得像砖的册子。封皮上写着——《预报了、但没来的坏天气》。</p>
+    <p class="reveal" style="--d:.55s">一页，一页。那场“特大暴雨”，当天最后出了太阳。那场“连下七天的雨”，只湿了一个早晨。还有一场“十级大风”，最后只吹跑了三顶帽子——其中一顶，还是它自己的。</p>
+    <div class="bubble reveal" style="--d:.8s">
+      <span class="who">老犰狳慢慢地说</span>
+      “人们记住来的那几场，忘了没来的几百场。这本册子，专记虚惊一场。”
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ 五 · 放雨 ════════════ -->
+<section id="s5" class="scene">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">伍</span><span>放雨</span></div>
+    <p class="reveal" style="--d:.15s">值夜班的犰狳起身，把今晚的雨准时“放”给雨林区。云像被开了闸，雨整整齐齐地落进该落的区，一滴也不乱跑。</p>
+    <p class="reveal" style="--d:.35s">值班室里有一直温着的可可，三只杯子。大的那杯，给了朱迪。</p>
+    <p class="reveal" style="--d:.55s">“那万一呢？”她还是没忍住，“万一那天，真的下暴雨……”</p>
+    <div class="bubble reveal" style="--d:.75s">
+      <span class="who">老犰狳头也没抬</span>
+      “那就明天带伞。”
+    </div>
+    <p class="reveal dim" style="--d:.95s">尼克晃了晃口袋。叮当——原来他兜里，一直有一把伞。</p>
+    <p class="reveal dim" style="--d:1.15s">顶楼风大，大尾巴盖住她的膝盖。那晚，朱迪睡得很沉。</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 300" aria-hidden="true">
+      <!-- 夜空与云闸 -->
+      <rect x="0" y="0" width="380" height="300" fill="#1c2038"/>
+      <g fill="#20263f">
+        <ellipse cx="90" cy="52" rx="72" ry="24"/>
+        <ellipse cx="250" cy="46" rx="90" ry="26"/>
+        <ellipse cx="340" cy="60" rx="60" ry="20"/>
+      </g>
+      <!-- 闸门 -->
+      <rect x="60" y="66" width="70" height="12" rx="4" fill="#2c3252"/>
+      <rect x="230" y="60" width="80" height="12" rx="4" fill="#2c3252"/>
+      <!-- 整整齐齐的雨 -->
+      <g class="raincurtain" stroke="#7d8db8" stroke-width="2" stroke-linecap="round">
+        <line x1="76" y1="84" x2="76" y2="128"/><line x1="100" y1="84" x2="100" y2="140"/>
+        <line x1="118" y1="84" x2="118" y2="126"/>
+        <line x1="252" y1="78" x2="252" y2="132"/><line x1="276" y1="78" x2="276" y2="144"/>
+        <line x1="300" y1="78" x2="300" y2="130"/>
+      </g>
+      <!-- 雨林区 -->
+      <rect x="40" y="140" width="150" height="20" fill="#2c4438"/>
+      <g fill="#35503f">
+        <circle cx="70" cy="138" r="10"/><circle cx="100" cy="134" r="12"/><circle cx="130" cy="138" r="10"/><circle cx="160" cy="135" r="11"/>
+      </g>
+      <rect x="0" y="160" width="380" height="140" fill="#181d31"/>
+      <!-- 顶楼栏杆 + 三个小家伙看雨 -->
+      <g stroke="#2c3252" stroke-width="4" stroke-linecap="round">
+        <line x1="40" y1="200" x2="40" y2="248"/>
+        <line x1="110" y1="200" x2="110" y2="248"/>
+        <line x1="180" y1="200" x2="180" y2="248"/>
+        <line x1="250" y1="200" x2="250" y2="248"/>
+        <line x1="330" y1="200" x2="330" y2="248"/>
+        <line x1="30" y1="212" x2="340" y2="212"/>
+      </g>
+      <!-- 老犰狳（左，端着杯子） -->
+      <g>
+        <path d="M52 246 a34 30 0 0 1 68 0 Z" fill="#8a6a4e"/>
+        <path d="M60 246 a26 23 0 0 1 52 0" fill="none" stroke="#6e5238" stroke-width="2"/>
+        <path d="M96 224 Q104 224 106 232" fill="none" stroke="#a5826a" stroke-width="9" stroke-linecap="round"/>
+        <rect x="98" y="232" width="12" height="13" rx="3" fill="#c98d5f"/>
+        <circle cx="102" cy="219" r="5" fill="none" stroke="#3a3450" stroke-width="1.8"/>
+      </g>
+      <!-- 朱迪（中，捧着大杯） -->
+      <g>
+        <circle cx="152" cy="212" r="6.5" fill="#EDEFF4"/>
+        <ellipse cx="170" cy="222" rx="18" ry="22" fill="#2B3556"/>
+        <rect x="160" y="233" width="20" height="4.5" rx="2.2" fill="#1D2540"/>
+        <path d="M156 206 Q150 216 154 226" stroke="#B8C6E4" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <circle cx="156" cy="228" r="4.2" fill="#A6ABBB"/>
+        <rect x="150" y="230" width="15" height="13" rx="3" fill="#c98d5f"/>
+        <circle cx="170" cy="206" r="10.5" fill="#A6ABBB"/>
+        <ellipse cx="165" cy="192" rx="4" ry="11.5" transform="rotate(-8 165 192)" fill="#A6ABBB"/>
+        <ellipse cx="175" cy="191" rx="4" ry="11.5" transform="rotate(8 175 191)" fill="#A6ABBB"/>
+        <ellipse cx="165" cy="194" rx="1.9" ry="8" transform="rotate(-8 165 194)" fill="#E9BCCF"/>
+        <ellipse cx="175" cy="193" rx="1.9" ry="8" transform="rotate(8 175 193)" fill="#E9BCCF"/>
+        <ellipse cx="170" cy="209" rx="7" ry="4.5" fill="#CDD1DC"/>
+        <circle cx="167" cy="204" r="3.2" fill="#6F52BE"/>
+        <circle cx="173" cy="204" r="3.2" fill="#6F52BE"/>
+        <path d="M167.5 214.5 Q170 216.5 172.5 214.5" stroke="#5A6070" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- 尼克（右，晃口袋） -->
+      <g>
+        <ellipse cx="228" cy="228" rx="19" ry="21" fill="#B3C28E"/>
+        <path d="M222 210 L228 220 L234 210 Z" fill="#F2E3C8"/>
+        <path d="M226 216 L230 216 L231 232 L228 235 L225 232 Z" fill="#2E3A5C"/>
+        <ellipse cx="228" cy="242" rx="15" ry="12" fill="#3E4A6B"/>
+        <path d="M220 208 Q212 216 212 226" stroke="#B3C28E" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <circle cx="212" cy="228" r="4.2" fill="#DB6E38"/>
+        <circle cx="228" cy="200" r="10.5" fill="#DB6E38"/>
+        <path d="M222 194 L218 180 L230 192 Z" fill="#DB6E38"/>
+        <path d="M235 193 L243 179 L231 191 Z" fill="#DB6E38"/>
+        <path d="M221 197 L215 185 L227 195 Z" fill="#4A2C1C"/>
+        <path d="M236 196 L244 184 L232 195 Z" fill="#4A2C1C"/>
+        <ellipse cx="228" cy="204" rx="7.5" ry="4.8" fill="#F2E3C8"/>
+        <path d="M222.5 202 a4 4 0 0 0 7 0 Z" fill="#6E9E55"/>
+        <path d="M229 202 a4 4 0 0 0 7 0 Z" fill="#6E9E55"/>
+        <path d="M223 208 Q228 211 233 208" stroke="#4E3430" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- 大尾巴盖住朱迪的膝盖 -->
+      <g id="tail">
+        <path d="M212 238 Q190 252 164 248 Q148 244 146 234 Q156 224 178 230 Q198 236 214 232 Z" fill="#DB6E38"/>
+        <ellipse cx="152" cy="236" rx="8" ry="7" fill="#F2E3C8"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 互动 · 明天的预报板 ════════════ -->
+<section id="s6" class="scene">
+  <div class="words">
+    <div class="kicker reveal" style="justify-content:center"><span class="num">陆</span><span>明天的预报板</span></div>
+    <p class="reveal dim" style="--d:.15s;margin-bottom:.6em">第二天就是“那一天”。今晚的预报板，还钉得满满的。</p>
+    <p class="hint reveal" id="s6hint" style="--d:.4s"><b>点一下，揭掉一张坏天气</b></p>
+  </div>
+  <div id="board" class="reveal" style="--d:.55s">
+    <svg viewBox="0 0 340 240" aria-label="明天的预报板，贴着坏天气贴纸">
+      <!-- 木框 -->
+      <rect x="0" y="0" width="340" height="240" rx="12" fill="#6e4a28"/>
+      <rect x="5" y="5" width="330" height="230" rx="9" fill="#5c3f28"/>
+      <rect x="14" y="14" width="312" height="212" rx="5" fill="#f2e8d0"/>
+      <defs>
+        <clipPath id="boardclip"><rect x="14" y="14" width="312" height="212" rx="5"/></clipPath>
+      </defs>
+      <!-- 底下的晴天（揭开后显现） -->
+      <g id="sunart">
+        <circle cx="170" cy="104" r="42" fill="#f7cf7d"/>
+        <circle cx="170" cy="104" r="42" fill="none" stroke="#e8a53f" stroke-width="3" stroke-dasharray="1 9" stroke-linecap="round"/>
+        <g stroke="#e8a53f" stroke-width="4" stroke-linecap="round">
+          <line x1="170" y1="38" x2="170" y2="52"/><line x1="170" y1="156" x2="170" y2="170"/>
+          <line x1="104" y1="104" x2="118" y2="104"/><line x1="222" y1="104" x2="236" y2="104"/>
+          <line x1="124" y1="58" x2="134" y2="68"/><line x1="206" y1="140" x2="216" y2="150"/>
+          <line x1="216" y1="58" x2="206" y2="68"/><line x1="134" y1="140" x2="124" y2="150"/>
+        </g>
+        <text x="170" y="200" text-anchor="middle" font-size="17" fill="#8a7360" letter-spacing="6" style="font-family:var(--serif)">晴</text>
+      </g>
+      <!-- 五张坏天气贴纸（裁剪在板内） -->
+      <g clip-path="url(#boardclip)">
+      <g transform="translate(38,36) rotate(-6)">
+        <g class="stk" style="--r:-6deg">
+          <rect x="0" y="0" width="86" height="62" rx="7" fill="#2e3a5c" stroke="#242c48" stroke-width="3"/>
+          <path d="M20 40 a11 11 0 0 1 21 -5 a9 9 0 0 1 10 14 l-27 0 Z" fill="#cfd8ee"/>
+          <circle cx="64" cy="18" r="4" fill="#cfd8ee" opacity=".7"/>
+        </g>
+      </g>
+      <g transform="translate(196,30) rotate(5)">
+        <g class="stk" style="--r:5deg">
+          <rect x="0" y="0" width="86" height="62" rx="7" fill="#2e3a5c" stroke="#242c48" stroke-width="3"/>
+          <path d="M46 12 l10 18 l-9 0 l11 20" stroke="#cfd8ee" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </g>
+      <g transform="translate(30,130) rotate(4)">
+        <g class="stk" style="--r:4deg">
+          <rect x="0" y="0" width="86" height="62" rx="7" fill="#2e3a5c" stroke="#242c48" stroke-width="3"/>
+          <path d="M18 30 a11 11 0 0 1 21 -5 a9 9 0 0 1 10 14 l-27 0 Z" fill="#cfd8ee"/>
+          <g stroke="#cfd8ee" stroke-width="3" stroke-linecap="round">
+            <line x1="26" y1="42" x2="21" y2="52"/><line x1="38" y1="42" x2="33" y2="52"/><line x1="50" y1="42" x2="45" y2="52"/>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(196,124) rotate(-5)">
+        <g class="stk" style="--r:-5deg">
+          <rect x="0" y="0" width="86" height="62" rx="7" fill="#2e3a5c" stroke="#242c48" stroke-width="3"/>
+          <g stroke="#cfd8ee" stroke-width="4" fill="none" stroke-linecap="round">
+            <path d="M16 22 q22 -6 40 2 q-18 5 -32 8 q14 3 24 8"/>
+          </g>
+          <circle cx="61" cy="18" r="3.5" fill="#cfd8ee"/>
+          <path d="M57 12 l-4 -5 M66 12 l4 -5" stroke="#cfd8ee" stroke-width="2.4" stroke-linecap="round"/>
+        </g>
+      </g>
+      <g transform="translate(122,164) rotate(-3)">
+        <g class="stk" style="--r:-3deg">
+          <rect x="0" y="0" width="96" height="54" rx="7" fill="#2e3a5c" stroke="#242c48" stroke-width="3"/>
+          <text x="48" y="36" text-anchor="middle" font-size="21" fill="#cfd8ee" letter-spacing="6" style="font-family:var(--serif)">有暴雨</text>
+        </g>
+      </g>
+      </g>
+    </svg>
+  </div>
+  <div class="lines" id="sun-lines">
+    <p><span>明天的事，留给明天的天气。</span></p>
+    <p><span>大多数暴雨，只在预报里下过。</span></p>
+  </div>
+</section>
+
+<!-- ════════════ 七 · 那天来了 ════════════ -->
+<section id="s7" class="scene">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">柒</span><span>那一天</span></div>
+    <p class="reveal" style="--d:.15s">“那一天”来了。很普通的一天。</p>
+    <p class="reveal" style="--d:.35s">早晨有点阴，她带了伞。上午十点，飘了十分钟的毛毛雨——小到伞都没来得及打开。下午，出了太阳。</p>
+    <p class="reveal dim" style="--d:.55s">晚上，尼克问：“暴雨呢？”</p>
+    <div class="bubble reveal" style="--d:.75s">
+      <span class="who">朱迪把伞挂回门后</span>
+      “再等等吧。说不定哪天，用得上。”
+    </div>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 300" aria-hidden="true">
+      <!-- 阴转晴的早晨 -->
+      <rect x="0" y="0" width="380" height="300" fill="#3a4260"/>
+      <rect x="0" y="0" width="380" height="150" fill="#4a5270"/>
+      <circle cx="310" cy="66" r="26" fill="#f7dfae" opacity=".9"/>
+      <circle cx="310" cy="66" r="40" fill="#f7dfae" opacity=".25"/>
+      <ellipse cx="120" cy="52" rx="56" ry="12" fill="#39415e"/>
+      <ellipse cx="220" cy="86" rx="44" ry="10" fill="#39415e" opacity=".8"/>
+      <!-- 十分钟毛毛雨（很轻） -->
+      <g class="drizzle" stroke="#aab8d8" stroke-width="1.6" stroke-linecap="round">
+        <line x1="60" y1="110" x2="57" y2="120"/>
+        <line x1="130" y1="96" x2="127" y2="106"/>
+        <line x1="200" y1="108" x2="197" y2="118"/>
+        <line x1="164" y1="130" x2="161" y2="140"/>
+        <line x1="250" y1="120" x2="247" y2="130"/>
+      </g>
+      <!-- 街 -->
+      <rect x="0" y="180" width="380" height="120" fill="#232842"/>
+      <rect x="0" y="180" width="380" height="8" fill="#2c3252"/>
+      <!-- 朱迪：拿着没打开的伞走路 -->
+      <g>
+        <ellipse cx="150" cy="262" rx="28" ry="5" fill="#141829" opacity=".7"/>
+        <!-- 合着的伞 -->
+        <line x1="184" y1="196" x2="176" y2="252" stroke="#c05a52" stroke-width="6" stroke-linecap="round"/>
+        <path d="M186 194 q4 -3 2 -6" stroke="#8d8577" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="150" cy="232" rx="19" ry="24" fill="#2B3556"/>
+        <rect x="139" y="244" width="22" height="4.5" rx="2.2" fill="#1D2540"/>
+        <path d="M136 214 Q130 224 134 236" stroke="#B8C6E4" stroke-width="7.5" fill="none" stroke-linecap="round"/>
+        <path d="M164 214 Q172 224 174 232" stroke="#B8C6E4" stroke-width="7.5" fill="none" stroke-linecap="round"/>
+        <circle cx="135" cy="238" r="4.4" fill="#A6ABBB"/>
+        <circle cx="173" cy="232" r="4.4" fill="#A6ABBB"/>
+        <ellipse cx="144" cy="258" rx="6.5" ry="3.6" fill="#222B47"/>
+        <ellipse cx="155" cy="258" rx="6.5" ry="3.6" fill="#222B47"/>
+        <circle cx="150" cy="192" r="14" fill="#A6ABBB"/>
+        <ellipse cx="143" cy="176" rx="4.6" ry="13" transform="rotate(-8 143 176)" fill="#A6ABBB"/>
+        <ellipse cx="157" cy="175" rx="4.6" ry="13" transform="rotate(8 157 175)" fill="#A6ABBB"/>
+        <ellipse cx="143" cy="178" rx="2.3" ry="9" transform="rotate(-8 143 178)" fill="#E9BCCF"/>
+        <ellipse cx="157" cy="177" rx="2.3" ry="9" transform="rotate(8 157 177)" fill="#E9BCCF"/>
+        <ellipse cx="150" cy="196" rx="8" ry="5.5" fill="#CDD1DC"/>
+        <circle cx="146.5" cy="190" r="3.6" fill="#6F52BE"/>
+        <circle cx="153.5" cy="190" r="3.6" fill="#6F52BE"/>
+        <path d="M147 201 Q150 203.5 153 201" stroke="#5A6070" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- 嘴角有一点点上扬 -->
+        <path d="M146.8 200.4 Q150 202.2 153.2 200.4" stroke="#5A6070" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".01"/>
+      </g>
+      <!-- 街角路灯（已经不用开） -->
+      <rect x="292" y="150" width="4" height="112" fill="#2c3252"/>
+      <circle cx="294" cy="148" r="6" fill="#3a4260"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 尾声 ════════════ -->
+<section id="s8" class="scene">
+  <div class="art">
+    <svg viewBox="0 0 380 260" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="260" fill="#241f30"/>
+      <!-- 台账新页 -->
+      <g>
+        <rect x="86" y="60" width="104" height="120" rx="5" fill="#5c3f28"/>
+        <rect x="190" y="60" width="104" height="120" rx="5" fill="#5c3f28"/>
+        <path d="M86 60 Q138 46 190 60 L190 180 Q138 166 86 180 Z" fill="#f2e8d0"/>
+        <path d="M190 60 Q242 46 294 60 L294 180 Q242 166 190 180 Z" fill="#f2e8d0"/>
+        <line x1="190" y1="52" x2="190" y2="188" stroke="#c9bfa5" stroke-width="2"/>
+        <g stroke="#8a7360" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M108 84 a9 9 0 0 1 17 -4 a7 7 0 0 1 8 11 l-21 0 Z"/>
+          <line x1="114" y1="98" x2="156" y2="98"/>
+          <line x1="114" y1="122" x2="160" y2="122"/>
+        </g>
+        <g stroke="#8a7360" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M212 84 a9 9 0 0 1 17 -4 a7 7 0 0 1 8 11 l-21 0 Z"/>
+        </g>
+        <text x="248" y="92" text-anchor="middle" font-size="13" fill="#6b5747" letter-spacing="2" style="font-family:var(--serif)">毛毛雨</text>
+        <line x1="212" y1="104" x2="272" y2="104" stroke="#c9bfa5" stroke-width="1.4"/>
+        <line x1="212" y1="126" x2="262" y2="126" stroke="#c9bfa5" stroke-width="1.4"/>
+        <!-- 边角的小太阳 -->
+        <g stroke="#c9863f" stroke-width="2.2" fill="none" stroke-linecap="round">
+          <circle cx="166" cy="150" r="8"/>
+          <line x1="166" y1="137" x2="166" y2="132"/><line x1="166" y1="163" x2="166" y2="158"/>
+          <line x1="153" y1="150" x2="148" y2="150"/><line x1="179" y1="150" x2="184" y2="150"/>
+          <line x1="157" y1="141" x2="154" y2="138"/><line x1="175" y1="141" x2="178" y2="138"/>
+          <line x1="157" y1="159" x2="154" y2="162"/><line x1="175" y1="159" x2="178" y2="162"/>
+        </g>
+      </g>
+      <!-- 温着的可可 -->
+      <rect x="316" y="150" width="30" height="8" rx="3" fill="#3a3450"/>
+      <rect x="326" y="132" width="15" height="14" rx="3" fill="#c98d5f"/>
+      <path class="steam" d="M332 128 q3 -5 0 -9" stroke="#ece5d3" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="words">
+    <div class="kicker reveal"><span class="num">捌</span><span>尾声</span></div>
+    <p class="reveal" style="--d:.15s">老犰狳的台账，新添了一页。</p>
+    <p class="reveal" style="--d:.35s">预报：暴雨。实况：毛毛雨，十分钟。</p>
+    <p class="reveal dim" style="--d:.55s">边角照例，画着一个小太阳。</p>
+    <div class="dedic reveal" style="--d:.8s">
+      <div class="to">送给亲爱的 Lin</div>
+      <div class="from">—— 永远站在你这边的 Zhe</div>
+    </div>
+    <div class="nextup reveal" style="--d:1.05s">
+      <div class="win-mini">
+        <svg viewBox="0 0 60 80" aria-hidden="true">
+          <rect x="4" y="4" width="52" height="72" rx="6" fill="#3a4266"/>
+          <rect x="10" y="10" width="40" height="60" rx="3" fill="#4a5378"/>
+          <circle cx="24" cy="40" r="2.6" fill="#8d92ab"/>
+          <circle cx="36" cy="40" r="2.6" fill="#8d92ab"/>
+          <circle cx="30" cy="30" r="2.6" fill="#8d92ab"/>
+        </svg>
+      </div>
+      <div class="next-text">下一夜，正在来的路上</div>
+      <a class="back-study" href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">回到书房 · 看看其它的窗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">回到书房</a>
+  第 三 夜 · 完
+</footer>
+</main>
+
+<script src="../assets/story.js"></script>
+<script>
+/* 本页专属：揭预报板 —— 点一下，揭掉一张坏天气 */
+(function(){
+  var stks=[].slice.call(document.querySelectorAll("#board .stk"));
+  var peeled=0,
+      hint=document.getElementById("s6hint"),
+      sun=document.getElementById("sunart"),
+      lines=[].slice.call(document.querySelectorAll("#sun-lines p"));
+  function done(){
+    lines.forEach(function(p){p.classList.add("on")});
+    if(hint)hint.innerHTML="晴 了 。";
+    if(sun)sun.classList.add("on");
+  }
+  function peel(s){
+    if(!s||s.classList.contains("peeled"))return;
+    s.classList.add("peeled");peeled++;
+    if(peeled>=stks.length)done();
+  }
+  stks.forEach(function(s){s.addEventListener("pointerdown",function(){peel(s)})});
+  var wrap=document.getElementById("board");
+  if(wrap)wrap.addEventListener("pointerdown",function(e){
+    if(e.target.closest(".stk"))return;
+    var un=stks.filter(function(s){return !s.classList.contains("peeled")});
+    if(un.length)peel(un[Math.floor(Math.random()*un.length)]);
+  });
+  if(new URLSearchParams(location.search).get("stage")==="final"){
+    stks.forEach(function(s){s.classList.add("peeled")});peeled=stks.length;done();
+  }
+})();
+
+ZStory.init({
+  storyId:"weather",
+  audio:{
+    tempo:4400, delayTime:.48, feedback:.31, wetness:.5,
+    chords:[
+      {bass:146.83,notes:[293.66,369.99,440.00,493.88],spark:[587.33,659.25]},
+      {bass:110.00,notes:[220.00,277.18,329.63,440.00],spark:[554.37,440.00]},
+      {bass:123.47,notes:[246.94,293.66,369.99,440.00],spark:[493.88,587.33]},
+      {bass:98.00, notes:[196.00,246.94,293.66,392.00],spark:[493.88,587.33]}
+    ]
+  }
+});
+</script>
+</body>
+</html>

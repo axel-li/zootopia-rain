@@ -17,13 +17,14 @@
   --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{
   font-family:var(--sans);
   background:var(--night-1);
   color:var(--cream);
   font-weight:300;
   overflow-x:hidden;
+  overflow-x:clip;
   -webkit-font-smoothing:antialiased;
 }
 ::selection{background:rgba(244,184,96,.3)}
