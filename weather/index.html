@@ -56,7 +56,9 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
 @keyframes cue{0%,100%{opacity:.25;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
 
 /* ---------- s1：刷预报 ---------- */
-#s1 .art svg{width:112%;max-width:540px}
+#s1{justify-content:flex-start;padding-top:11vh}
+#s1 .art{position:static;order:2;inset:auto;width:min(100%,540px);margin:4vh auto 0}
+#s1 .art svg{position:static;inset:auto;transform:none;width:100%;max-width:none;height:auto}
 @keyframes blink{0%,100%{opacity:.15}50%{opacity:.9}}
 .cursor{animation:blink 1.4s ease-in-out infinite}
 
@@ -79,7 +81,9 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
 @keyframes cf{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 
 /* ---------- s4：台账 ---------- */
-#s4 .art svg{width:114%;max-width:560px}
+#s4{justify-content:flex-start;padding-top:11vh}
+#s4 .art{position:static;order:2;inset:auto;width:min(100%,560px);margin:4vh auto 0}
+#s4 .art svg{position:static;inset:auto;transform:none;width:100%;max-width:none;height:auto}
 .lamplight{animation:breath 5s ease-in-out infinite}
 
 /* ---------- s5：放雨 ---------- */
@@ -125,9 +129,10 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
 @keyframes dr{to{stroke-dashoffset:-24}}
 
 /* ---------- s8：尾声 ---------- */
-#s8{justify-content:flex-end;padding-bottom:8vh}
-#s8 .art svg{width:100%;max-width:440px;top:8%;bottom:auto}
-#s8 .words{margin-top:42vh;text-align:center;max-width:28em}
+#s8{justify-content:flex-start;padding-top:10vh}
+#s8 .art{position:static;inset:auto;width:min(100%,440px);margin:0 auto 3vh}
+#s8 .art svg{position:static;inset:auto;transform:none;width:100%;max-width:none;height:auto}
+#s8 .words{margin-top:0;text-align:center;max-width:28em}
 #s8 .kicker{justify-content:center;color:#c9a24b}
 #s8 .kicker::before{content:"";flex:0 0 44px;height:1px;background:currentColor;opacity:.55}
 #s8 .words p{color:#d9cdb4}
@@ -749,9 +754,9 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
           <line x1="114" y1="122" x2="160" y2="122"/>
         </g>
         <g stroke="#8a7360" stroke-width="2" fill="none" stroke-linecap="round">
-          <path d="M212 84 a9 9 0 0 1 17 -4 a7 7 0 0 1 8 11 l-21 0 Z"/>
+          <path d="M216 78 a9 9 0 0 1 17 -4 a7 7 0 0 1 8 11 l-21 0 Z"/>
         </g>
-        <text x="248" y="92" text-anchor="middle" font-size="13" fill="#6b5747" letter-spacing="2" style="font-family:var(--serif)">毛毛雨</text>
+        <text x="252" y="96" text-anchor="middle" font-size="13" fill="#6b5747" letter-spacing="1" style="font-family:var(--serif)">毛毛雨</text>
         <line x1="212" y1="104" x2="272" y2="104" stroke="#c9bfa5" stroke-width="1.4"/>
         <line x1="212" y1="126" x2="262" y2="126" stroke="#c9bfa5" stroke-width="1.4"/>
         <!-- 边角的小太阳 -->
