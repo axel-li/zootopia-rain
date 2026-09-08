@@ -41,7 +41,8 @@
 .home-hint{margin-top:5vh;color:var(--cream-dim);font-size:13px;letter-spacing:.36em}
 .home-hint b{font-weight:400;color:var(--amber);animation:hintp 2.6s ease-in-out infinite}
 @keyframes hintp{0%,100%{opacity:.5}50%{opacity:1}}
-.home-foot{margin-top:7vh;color:#6f7488;font-size:11px;letter-spacing:.3em}
+.home-foot{margin-top:7vh;color:#6f7488;font-size:11px;letter-spacing:.24em;line-height:2.1}
+.home-foot .en{display:block;margin-top:6px;font-size:9.5px;letter-spacing:.3em;opacity:.75}
 
 #toast{
   position:fixed;left:50%;top:46%;transform:translate(-50%,-50%);
@@ -106,18 +107,14 @@
       <!-- 主楼 -->
       <rect x="98" y="180" width="184" height="290" rx="10" fill="#1c2135"/>
       <rect x="90" y="166" width="200" height="14" rx="6" fill="#232a47"/>
-      <!-- 阁楼：第四夜 · 彩排 -->
+      <!-- 阁楼：下一夜 · 敬请期待（单独一排） -->
       <rect x="128" y="100" width="124" height="80" rx="8" fill="#1c2135"/>
       <rect x="118" y="86" width="144" height="14" rx="6" fill="#232a47"/>
-      <g class="storywin" id="rehearsewin" role="link" aria-label="第四夜 · 彩排">
-        <rect class="halo" x="158" y="98" width="64" height="62" rx="7" fill="#ffcf7e" filter="url(#hglow)"/>
-        <rect class="glass" x="164" y="104" width="52" height="50" rx="4"/>
-        <!-- 小纸飞机 -->
-        <g fill="#ece5d3">
-          <path d="M174 134 L206 112 L190 138 Z"/>
-          <path d="M190 138 L206 112 L194 142 Z" fill="#c9bfa5"/>
-        </g>
-        <path d="M168 138 q-6 5 -12 4" stroke="#8d92ab" stroke-width="1.4" fill="none" stroke-dasharray="2 4" stroke-linecap="round"/>
+      <g class="futurewin" id="futurewin" role="button" aria-label="下一夜 · 敬请期待">
+        <circle class="glass" cx="190" cy="130" r="17"/>
+        <path class="dot" d="M193 118 a9.5 9.5 0 1 0 6 16 a7.5 7.5 0 0 1 -6 -16 Z"/>
+        <circle class="dot" cx="183" cy="135" r="1.6"/>
+        <text x="190" y="168" text-anchor="middle" font-size="10" fill="#6f7488" letter-spacing="3" style="font-family:var(--sans)">敬请期待</text>
       </g>
       <!-- 楼顶上的两个小家伙 -->
       <g transform="translate(0,-110)">
@@ -180,7 +177,7 @@
         </g>
         <rect x="217" y="243" width="9" height="7" rx="1.5" fill="#3a4266"/>
       </g>
-      <!-- 一楼：第三夜 · 明天的天气预报（左） + 下一夜敬请期待（右），与二楼两列对齐 -->
+      <!-- 一楼：第三夜 · 明天的天气预报（左） + 第四夜 · 彩排（右），与二楼两列对齐 -->
       <g class="storywin" id="weatherwin" role="link" aria-label="第三夜 · 明天的天气预报">
         <rect class="halo" x="110" y="290" width="76" height="98" rx="9" fill="#ffcf7e" filter="url(#hglow)"/>
         <rect class="glass" x="116" y="296" width="64" height="86" rx="5"/>
@@ -192,11 +189,15 @@
           <ellipse cx="148" cy="338" rx="11" ry="7" fill="#ece5d3" opacity=".75"/>
         </g>
       </g>
-      <g class="futurewin" id="futurewin" role="button" aria-label="下一夜 · 敬请期待">
+      <g class="storywin" id="rehearsewin" role="link" aria-label="第四夜 · 彩排">
+        <rect class="halo" x="194" y="290" width="76" height="98" rx="9" fill="#ffcf7e" filter="url(#hglow)"/>
         <rect class="glass" x="200" y="296" width="64" height="86" rx="5"/>
-        <path class="dot" d="M229 312 a11 11 0 1 0 7 18 a9 9 0 0 1 -7 -18 Z"/>
-        <circle class="dot" cx="216" cy="318" r="1.8"/>
-        <text x="232" y="370" text-anchor="middle" font-size="10" fill="#6f7488" letter-spacing="3" style="font-family:var(--sans)">敬请期待</text>
+        <!-- 小纸飞机 -->
+        <g fill="#ece5d3">
+          <path d="M214 330 L248 308 L230 336 Z"/>
+          <path d="M230 336 L248 308 L234 340 Z" fill="#c9bfa5"/>
+        </g>
+        <path d="M208 334 q-7 6 -14 5" stroke="#8d92ab" stroke-width="1.6" fill="none" stroke-dasharray="2 5" stroke-linecap="round"/>
       </g>
       <!-- 门 -->
       <rect x="165" y="420" width="50" height="50" rx="6" fill="#161b2c"/>
@@ -208,7 +209,7 @@
   </div>
 
   <div class="home-hint reveal" style="--d:.5s"><b>点一扇窗</b>，进去躲一会儿</div>
-  <div class="home-foot reveal" style="--d:.7s">这栋楼，会随着故事慢慢长高 · FOR LIN, BY ZHE</div>
+  <div class="home-foot reveal" style="--d:.7s">这栋楼，会随着故事慢慢长高<span class="en">FOR LIN, BY ZHE</span></div>
 </section>
 </main>
 
