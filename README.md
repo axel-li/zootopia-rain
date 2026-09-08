@@ -1,8 +1,7 @@
 # 动物城睡前故事 · 开发交接文档
 
-> 这是一个私人礼物项目：为用户的爱人 Lin 写的系列睡前故事网站，
-> 由 Zhe 出品（页脚 FOR LIN, BY ZHE）。每个故事用《疯狂动物城》的尼克和朱迪做主角，
-> 在她工作压力大的时候，用温柔的小故事给她宽慰。
+> 这是一个私人礼物项目：送给 Lin 的系列睡前故事，来自 Zhe（页脚 FOR LIN, BY ZHE）。
+> 每个故事用《疯狂动物城》的尼克和朱迪做主角，温柔的小故事。
 > 本文档写给下一个接手的 AI 会话：读完即可继续写故事、做网页、发布更新。
 
 ---
@@ -11,7 +10,7 @@
 
 - **线上地址**：https://axel-li.github.io/zootopia-rain/ （微信里可直接打开）
 - **仓库**：github.com/axel-li/zootopia-rain（公开仓库，GitHub Pages 从 main 分支根目录发布）
-- **本地目录**：`C:\Users\Axel\ZCodeProject\zootopia-story`
+- **本地开发**：把本仓库克隆到任意本地目录即可，无需其他环境
 - **技术形态**：纯静态、零依赖、移动端优先的单文件 HTML 故事页；共享一份 CSS 和一个 JS 引擎；全部插画为手绘 SVG；BGM 为 Web Audio 实时合成的钢琴（无音频文件）
 - **发布方式**：本地 git push 到 main → GitHub Pages 自动构建（约 30-60 秒生效）
 
@@ -119,10 +118,10 @@
 ## 10. 部署与验证
 
 ```bash
-cd C:/Users/Axel/ZCodeProject/zootopia-story
+cd <本地仓库目录>
 git add -A && git commit -m "night N: ..." && git push
 ```
-- 凭据在 Windows 凭据管理器（账号 axel-li），push 不会要密码
+- 推送凭据已在本地 git 配置好，push 不会要密码
 - 推送后轮询验证（Pages 构建+CDN 需 ~25-60s，加 `?v=N` 破缓存）：
   `curl -s "https://axel-li.github.io/zootopia-rain/<页面>/?v=$i" | grep -c "<新内容特征串>"`
 - **微信缓存**：用户端可能停留旧版（GH 缓存 max-age=600，微信内置浏览器更顽固）。提示用户：下拉刷新 → "…"菜单刷新 → 在浏览器打开 → 清理缓存
