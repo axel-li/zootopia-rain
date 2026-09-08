@@ -167,22 +167,21 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
         <path d="M204 134 L224 108 L210 138 Z" fill="#c9bfa5"/>
         <path d="M182 136 q-6 6 -12 5" stroke="#8d92ab" stroke-width="1.6" fill="none" stroke-dasharray="2 5" stroke-linecap="round" opacity=".7"/>
       </g>
-      <!-- 落地灯（舞台聚光灯） -->
-      <rect x="284" y="120" width="5" height="150" fill="#3a3450"/>
-      <path d="M262 122 L311 122 L298 88 L275 88 Z" fill="#c8973f"/>
-      <ellipse class="spotlight" cx="286" cy="300" rx="96" ry="120" fill="#ffd98a"/>
+      <!-- 落地灯与舞台光锥 -->
+      <rect x="292" y="120" width="5" height="118" fill="#3a3450"/>
+      <rect x="280" y="236" width="30" height="8" rx="3" fill="#3a3450"/>
+      <path d="M278 122 L312 122 L300 92 L290 92 Z" fill="#c8973f"/>
+      <path class="spotlight" d="M283 126 L307 126 L352 316 L238 316 Z" fill="#ffd98a"/>
       <!-- 地毯舞台 -->
-      <ellipse cx="200" cy="410" rx="130" ry="34" fill="#3d5a5e"/>
-      <ellipse cx="200" cy="410" rx="96" ry="24" fill="#47696e"/>
-      <!-- 小凳子上的剧本和汤勺 -->
-      <rect x="150" y="330" width="44" height="34" rx="4" fill="#6e4a44"/>
-      <rect x="136" y="318" width="72" height="14" rx="3" fill="#3a3450"/>
-      <g transform="rotate(-8 190 312)">
-        <rect x="162" y="304" width="52" height="16" rx="3" fill="#f2e8d0"/>
-        <rect x="162" y="304" width="52" height="5" rx="2" fill="#5c3f28"/>
+      <ellipse cx="292" cy="324" rx="84" ry="20" fill="#3d5a5e"/>
+      <ellipse cx="292" cy="324" rx="60" ry="14" fill="#47696e"/>
+      <!-- 道具：合上的剧本 + 汤勺 -->
+      <g transform="rotate(-5 292 312)">
+        <rect x="264" y="302" width="56" height="17" rx="3" fill="#5c3f28"/>
+        <rect x="264" y="302" width="56" height="6" rx="2" fill="#f2e8d0"/>
       </g>
-      <line x1="218" y1="316" x2="224" y2="296" stroke="#c9cfdd" stroke-width="3" stroke-linecap="round"/>
-      <ellipse cx="224.5" cy="293" rx="5" ry="7" fill="#c9cfdd"/>
+      <line x1="324" y1="308" x2="332" y2="288" stroke="#c9cfdd" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="333" cy="285" rx="5" ry="7" fill="#c9cfdd"/>
       <!-- 城市地平线 -->
       <g fill="#141829">
         <rect x="0" y="440" width="80" height="80"/>
@@ -213,61 +212,66 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
   <div class="artflow">
     <svg viewBox="0 0 380 300" aria-hidden="true">
       <rect x="0" y="0" width="380" height="300" fill="#1a1d31"/>
-      <!-- 台灯 -->
+      <!-- 台灯与暖光 -->
       <rect x="64" y="106" width="4" height="84" fill="#3a3450"/>
       <path d="M50 108 L84 108 L76 84 L58 84 Z" fill="#c8973f"/>
       <ellipse cx="66" cy="196" rx="30" ry="7" fill="#312b42"/>
-      <ellipse class="spotlight" cx="130" cy="150" rx="80" ry="60" fill="#ffd98a"/>
+      <path d="M58 110 L80 110 L152 248 L58 248 Z" fill="#ffd98a" opacity=".07"/>
       <!-- 书桌 -->
       <rect x="40" y="188" width="300" height="14" rx="5" fill="#4a3a30"/>
       <rect x="60" y="202" width="12" height="90" fill="#3a2c24"/>
       <rect x="316" y="202" width="12" height="90" fill="#3a2c24"/>
-      <!-- 剧本 -->
-      <g transform="rotate(-4 200 176)">
-        <rect x="168" y="166" width="64" height="20" rx="3" fill="#5c3f28"/>
-        <rect x="168" y="166" width="64" height="6" rx="2" fill="#f2e8d0"/>
-        <text x="200" y="181" text-anchor="middle" font-size="9.5" fill="#f2e8d0" letter-spacing="1" style="font-family:var(--serif)">如果最坏发生</text>
-      </g>
-      <!-- 铅笔 -->
-      <g transform="rotate(28 258 184)">
-        <rect x="240" y="180" width="34" height="7" rx="2" fill="#c9a24b"/>
-        <path d="M274 180 L284 183.5 L274 187 Z" fill="#8a6a4e"/>
+      <!-- 摊开的剧本 -->
+      <g transform="rotate(-3 200 178)">
+        <rect x="170" y="168" width="60" height="22" rx="3" fill="#f2e8d0"/>
+        <g stroke="#b3aa90" stroke-width="1.2">
+          <line x1="178" y1="177" x2="222" y2="177"/>
+          <line x1="178" y1="184" x2="222" y2="184"/>
+        </g>
       </g>
       <!-- 写字的朱迪 -->
       <g>
-        <ellipse cx="130" cy="182" rx="24" ry="22" fill="#2B3556"/>
+        <ellipse cx="130" cy="180" rx="24" ry="23" fill="#2B3556"/>
         <path d="M112 164 Q104 176 108 188" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
         <circle cx="109" cy="190" r="4.6" fill="#A6ABBB"/>
-        <path d="M146 166 Q154 176 152 186" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <circle cx="152" cy="188" r="4.6" fill="#A6ABBB"/>
-        <!-- 微垂的耳朵 -->
-        <path d="M120 136 Q106 144 104 166" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
-        <path d="M120 140 Q110 147 108 162" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-        <path d="M140 136 Q152 146 150 168" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
-        <path d="M139 140 Q149 148 148 164" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-        <circle cx="130" cy="148" r="17" fill="#A6ABBB"/>
-        <ellipse cx="130" cy="154" rx="11" ry="8" fill="#CDD1DC"/>
-        <!-- 皱着眉写字 -->
-        <ellipse cx="123.5" cy="147" rx="4.6" ry="5" fill="#6F52BE"/>
-        <ellipse cx="136.5" cy="147" rx="4.6" ry="5" fill="#6F52BE"/>
-        <path d="M119 144.5 Q123.5 143 128 144.5" stroke="#4A5060" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <path d="M132 144.5 Q136.5 143 141 144.5" stroke="#4A5060" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <circle cx="123.5" cy="148.5" r="1.9" fill="#2A2140"/>
-        <circle cx="136.5" cy="148.5" r="1.9" fill="#2A2140"/>
-        <path d="M128 159 Q130 158 132 159 Q131.4 161.6 130 161.8 Q128.6 161.6 128 159 Z" fill="#C4708A"/>
+        <path d="M148 164 Q158 172 162 182" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="163" cy="184" r="4.6" fill="#A6ABBB"/>
+        <line x1="163" y1="184" x2="188" y2="176" stroke="#c9a24b" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- 竖起的耳朵（微微内倾） -->
+        <g transform="rotate(-5 121 118)">
+          <ellipse cx="121" cy="118" rx="6.5" ry="22" fill="#A6ABBB"/>
+          <ellipse cx="121" cy="121" rx="3.4" ry="15" fill="#E9BCCF"/>
+        </g>
+        <g transform="rotate(5 139 118)">
+          <ellipse cx="139" cy="118" rx="6.5" ry="22" fill="#A6ABBB"/>
+          <ellipse cx="139" cy="121" rx="3.4" ry="15" fill="#E9BCCF"/>
+        </g>
+        <!-- 头 -->
+        <circle cx="130" cy="146" r="17" fill="#A6ABBB"/>
+        <ellipse cx="130" cy="152" rx="11" ry="8" fill="#CDD1DC"/>
+        <!-- 专注向下看的眼睛 -->
+        <ellipse cx="123.5" cy="145" rx="4.4" ry="4.8" fill="#6F52BE"/>
+        <ellipse cx="136.5" cy="145" rx="4.4" ry="4.8" fill="#6F52BE"/>
+        <circle cx="123.5" cy="146.6" r="1.9" fill="#2A2140"/>
+        <circle cx="136.5" cy="146.6" r="1.9" fill="#2A2140"/>
+        <path d="M119 138.5 Q123.5 137 128 138.5 M132 138.5 Q136.5 137 141 138.5" stroke="#6A7080" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <path d="M128 157.5 Q130 156.5 132 157.5 Q131.4 160 130 160.2 Q128.6 160 128 157.5 Z" fill="#C4708A"/>
       </g>
-      <!-- 沙发后偷看的尼克 -->
+      <!-- 沙发后探头的尼克（爪子搭在椅背上） -->
       <g>
-        <rect x="286" y="120" width="94" height="90" rx="14" fill="#3d5a5e"/>
-        <rect x="292" y="106" width="82" height="30" rx="12" fill="#47696e"/>
-        <circle cx="326" cy="130" r="15" fill="#DB6E38"/>
-        <path d="M316 120 L310 104 L326 116 Z" fill="#DB6E38"/>
-        <path d="M336 118 L346 103 L330 115 Z" fill="#DB6E38"/>
-        <path d="M315 122 L309 110 L323 119 Z" fill="#4A2C1C"/>
-        <path d="M338 121 L346 108 L332 119 Z" fill="#4A2C1C"/>
-        <path d="M318 129 A5 5 0 0 0 328 129 Z" fill="#6E9E55"/>
-        <path d="M330 129 A5 5 0 0 0 340 129 Z" fill="#6E9E55"/>
-        <path d="M323 134 Q328 137 333 134" stroke="#4E3430" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <rect x="286" y="128" width="94" height="82" rx="14" fill="#3d5a5e"/>
+        <rect x="292" y="114" width="82" height="26" rx="12" fill="#47696e"/>
+        <ellipse cx="312" cy="118" rx="6" ry="4" fill="#DB6E38"/>
+        <ellipse cx="342" cy="118" rx="6" ry="4" fill="#DB6E38"/>
+        <circle cx="327" cy="94" r="16" fill="#DB6E38"/>
+        <path d="M315 84 L309 66 L327 80 Z" fill="#DB6E38"/>
+        <path d="M339 82 L347 64 L331 78 Z" fill="#DB6E38"/>
+        <path d="M314 86 L307 71 L324 82 Z" fill="#4A2C1C"/>
+        <path d="M340 85 L348 70 L333 81 Z" fill="#4A2C1C"/>
+        <ellipse cx="327" cy="100" rx="8.5" ry="5.5" fill="#F2E3C8"/>
+        <path d="M317 94 A4.5 4.5 0 0 0 326 94 Z" fill="#6E9E55"/>
+        <path d="M328 94 A4.5 4.5 0 0 0 337 94 Z" fill="#6E9E55"/>
+        <path d="M323 102 Q327 104.5 331 102" stroke="#4E3430" stroke-width="1.5" fill="none" stroke-linecap="round"/>
       </g>
     </svg>
   </div>
@@ -330,80 +334,84 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
   <div class="artflow">
     <svg viewBox="0 0 380 320" aria-hidden="true">
       <rect x="0" y="0" width="380" height="320" fill="#241d2e"/>
-      <!-- 尾巴幕布 -->
-      <path d="M60 26 Q120 6 190 12 Q260 6 320 26 L332 150 Q260 128 190 140 Q120 128 48 150 Z" fill="#DB6E38" opacity=".35"/>
-      <path d="M60 26 Q120 6 190 12 Q260 6 320 26" stroke="#DB6E38" stroke-width="14" fill="none" stroke-linecap="round" opacity=".8"/>
-      <!-- 地毯舞台 -->
-      <ellipse cx="190" cy="250" rx="140" ry="36" fill="#3d5a5e"/>
-      <ellipse cx="190" cy="250" rx="100" ry="25" fill="#47696e"/>
-      <!-- 场记板 -->
-      <g transform="rotate(12 88 286)">
-        <rect x="62" y="278" width="52" height="32" rx="3" fill="#8a6a4e"/>
-        <rect x="62" y="270" width="52" height="10" rx="2" fill="#ece5d3"/>
-        <path d="M70 270 L76 278 M82 270 L88 278 M94 270 L100 278" stroke="#8a6a4e" stroke-width="3"/>
+      <!-- 幕帘杆与两侧幕布 -->
+      <rect x="24" y="34" width="332" height="9" rx="4.5" fill="#4a3a30"/>
+      <path d="M30 43 Q44 130 34 224 L78 224 Q88 120 74 43 Z" fill="#a84840"/>
+      <path d="M350 43 Q336 130 346 224 L302 224 Q292 120 306 43 Z" fill="#a84840"/>
+      <g stroke="#8f3a34" stroke-width="2.4" opacity=".7" fill="none">
+        <path d="M48 46 Q56 130 50 218"/>
+        <path d="M332 46 Q324 130 330 218"/>
       </g>
-      <!-- 道具：两杯热可可 -->
-      <g>
-        <rect x="290" y="232" width="22" height="16" rx="3" fill="#c98d5f"/>
-        <rect x="288" y="231" width="26" height="3.4" rx="1.7" fill="#6E4630"/>
-        <rect x="322" y="236" width="16" height="12" rx="3" fill="#c98d5f"/>
+      <!-- 尾巴当帘绳（系在右帘上） -->
+      <path d="M310 120 Q296 128 284 124" stroke="#DB6E38" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <ellipse cx="281" cy="123" rx="5.5" ry="4.5" fill="#F2E3C8"/>
+      <!-- 暖光与舞台地毯 -->
+      <ellipse cx="190" cy="230" rx="150" ry="70" fill="#ffd98a" opacity=".06"/>
+      <ellipse cx="190" cy="252" rx="140" ry="34" fill="#3d5a5e"/>
+      <ellipse cx="190" cy="252" rx="102" ry="24" fill="#47696e"/>
+      <!-- 场记板（左） -->
+      <g transform="rotate(10 78 272)">
+        <rect x="56" y="262" width="48" height="30" rx="3" fill="#8a6a4e"/>
+        <rect x="56" y="254" width="48" height="10" rx="2" fill="#ece5d3"/>
+        <path d="M64 254 L70 262 M76 254 L82 262 M88 254 L94 262" stroke="#8a6a4e" stroke-width="3"/>
       </g>
-      <!-- 演凶领导的尼克 -->
+      <!-- 道具桌（右）：两杯可可 -->
+      <rect x="296" y="240" width="52" height="8" rx="4" fill="#4a3a30"/>
+      <rect x="304" y="224" width="18" height="15" rx="3" fill="#c98d5f"/>
+      <rect x="328" y="228" width="13" height="11" rx="3" fill="#c98d5f"/>
+      <path class="steam" d="M311 220 q3 -5 0 -8" stroke="#ece5d3" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <!-- 笑倒的朱迪（左） -->
       <g>
-        <ellipse cx="256" cy="228" rx="22" ry="20" fill="#B3C28E"/>
-        <path d="M250 210 L256 220 L262 210 Z" fill="#F2E3C8"/>
-        <path d="M254 216 L258 216 L259 232 L256 235 L253 232 Z" fill="#2E3A5C"/>
-        <!-- 叉腰的手 + 汤勺权杖 -->
-        <path d="M272 214 Q282 222 280 234" stroke="#B3C28E" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <circle cx="281" cy="236" r="4.6" fill="#DB6E38"/>
-        <path d="M240 216 Q230 224 232 236" stroke="#B3C28E" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <line x1="232" y1="240" x2="224" y2="206" stroke="#c9cfdd" stroke-width="4" stroke-linecap="round"/>
-        <ellipse cx="223" cy="201" rx="7" ry="10" fill="#c9cfdd"/>
-        <!-- 头 -->
-        <circle cx="256" cy="192" r="19" fill="#DB6E38"/>
-        <path d="M244 180 L238 160 L254 176 Z" fill="#DB6E38"/>
-        <path d="M268 178 L278 159 L259 174 Z" fill="#DB6E38"/>
-        <path d="M243 182 L236 164 L252 177 Z" fill="#4A2C1C"/>
-        <path d="M270 180 L280 162 L262 177 Z" fill="#4A2C1C"/>
-        <!-- 老花镜 -->
-        <g fill="none" stroke="#3a3450" stroke-width="2.2">
-          <circle cx="249" cy="190" r="6"/>
-          <circle cx="263" cy="190" r="6"/>
-          <line x1="255" y1="190" x2="257" y2="190"/>
+        <ellipse cx="128" cy="212" rx="21" ry="19" fill="#2B3556" transform="rotate(-10 128 212)"/>
+        <!-- 放松后摆的耳朵 -->
+        <ellipse cx="112" cy="166" rx="7" ry="19" transform="rotate(28 112 166)" fill="#A6ABBB"/>
+        <ellipse cx="109" cy="169" rx="3.6" ry="13" transform="rotate(28 109 169)" fill="#E9BCCF"/>
+        <ellipse cx="142" cy="162" rx="7" ry="19" transform="rotate(38 142 162)" fill="#A6ABBB"/>
+        <ellipse cx="139" cy="166" rx="3.6" ry="13" transform="rotate(38 139 166)" fill="#E9BCCF"/>
+        <!-- 后仰大笑的头 -->
+        <g transform="rotate(-12 128 186)">
+          <circle cx="128" cy="184" r="17.5" fill="#A6ABBB"/>
+          <ellipse cx="128" cy="190" rx="11" ry="8" fill="#CDD1DC"/>
+          <path d="M118 181 Q122.5 185 127 181" stroke="#4A5060" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+          <path d="M131 181 Q135.5 185 140 181" stroke="#4A5060" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+          <path d="M119 194 Q128 203 137 194 Q133 201.5 128 202 Q123 201.5 119 194 Z" fill="#4E3430"/>
+          <path d="M123 199 Q128 201.5 133 199 Q130 202.4 128 202.5 Q126 202.4 123 199 Z" fill="#C4708A"/>
+          <path d="M142 186 Q136 190 132 194" stroke="#B8C6E4" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <circle cx="131" cy="195" r="4.4" fill="#A6ABBB"/>
         </g>
-        <!-- 瞪圆的眼 -->
-        <circle cx="249" cy="190" r="2.6" fill="#2E2016"/>
-        <circle cx="263" cy="190" r="2.6" fill="#2E2016"/>
-        <!-- 夸张的八字眉 -->
-        <path d="M243 180 L254 184 M269 180 L258 184" stroke="#8A4A26" stroke-width="2.6" stroke-linecap="round"/>
-        <!-- 喊话的嘴 -->
-        <ellipse cx="256" cy="202" rx="5" ry="4" fill="#4E3430"/>
-        <path d="M247 198 L241 196 M265 198 L271 196" stroke="#4E3430" stroke-width="1.6" stroke-linecap="round"/>
+        <ellipse cx="120" cy="240" rx="7" ry="4" fill="#222B47"/>
+        <ellipse cx="146" cy="244" rx="7" ry="4" fill="#222B47"/>
       </g>
-      <!-- 笑倒的朱迪 -->
+      <!-- 演凶领导的尼克（右） -->
       <g>
-        <ellipse cx="126" cy="234" rx="20" ry="18" fill="#2B3556"/>
-        <!-- 笑弯的手 -->
-        <path d="M110 218 Q102 226 104 238" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <circle cx="105" cy="240" r="4.6" fill="#A6ABBB"/>
-        <path d="M140 220 Q148 230 146 242" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <circle cx="146" cy="244" r="4.6" fill="#A6ABBB"/>
-        <!-- 笑得歪向一边的耳朵 -->
-        <path d="M116 186 Q100 194 98 214" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
-        <path d="M116 190 Q104 197 102 210" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-        <path d="M136 186 Q150 198 148 218" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
-        <path d="M135 190 Q147 199 146 214" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-        <g transform="rotate(-10 126 198)">
-          <ellipse cx="126" cy="198" rx="17.5" ry="15.5" fill="#A6ABBB"/>
-          <ellipse cx="126" cy="204" rx="11" ry="8" fill="#CDD1DC"/>
-          <!-- 笑弯的眼 -->
-          <path d="M116 197 Q120.5 200.5 125 197" stroke="#4A5060" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <path d="M129 197 Q133.5 200.5 138 197" stroke="#4A5060" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <!-- 张大的笑嘴 -->
-          <path d="M120 209 Q126 216 132 209 Q129 213.5 126 213.8 Q123 213.5 120 209 Z" fill="#C4708A"/>
-          <!-- 笑出的泪 -->
-          <path d="M138 199 q3 1.5 1.5 4.5" stroke="#9fc0e8" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <ellipse cx="252" cy="216" rx="23" ry="20" fill="#B3C28E"/>
+        <path d="M246 198 L252 208 L258 198 Z" fill="#F2E3C8"/>
+        <path d="M250 204 L254 204 L255.5 220 L252 223 L248.5 220 Z" fill="#2E3A5C"/>
+        <path d="M236 206 Q226 214 228 226" stroke="#B3C28E" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="229" cy="228" r="4.6" fill="#DB6E38"/>
+        <path d="M270 204 Q282 196 288 182" stroke="#B3C28E" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="290" cy="178" r="4.6" fill="#DB6E38"/>
+        <line x1="291" y1="174" x2="298" y2="150" stroke="#c9cfdd" stroke-width="4" stroke-linecap="round"/>
+        <ellipse cx="299.5" cy="143" rx="7" ry="10" fill="#c9cfdd"/>
+        <ellipse cx="244" cy="238" rx="7" ry="4" fill="#222B47"/>
+        <ellipse cx="262" cy="240" rx="7" ry="4" fill="#222B47"/>
+        <circle cx="254" cy="172" r="19" fill="#DB6E38"/>
+        <path d="M242 160 L236 142 L252 156 Z" fill="#DB6E38"/>
+        <path d="M266 158 L276 141 L258 155 Z" fill="#DB6E38"/>
+        <path d="M241 162 L234 146 L250 157 Z" fill="#4A2C1C"/>
+        <path d="M267 160 L277 144 L259 156 Z" fill="#4A2C1C"/>
+        <ellipse cx="254" cy="182" rx="10" ry="6.5" fill="#F2E3C8"/>
+        <g fill="none" stroke="#3a3450" stroke-width="2.4">
+          <circle cx="246" cy="170" r="6.5"/>
+          <circle cx="262" cy="170" r="6.5"/>
+          <line x1="252.5" y1="170" x2="255.5" y2="170"/>
         </g>
+        <circle cx="246" cy="170" r="2.6" fill="#2E2016"/>
+        <circle cx="262" cy="170" r="2.6" fill="#2E2016"/>
+        <path d="M240 160 L251 164 M268 160 L257 164" stroke="#8A4A26" stroke-width="2.8" stroke-linecap="round"/>
+        <ellipse cx="254" cy="190" rx="5.5" ry="4.5" fill="#4E3430"/>
+        <path d="M236 178 Q228 180 230 187 Q237 189 241 184 Z" fill="#F2E3C8"/>
+        <path d="M272 178 Q280 180 278 187 Q271 189 267 184 Z" fill="#F2E3C8"/>
       </g>
     </svg>
   </div>
@@ -449,6 +457,7 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
         <circle cx="100" cy="158.8" r="1.8" fill="#2A2140"/>
         <circle cx="112" cy="158.8" r="1.8" fill="#2A2140"/>
         <path d="M98 149.5 Q102 151.5 106 150 M110 150 Q114 151.5 118 149.5" stroke="#6A7080" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <path d="M101 169 Q106 171.5 111 169" stroke="#5A6070" stroke-width="1.4" fill="none" stroke-linecap="round"/>
       </g>
       <!-- 出戏的尼克（老花镜挂在领口） -->
       <g>
@@ -532,8 +541,9 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
         <circle cx="164" cy="188" r="11" fill="#A6ABBB"/>
         <ellipse cx="158" cy="172" rx="4.6" ry="13" transform="rotate(-8 158 172)" fill="#A6ABBB"/>
         <ellipse cx="170" cy="171" rx="4.6" ry="13" transform="rotate(8 170 171)" fill="#A6ABBB"/>
-        <!-- 指着飞机的手 -->
-        <path d="M176 200 Q186 192 194 186" stroke="#B8C6E4" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+        <!-- 手臂搭在栏杆上 -->
+        <path d="M172 198 Q182 190 187 184" stroke="#B8C6E4" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+        <circle cx="188" cy="183" r="3.5" fill="#A6ABBB"/>
       </g>
       <!-- 尼克背影 -->
       <g>
@@ -644,9 +654,9 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
     <svg viewBox="0 0 380 280" aria-hidden="true">
       <rect x="0" y="0" width="380" height="280" fill="#262032"/>
       <!-- 暖灯 -->
-      <ellipse class="spotlight" cx="190" cy="180" rx="130" ry="80" fill="#ffd98a"/>
       <rect x="188" y="40" width="4" height="50" fill="#3a3450"/>
       <path d="M172 42 L208 42 L200 22 L180 22 Z" fill="#c8973f"/>
+      <ellipse class="spotlight" cx="190" cy="120" rx="60" ry="34" fill="#ffd98a" opacity=".1"/>
       <!-- 沙发 -->
       <rect x="86" y="160" width="210" height="52" rx="14" fill="#3d5a5e"/>
       <rect x="94" y="148" width="194" height="34" rx="12" fill="#47696e"/>
@@ -654,11 +664,11 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
       <g>
         <circle cx="134" cy="192" r="7" fill="#EDEFF4"/>
         <ellipse cx="152" cy="188" rx="21" ry="25" fill="#2B3556"/>
-        <!-- 松松垂着的耳朵（放松版） -->
-        <path d="M143 148 Q128 156 126 178" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
-        <path d="M143 152 Q132 159 130 174" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-        <path d="M161 148 Q174 158 172 180" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
-        <path d="M160 152 Q171 160 170 176" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <!-- 放松后靠的耳朵 -->
+        <path d="M143 148 Q131 154 129 172" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M143 152 Q134 158 132 168" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <path d="M161 148 Q173 156 175 174" stroke="#A6ABBB" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M160 152 Q171 158 172 170" stroke="#E9BCCF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
         <g transform="rotate(14 152 158)">
           <ellipse cx="152" cy="158" rx="17" ry="15.5" fill="#A6ABBB"/>
           <ellipse cx="152" cy="164" rx="11" ry="8" fill="#CDD1DC"/>
