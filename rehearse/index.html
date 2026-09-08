@@ -755,7 +755,7 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
 <script>
 /* 本页专属：翻剧本 —— 点一下翻一页，翻到最后的空白页 */
 (function(){
-  var pages=[].slice.call(document.querySelectorAll("#bk .pg"));   // DOM 顺序 = 翻页顺序
+  var pages=[].slice.call(document.querySelectorAll("#bk .pg")).reverse(); // 从最上面一页（封面）开始翻
   var idx=0,
       hint=document.getElementById("s6hint"),
       lines=[].slice.call(document.querySelectorAll("#script-lines p"));
@@ -764,17 +764,18 @@ footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;m
     if(hint)hint.innerHTML="剧 终 。";
   }
   function turn(){
-    if(idx>=pages.length)return;
+    if(idx>=pages.length-1){done();return;}   // 最后一页（空白）留在台上
     pages[idx].classList.add("turn");
     idx++;
-    if(idx>=pages.length)done();
+    if(idx>=pages.length-1)done();
   }
   var book=document.getElementById("book");
   if(book)book.addEventListener("pointerdown",turn);
   var qs=new URLSearchParams(location.search);
   if(qs.get("stage")==="final"){
     document.getElementById("bk").classList.add("notrans");
-    pages.forEach(function(p){p.classList.add("turn")});idx=pages.length;done();
+    pages.slice(0,pages.length-1).forEach(function(p){p.classList.add("turn")});
+    done();
   }
 })();
 
