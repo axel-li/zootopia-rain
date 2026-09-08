@@ -107,14 +107,15 @@
       <!-- 主楼 -->
       <rect x="98" y="180" width="184" height="290" rx="10" fill="#1c2135"/>
       <rect x="90" y="166" width="200" height="14" rx="6" fill="#232a47"/>
-      <!-- 阁楼：下一夜 · 敬请期待（单独一排） -->
+      <!-- 阁楼：第五夜 · 晚安，动物城 -->
       <rect x="128" y="100" width="124" height="80" rx="8" fill="#1c2135"/>
       <rect x="118" y="86" width="144" height="14" rx="6" fill="#232a47"/>
-      <g class="futurewin" id="futurewin" role="button" aria-label="下一夜 · 敬请期待">
-        <circle class="glass" cx="190" cy="130" r="17"/>
-        <path class="dot" d="M193 118 a9.5 9.5 0 1 0 6 16 a7.5 7.5 0 0 1 -6 -16 Z"/>
-        <circle class="dot" cx="183" cy="135" r="1.6"/>
-        <text x="190" y="168" text-anchor="middle" font-size="10" fill="#6f7488" letter-spacing="3" style="font-family:var(--sans)">敬请期待</text>
+      <g class="storywin" id="goodnightwin" role="link" aria-label="第五夜 · 晚安，动物城">
+        <rect class="halo" x="158" y="98" width="64" height="62" rx="7" fill="#ffcf7e" filter="url(#hglow)"/>
+        <rect class="glass" x="164" y="104" width="52" height="50" rx="4"/>
+        <path d="M192 114 a13 13 0 1 0 8 22 a10.5 10.5 0 0 1 -8 -22 Z" fill="#ece5d3" opacity=".9"/>
+        <circle cx="178" cy="136" r="1.8" fill="#ece5d3" opacity=".8"/>
+        <circle cx="186" cy="127" r="1.3" fill="#ece5d3" opacity=".6"/>
       </g>
       <!-- 楼顶上的两个小家伙 -->
       <g transform="translate(0,-110)">
@@ -203,13 +204,21 @@
       <rect x="165" y="420" width="50" height="50" rx="6" fill="#161b2c"/>
       <rect x="175" y="428" width="30" height="42" rx="4" fill="#2a3149"/>
       <circle cx="199" cy="452" r="2" fill="#f4b860" opacity=".85"/>
+      <!-- 隔壁：长高中的小房子（下一夜 · 敬请期待） -->
+      <g class="futurewin" id="futurewin" role="button" aria-label="下一夜 · 敬请期待">
+        <path d="M296 416 L332 390 L368 416" fill="none" stroke="#4a5378" stroke-width="2.5" stroke-dasharray="5 5" stroke-linecap="round"/>
+        <rect x="304" y="416" width="56" height="54" rx="4" fill="#161b2e" stroke="#4a5378" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <rect x="322" y="430" width="20" height="16" rx="3" fill="#242a45"/>
+        <text x="332" y="441" text-anchor="middle" font-size="8" fill="#8d92ab">Z z</text>
+        <text x="332" y="462" text-anchor="middle" font-size="9" fill="#6f7488" letter-spacing="2" style="font-family:var(--sans)">敬请期待</text>
+      </g>
       <!-- 地面 -->
       <rect x="0" y="470" width="380" height="50" fill="#12161f"/>
     </svg>
   </div>
 
   <div class="home-hint reveal" style="--d:.5s"><b>点一扇窗</b>，进去躲一会儿</div>
-  <div class="home-foot reveal" style="--d:.7s">这栋楼，会随着故事慢慢长高<span class="en">FOR LIN, BY ZHE</span></div>
+  <div class="home-foot reveal" style="--d:.7s">这条街，会随着故事慢慢热闹<span class="en">FOR LIN, BY ZHE</span></div>
 </section>
 </main>
 
@@ -220,7 +229,8 @@ var STORIES=[
   {id:"rain",url:"rain/",win:document.getElementById("rainwin")},
   {id:"train",url:"train/",win:document.getElementById("trainwin")},
   {id:"weather",url:"weather/",win:document.getElementById("weatherwin")},
-  {id:"rehearse",url:"rehearse/",win:document.getElementById("rehearsewin")}
+  {id:"rehearse",url:"rehearse/",win:document.getElementById("rehearsewin")},
+  {id:"goodnight",url:"goodnight/",win:document.getElementById("goodnightwin")}
 ];
 
 /* 已读的窗，进来就是亮的 */
