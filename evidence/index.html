@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1c2135">
+<title>偏心证据 · 第六夜</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/common.css">
+<style>
+/* ============================================================
+   第六夜 ·《偏心证据》 —— 本页专属样式
+   一本证据的案子 · 专注模式
+   ============================================================ */
+#s0,#s1{background:#1c2135}
+#s2{background:#1d1930}
+#s3{background:#241d2e}
+#s4{background:#1a1b31}
+#s5{background:#161c31}
+#s6{background:#1e1a2c}
+#s7{background:linear-gradient(#221c2c 0%, #2e2637 100%)}
+footer{
+  background:#f2e3c8;color:#6b5747;text-align:center;
+  padding:26px 0 40px;letter-spacing:.5em;font-size:13px;
+}
+footer a{color:#8a7360;text-decoration:none;letter-spacing:.3em;font-size:12px;margin-right:1em}
+
+/* ---------- 封面 ---------- */
+#s0{align-items:center;text-align:center;justify-content:flex-end;padding-bottom:16vh}
+#s0 .art svg{width:106%;max-width:520px}
+#s0 .cover-block{position:relative;z-index:2;margin-bottom:5vh}
+#s0 h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(32px,10vw,48px);
+  letter-spacing:.12em;text-indent:.12em;color:var(--cream);
+  text-shadow:0 2px 24px rgba(0,0,0,.45);
+}
+#s0 .sub{margin-top:18px;color:var(--cream-dim);font-size:14px;letter-spacing:.32em}
+#s0 .series-badge{margin-top:26px;color:#8d92ab;font-size:11.5px;letter-spacing:.42em}
+.back-home{
+  position:absolute;top:18px;left:16px;z-index:3;
+  color:var(--cream-dim);text-decoration:none;
+  font-size:12px;letter-spacing:.22em;opacity:.8;padding:6px 10px;
+}
+#s0 .cue{
+  position:relative;z-index:2;margin-top:9vh;
+  display:inline-flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--cream);font-size:12px;letter-spacing:.4em;
+  text-shadow:0 1px 10px rgba(10,13,24,.95),0 0 3px rgba(10,13,24,.9);
+}
+#s0 .cue i{
+  width:1px;height:34px;background:linear-gradient(var(--cream),transparent);
+  animation:cue 2.2s ease-in-out infinite;
+}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+.deskglow{animation:breath 5s ease-in-out infinite}
+
+/* ---------- 正文场景：文字在上，插画跟随 ---------- */
+.flowtop{justify-content:flex-start;padding-top:11vh}
+.flowtop .artflow{position:relative;z-index:1;width:100%;max-width:540px;margin:4vh auto 0}
+.flowtop .artflow svg{width:100%;height:auto;display:block}
+
+/* ---------- s5：专注模式（点破比较泡泡） ---------- */
+#s5{justify-content:flex-start;padding-top:9vh}
+#s5 .words{text-align:center;max-width:26em}
+#s5 .hint{font-size:13px;letter-spacing:.34em;color:var(--cream-dim)}
+#s5 .hint b{font-weight:400;color:var(--amber);animation:hintp 2.4s ease-in-out infinite}
+@keyframes hintp{0%,100%{opacity:.55}50%{opacity:1}}
+#focuswrap{
+  position:relative;z-index:2;width:100%;max-width:420px;margin:4.5vh auto 0;
+  height:0;padding-bottom:66%;   /* 场地比例 */
+  cursor:pointer;user-select:none;-webkit-user-select:none;
+}
+#focusdesk{position:absolute;inset:0;width:100%;height:100%}
+#focusdesk svg{width:100%;height:100%;display:block}
+#focuslamp .lampoff{opacity:1;transition:opacity 1.4s ease}
+#focuslamp .lampon{opacity:0;transition:opacity 1.4s ease}
+#focuswrap.done #focuslamp .lampoff{opacity:0}
+#focuswrap.done #focuslamp .lampon{opacity:1}
+#focuswrap.done .deskdim{opacity:0}
+.deskdim{transition:opacity 1.6s ease}
+.fbub{
+  position:absolute;z-index:6;
+  padding:10px 16px;border-radius:18px;
+  background:rgba(42,49,73,.92);border:1px solid rgba(143,160,200,.35);
+  color:#c9d2e8;font-size:13px;letter-spacing:.08em;white-space:nowrap;
+  cursor:pointer;
+  animation:bob 4.2s ease-in-out infinite;
+  transition:transform .45s cubic-bezier(.5,0,.8,.4),opacity .45s ease;
+}
+.fbub:nth-child(2n){animation-delay:1.3s}
+.fbub:nth-child(3n){animation-delay:2.6s}
+@keyframes bob{0%,100%{margin-top:0}50%{margin-top:-9px}}
+.fbub.pop{transform:scale(1.4);opacity:0;pointer-events:none}
+#s5 .lines{min-height:5.4em;margin-top:4.5vh}
+#s5 .lines p{
+  font-family:var(--serif);font-size:16.5px;line-height:2.2;letter-spacing:.1em;margin-bottom:.35em;
+}
+#s5 .lines p span{opacity:0;transform:translateY(10px);display:inline-block;
+  transition:opacity 1.3s ease,transform 1.3s ease}
+#s5 .lines p.on span{opacity:1;transform:none}
+#s5 .lines p:last-child span{color:var(--amber-soft)}
+
+/* ---------- 尾声 ---------- */
+#s7{justify-content:flex-start;padding-top:10vh}
+#s7 .art{position:static;inset:auto;width:min(100%,440px);margin:0 auto 3vh}
+#s7 .art svg{position:static;inset:auto;transform:none;width:100%;max-width:none;height:auto}
+#s7 .words{margin-top:0;text-align:center;max-width:28em}
+#s7 .kicker{justify-content:center;color:#c9a24b}
+#s7 .kicker::before{content:"";flex:0 0 44px;height:1px;background:currentColor;opacity:.55}
+#s7 .words p{color:#d9cdb4}
+#s7 .words p.dim{color:#a9a08c}
+.dedic{margin-top:3.2em;font-family:var(--serif);letter-spacing:.12em}
+.dedic .to{font-size:19px;color:#f2e3c8;line-height:2}
+.dedic .from{margin-top:1em;font-size:14.5px;color:#b3a68e}
+.nextup{
+  margin-top:4em;padding-top:2.4em;border-top:1px solid rgba(217,205,180,.2);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.nextup .win-mini{width:44px;opacity:.85}
+.nextup .win-mini svg{width:100%;height:auto;display:block}
+.nextup .next-text{font-size:13px;color:#b3a68e;letter-spacing:.28em}
+.nextup .back-study{
+  margin-top:1.4em;font-size:12.5px;color:#c9b995;text-decoration:none;
+  letter-spacing:.3em;border-bottom:1px solid rgba(201,185,149,.4);padding-bottom:3px;
+}
+</style>
+</head>
+<body>
+
+<div id="vignette"></div>
+<button id="sndBtn" aria-label="声音开关">声音</button>
+
+<main>
+
+<!-- ════════════ 封面 ════════════ -->
+<section id="s0" class="scene">
+  <a class="back-home" href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">◂ 书房</a>
+  <div class="art">
+    <svg viewBox="0 0 380 520" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="520" fill="#1c2135"/>
+      <!-- 台灯暖光 -->
+      <ellipse class="deskglow" cx="190" cy="220" rx="120" ry="90" fill="#ffd98a" opacity=".1"/>
+      <rect x="186" y="120" width="5" height="70" fill="#3a3450"/>
+      <path d="M168 122 L210 122 L200 94 L178 94 Z" fill="#c8973f"/>
+      <!-- 桌面 -->
+      <rect x="60" y="190" width="270" height="14" rx="6" fill="#4a3a30"/>
+      <rect x="80" y="204" width="12" height="80" fill="#3a2c24"/>
+      <rect x="304" y="204" width="12" height="80" fill="#3a2c24"/>
+      <!-- 摊开的证据本 -->
+      <g transform="rotate(-4 190 176)">
+        <rect x="124" y="156" width="64" height="34" rx="4" fill="#5c3f28"/>
+        <rect x="192" y="156" width="64" height="34" rx="4" fill="#5c3f28"/>
+        <rect x="124" y="156" width="64" height="34" rx="4" fill="#f2e8d0" opacity=".14"/>
+        <rect x="192" y="156" width="64" height="34" rx="4" fill="#f2e8d0" opacity=".14"/>
+        <line x1="190" y1="154" x2="190" y2="192" stroke="#8a6a4e" stroke-width="3"/>
+        <text x="156" y="178" text-anchor="middle" font-size="10" fill="#e8dfc8" letter-spacing="1" style="font-family:var(--serif)">偏心证据</text>
+        <g stroke="#c9bfa5" stroke-width="1.2" opacity=".8">
+          <line x1="202" y1="170" x2="246" y2="170"/><line x1="202" y1="178" x2="240" y2="178"/>
+        </g>
+      </g>
+      <!-- 放大镜 -->
+      <g transform="rotate(24 268 176)">
+        <circle cx="268" cy="164" r="17" fill="none" stroke="#c9cfdd" stroke-width="5"/>
+        <circle cx="268" cy="164" r="17" fill="#9fc0e8" opacity=".14"/>
+        <line x1="279" y1="176" x2="296" y2="196" stroke="#8d8577" stroke-width="6" stroke-linecap="round"/>
+      </g>
+      <!-- 问号铅笔 -->
+      <g transform="rotate(-30 118 176)">
+        <rect x="112" y="158" width="8" height="34" rx="2" fill="#c9a24b"/>
+        <path d="M112 192 L116 202 L120 192 Z" fill="#8a6a4e"/>
+        <rect x="112" y="152" width="8" height="7" rx="2" fill="#d98a9f"/>
+      </g>
+      <!-- 底部城市剪影 -->
+      <g fill="#141829">
+        <rect x="0" y="440" width="90" height="80"/>
+        <rect x="300" y="452" width="80" height="68"/>
+      </g>
+      <rect x="0" y="486" width="380" height="34" fill="#10131f"/>
+    </svg>
+  </div>
+  <div class="cover-block">
+    <h1>偏心证据</h1>
+    <div class="sub">一 个 小 小 的 睡 前 故 事</div>
+    <div class="series-badge">动物城睡前故事 · 第六夜</div>
+  </div>
+  <div class="cue"><span>往下滑</span><i></i></div>
+</section>
+
+<!-- ════════════ 一 · 格外严格 ════════════ -->
+<section id="s1" class="scene flowtop">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">壹</span><span>格外严格</span></div>
+    <p class="reveal" style="--d:.15s">警局里，和朱迪同期入职的，还有一只小鹿，叫梅。</p>
+    <p class="reveal" style="--d:.35s">不知从哪天起，朱迪有了一个小小的、说不出口的感觉：局长对她，好像总是格外严格。</p>
+    <p class="reveal dim" style="--d:.55s">报告里错一个标点，打回。集合迟到十秒，瞪。她没跟任何人说过，只是在心里，默默记了一笔。</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 300" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="300" fill="#1c2135"/>
+      <!-- 局长（牛局长剪影，远处瞪着） -->
+      <g>
+        <path d="M296 96 Q282 66 300 52 Q318 66 304 96 Z" fill="#2a2f45"/>
+        <path d="M336 96 Q350 66 332 52 Q314 66 328 96 Z" fill="#2a2f45"/>
+        <ellipse cx="316" cy="130" rx="44" ry="42" fill="#2a2f45"/>
+        <rect x="272" y="130" width="88" height="120" rx="16" fill="#2a2f45"/>
+        <!-- 瞪视的目光（两道白点） -->
+        <circle cx="300" cy="122" r="3" fill="#e8dfc8"/>
+        <circle cx="332" cy="122" r="3" fill="#e8dfc8"/>
+        <!-- 板夹 -->
+        <rect x="300" y="160" width="34" height="44" rx="3" fill="#1a1f33"/>
+      </g>
+      <!-- 两张相邻的办公桌 -->
+      <rect x="20" y="200" width="150" height="12" rx="5" fill="#4a3a30"/>
+      <rect x="180" y="200" width="150" height="12" rx="5" fill="#4a3a30"/>
+      <rect x="34" y="212" width="10" height="60" fill="#3a2c24"/>
+      <rect x="146" y="212" width="10" height="60" fill="#3a2c24"/>
+      <rect x="194" y="212" width="10" height="60" fill="#3a2c24"/>
+      <rect x="306" y="212" width="10" height="60" fill="#3a2c24"/>
+      <!-- 朱迪（左桌，被打回的报告+红圈） -->
+      <g>
+        <ellipse cx="80" cy="176" rx="20" ry="20" fill="#2B3556"/>
+        <circle cx="80" cy="148" r="15" fill="#A6ABBB"/>
+        <ellipse cx="74" cy="131" rx="5" ry="14" transform="rotate(-8 74 131)" fill="#A6ABBB"/>
+        <ellipse cx="86" cy="130" rx="5" ry="14" transform="rotate(8 86 130)" fill="#A6ABBB"/>
+        <ellipse cx="74" cy="133" rx="2.6" ry="9.6" transform="rotate(-8 74 133)" fill="#E9BCCF"/>
+        <ellipse cx="86" cy="132" rx="2.6" ry="9.6" transform="rotate(8 86 132)" fill="#E9BCCF"/>
+        <ellipse cx="74" cy="146" rx="6.2" ry="4.2" fill="#CDD1DC"/>
+        <ellipse cx="74" cy="145" rx="3.7" ry="4.1" fill="#6F52BE"/>
+        <ellipse cx="85" cy="145" rx="3.7" ry="4.1" fill="#6F52BE"/>
+        <circle cx="74" cy="146.4" r="1.6" fill="#2A2140"/>
+        <circle cx="85" cy="146.4" r="1.6" fill="#2A2140"/>
+        <path d="M70 137.5 Q74 136 78 137.5 M81 137.5 Q85 136 89 137.5" stroke="#6A7080" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <!-- 打回的报告+红圈 -->
+        <g transform="rotate(-3 40 194)">
+          <rect x="26" y="186" width="30" height="20" rx="2" fill="#e9e2cf"/>
+          <circle cx="44" cy="196" r="7" fill="none" stroke="#c05a52" stroke-width="2.4"/>
+        </g>
+      </g>
+      <!-- 小鹿梅（右桌，一次通过） -->
+      <g>
+        <ellipse cx="240" cy="178" rx="19" ry="19" fill="#C8A27C"/>
+        <ellipse cx="240" cy="186" rx="12" ry="10" fill="#E4CDA8"/>
+        <circle cx="240" cy="150" r="14" fill="#C8A27C"/>
+        <ellipse cx="251" cy="134" rx="7" ry="10" transform="rotate(14 251 134)" fill="#C8A27C"/>
+        <ellipse cx="229" cy="134" rx="7" ry="10" transform="rotate(-14 229 134)" fill="#C8A27C"/>
+        <ellipse cx="251" cy="136" rx="3.6" ry="6.4" transform="rotate(14 251 136)" fill="#E4CDA8"/>
+        <ellipse cx="229" cy="136" rx="3.6" ry="6.4" transform="rotate(-14 229 136)" fill="#E4CDA8"/>
+        <ellipse cx="240" cy="148" rx="8.5" ry="5.5" fill="#E4CDA8"/>
+        <ellipse cx="234.5" cy="146" rx="3.9" ry="4.4" fill="#5A4030"/>
+        <ellipse cx="245.5" cy="146" rx="3.9" ry="4.4" fill="#5A4030"/>
+        <circle cx="234.5" cy="147.4" r="1.6" fill="#241812"/>
+        <circle cx="245.5" cy="147.4" r="1.6" fill="#241812"/>
+        <path d="M236 155 Q240 157 244 155" stroke="#5A4030" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <!-- 通过的报告+小勾 -->
+        <g transform="rotate(2 282 194)">
+          <rect x="268" y="186" width="28" height="18" rx="2" fill="#e9e2cf"/>
+          <path d="M276 195 l4 4 8 -8" stroke="#6fae6a" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+        </g>
+      </g>
+      <rect x="0" y="272" width="380" height="28" fill="#141829"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 二 · 开始办案 ════════════ -->
+<section id="s2" class="scene flowtop">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">贰</span><span>开始办案</span></div>
+    <p class="reveal" style="--d:.15s">于是，侦探朱迪，开始"办案"了。她掏出随身的小本本，郑重写下案名：<em>《关于局长偏心的证据》</em>。</p>
+    <div class="bubble reveal" style="--d:.4s">
+      <span class="who">证据本 · 第一页</span>
+      "周一 9:02，局长对小鹿笑了。备注：对我没有。"<br>
+      "周三 14:30，小鹿的报告一次通过。备注：我的第二遍还在改。"<br>
+      "周五，局长把最难的案子分给了别人。备注：等等——那个好像是我。"
+    </div>
+    <p class="reveal dim" style="--d:.65s">最后一条，她想了想，没划掉，但画了个问号。</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 260" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="260" fill="#1d1930"/>
+      <!-- 俯视的证据本 -->
+      <g transform="rotate(-2 190 128)">
+        <rect x="96" y="30" width="86" height="196" rx="6" fill="#5c3f28"/>
+        <rect x="198" y="30" width="86" height="196" rx="6" fill="#5c3f28"/>
+        <rect x="104" y="38" width="70" height="180" rx="3" fill="#f2e8d0"/>
+        <rect x="206" y="38" width="70" height="180" rx="3" fill="#f2e8d0"/>
+        <line x1="190" y1="26" x2="190" y2="230" stroke="#8a6a4e" stroke-width="4"/>
+        <!-- 左页：案名 -->
+        <text x="139" y="70" text-anchor="middle" font-size="13" fill="#4a392b" letter-spacing="1" style="font-family:var(--serif)">关于局长</text>
+        <text x="139" y="90" text-anchor="middle" font-size="13" fill="#4a392b" letter-spacing="1" style="font-family:var(--serif)">偏心的证据</text>
+        <line x1="112" y1="102" x2="166" y2="102" stroke="#8a7360" stroke-width="1.4"/>
+        <text x="139" y="124" text-anchor="middle" font-size="8.5" fill="#8a7360">记录人：朱迪</text>
+        <text x="139" y="140" text-anchor="middle" font-size="8.5" fill="#8a7360">（绝密）</text>
+        <!-- 右页：三条记录 -->
+        <g fill="#6b5747" font-size="8.6" style="font-family:var(--sans)">
+          <text x="212" y="56">周一 9:02</text>
+          <text x="212" y="70">局长对小鹿笑了</text>
+          <text x="212" y="82" fill="#a3854f">备注：对我没有</text>
+          <text x="212" y="104">周三 14:30</text>
+          <text x="212" y="118">小鹿一次通过</text>
+          <text x="212" y="130" fill="#a3854f">备注：我在改第二遍</text>
+          <text x="212" y="152">周五 最难的案子</text>
+          <text x="212" y="166" fill="#a3854f">备注：等等，好像是我</text>
+        </g>
+        <!-- 大大的问号 -->
+        <text x="240" y="204" text-anchor="middle" font-size="26" fill="#c05a52" style="font-family:var(--serif)">？</text>
+        <!-- 指纹按印（可爱细节） -->
+        <circle cx="139" cy="180" r="10" fill="none" stroke="#8a7360" stroke-width="1.4" opacity=".5"/>
+        <circle cx="139" cy="180" r="5" fill="none" stroke="#8a7360" stroke-width="1.2" opacity=".5"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 三 · 我也数了 ════════════ -->
+<section id="s3" class="scene flowtop">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">叁</span><span>我也数了</span></div>
+    <p class="reveal" style="--d:.15s">周末，尼克来警局接她下班，在大厅坐了一下午。晚上，朱迪摊开小本本，给他看"破案进展"。</p>
+    <p class="reveal" style="--d:.35s">尼克听完，沉默了一会儿："其实，我也数了。"</p>
+    <div class="bubble reveal" style="--d:.55s">
+      <span class="who">尼克的侦察报告</span>
+      "局长今天瞪了你三次——瞪了小鹿五次。打回你的报告一份，打回她的两份。另外，他全程对复印机最温柔，还亲手给它换了新墨盒。"
+    </div>
+    <p class="reveal" style="--d:.8s">朱迪："……"</p>
+    <p class="reveal say" style="--d:1s">"按你的算法，局长最爱复印机。"</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 280" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="280" fill="#241d2e"/>
+      <!-- 沙发 -->
+      <rect x="66" y="170" width="230" height="52" rx="14" fill="#3d5a5e"/>
+      <rect x="74" y="156" width="214" height="36" rx="12" fill="#47696e"/>
+      <!-- 目瞪口呆的朱迪 -->
+      <g>
+        <ellipse cx="140" cy="200" rx="21" ry="21" fill="#2B3556"/>
+        <circle cx="140" cy="164" r="17" fill="#A6ABBB"/>
+        <ellipse cx="134" cy="146" rx="5.4" ry="15" transform="rotate(-6 134 146)" fill="#A6ABBB"/>
+        <ellipse cx="146" cy="145" rx="5.4" ry="15" transform="rotate(6 146 145)" fill="#A6ABBB"/>
+        <ellipse cx="134" cy="148" rx="2.7" ry="10" transform="rotate(-6 134 148)" fill="#E9BCCF"/>
+        <ellipse cx="146" cy="147" rx="2.7" ry="10" transform="rotate(6 146 147)" fill="#E9BCCF"/>
+        <ellipse cx="140" cy="162" rx="8.6" ry="5.4" fill="#CDD1DC"/>
+        <!-- 惊讶圆眼 -->
+        <circle cx="133.5" cy="160" r="4.4" fill="#6F52BE"/>
+        <circle cx="146.5" cy="160" r="4.4" fill="#6F52BE"/>
+        <circle cx="133.5" cy="160" r="1.4" fill="#fff" opacity=".9"/>
+        <circle cx="146.5" cy="160" r="1.4" fill="#fff" opacity=".9"/>
+        <circle cx="133.5" cy="161.8" r="1.8" fill="#2A2140"/>
+        <circle cx="146.5" cy="161.8" r="1.8" fill="#2A2140"/>
+        <!-- 张成 O 的嘴 -->
+        <ellipse cx="140" cy="173" rx="3.4" ry="4.4" fill="#C4708A"/>
+        <!-- 摊开的证据本 -->
+        <g transform="rotate(-6 190 208)">
+          <rect x="168" y="198" width="46" height="22" rx="3" fill="#5c3f28"/>
+          <rect x="168" y="198" width="20" height="22" rx="2" fill="#f2e8d0" opacity=".2"/>
+        </g>
+      </g>
+      <!-- 尼克与他的计数纸 -->
+      <g>
+        <ellipse cx="250" cy="198" rx="24" ry="22" fill="#B3C28E"/>
+        <path d="M244 180 L250 190 L256 180 Z" fill="#F2E3C8"/>
+        <path d="M248 186 L252 186 L253.5 202 L250 205 L246.5 202 Z" fill="#2E3A5C"/>
+        <circle cx="250" cy="172" r="19" fill="#DB6E38"/>
+        <path d="M240 162 L234 146 L250 158 Z" fill="#DB6E38"/>
+        <path d="M260 160 L268 145 L251 157 Z" fill="#DB6E38"/>
+        <path d="M239 165 L232 150 L247 160 Z" fill="#4A2C1C"/>
+        <path d="M261 163 L269 148 L254 159 Z" fill="#4A2C1C"/>
+        <path d="M239 170 A4.8 4.8 0 0 0 248.6 170 Z" fill="#6E9E55"/>
+        <path d="M251.4 170 A4.8 4.8 0 0 0 261 170 Z" fill="#6E9E55"/>
+        <circle cx="243.8" cy="171.5" r="1.7" fill="#2E2016"/>
+        <circle cx="256.2" cy="171.5" r="1.7" fill="#2E2016"/>
+        <path d="M244 180 Q250 182.5 256 180" stroke="#4E3430" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <!-- 举着的小计数纸（正字） -->
+        <path d="M230 194 Q224 190 218 184" stroke="#B3C28E" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <g transform="rotate(-10 208 176)">
+          <rect x="192" y="162" width="34" height="26" rx="2" fill="#e9e2cf"/>
+          <g stroke="#5f6d99" stroke-width="1.8" stroke-linecap="round">
+            <line x1="199" y1="168" x2="219" y2="168"/>
+            <line x1="209" y1="166" x2="209" y2="182"/>
+            <line x1="199" y1="182" x2="219" y2="182"/>
+          </g>
+        </g>
+      </g>
+      <!-- 桌角小复印机（被局长偏爱的） -->
+      <g>
+        <rect x="310" y="206" width="52" height="34" rx="4" fill="#8d92ab"/>
+        <rect x="318" y="212" width="36" height="10" rx="2" fill="#5c6478"/>
+        <rect x="322" y="228" width="18" height="8" rx="2" fill="#e9e2cf"/>
+        <circle cx="352" cy="216" r="2.6" fill="#6fae6a"/>
+        <!-- 爱心一枚 -->
+        <path d="M336 196 c-2.6 -3.6 -8 -1.4 -8 2.4 c0 3 4.4 5.6 8 8.6 c3.6 -3 8 -5.6 8 -8.6 c0 -3.8 -5.4 -6 -8 -2.4 Z" fill="#e8b4c8" opacity=".85"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 四 · 十七与十七 ════════════ -->
+<section id="s4" class="scene flowtop">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">肆</span><span>十七与十七</span></div>
+    <p class="reveal" style="--d:.15s">"那……那他为什么总盯着我错的地方？"</p>
+    <p class="reveal" style="--d:.35s">尼克没回答。他翻回证据本的某一页，指给她看："这一天，你记了十七次'局长看了小鹿'。"</p>
+    <p class="reveal" style="--d:.55s">他顿了顿："同一天，你的报告，错了十七处。"</p>
+    <p class="reveal dim" style="--d:.8s">朱迪张了张嘴，什么也没说出来。那天晚上，她把小本本，压在了枕头底下。</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 280" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="280" fill="#1a1b31"/>
+      <!-- 对开的证据本（左右页对照） -->
+      <g transform="rotate(-1 190 138)">
+        <rect x="88" y="34" width="94" height="208" rx="6" fill="#5c3f28"/>
+        <rect x="198" y="34" width="94" height="208" rx="6" fill="#5c3f28"/>
+        <rect x="96" y="42" width="78" height="192" rx="3" fill="#f2e8d0"/>
+        <rect x="206" y="42" width="78" height="192" rx="3" fill="#f2e8d0"/>
+        <!-- 左页：17 次记录 -->
+        <text x="135" y="66" text-anchor="middle" font-size="10.5" fill="#4a392b" letter-spacing="1">局长看了小鹿</text>
+        <text x="135" y="84" text-anchor="middle" font-size="9" fill="#8a7360">17 次</text>
+        <g stroke="#5f6d99" stroke-width="2" stroke-linecap="round">
+          <line x1="108" y1="102" x2="126" y2="102"/><line x1="117" y1="94" x2="117" y2="110"/><line x1="108" y1="110" x2="126" y2="94"/>
+          <line x1="140" y1="102" x2="158" y2="102"/><line x1="149" y1="94" x2="149" y2="110"/><line x1="140" y1="110" x2="158" y2="94"/>
+          <line x1="108" y1="136" x2="126" y2="136"/><line x1="117" y1="128" x2="117" y2="144"/><line x1="108" y1="144" x2="126" y2="128"/>
+          <line x1="140" y1="136" x2="158" y2="136"/><line x1="149" y1="128" x2="149" y2="144"/><line x1="140" y1="144" x2="158" y1="128"/>
+          <line x1="108" y1="170" x2="126" y2="170"/><line x1="117" y1="162" x2="117" y2="178"/><line x1="108" y1="178" x2="126" y2="162"/>
+          <line x1="140" y1="170" x2="158" y2="170"/><line x1="149" y1="162" x2="149" y2="178"/><line x1="140" y1="178" x2="158" y2="162"/>
+          <line x1="108" y1="204" x2="126" y2="204"/><line x1="117" y1="196" x2="117" y2="212"/><line x1="108" y1="212" x2="126" y2="196"/>
+        </g>
+        <!-- 右页：17 处错 -->
+        <text x="245" y="66" text-anchor="middle" font-size="10.5" fill="#4a392b" letter-spacing="1">报告错处</text>
+        <text x="245" y="84" text-anchor="middle" font-size="9" fill="#8a7360">17 处</text>
+        <g fill="none" stroke="#c05a52" stroke-width="2">
+          <circle cx="218" cy="104" r="8"/><circle cx="248" cy="104" r="8"/><circle cx="278" cy="104" r="8"/>
+          <circle cx="218" cy="138" r="8"/><circle cx="248" cy="138" r="8"/><circle cx="278" cy="138" r="8"/>
+          <circle cx="218" cy="172" r="8"/><circle cx="248" cy="172" r="8"/><circle cx="278" cy="172" r="8"/>
+          <circle cx="218" cy="206" r="8"/><circle cx="248" cy="206" r="8"/><circle cx="278" cy="206" r="8"/>
+        </g>
+        <!-- 中缝 -->
+        <line x1="190" y1="30" x2="190" y2="246" stroke="#8a6a4e" stroke-width="4"/>
+      </g>
+      <!-- 尼克指着的爪 -->
+      <g>
+        <path d="M330 118 Q314 116 304 108" stroke="#B3C28E" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="301" cy="106" r="5" fill="#DB6E38"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 互动 · 专注模式 ════════════ -->
+<section id="s5" class="scene">
+  <div class="words">
+    <div class="kicker reveal" style="justify-content:center"><span class="num">伍</span><span>只看自己的案子</span></div>
+    <p class="reveal dim" style="--d:.15s;margin-bottom:.6em">周一。她决定只看自己桌上的案子——可那些念头，还在头顶飘。</p>
+    <p class="hint reveal" id="s5hint" style="--d:.4s"><b>点破一个，安静一分</b></p>
+  </div>
+  <div id="focuswrap" class="reveal" style="--d:.55s">
+    <div id="focusdesk">
+      <svg viewBox="0 0 420 280" preserveAspectRatio="xMidYMid meet" aria-label="办公桌，飘着比较的念头">
+        <rect x="0" y="0" width="420" height="280" fill="#161c31"/>
+        <!-- 窗（专注后暗下） -->
+        <rect class="deskdim" x="292" y="30" width="104" height="88" rx="10" fill="#232a47"/>
+        <rect class="deskdim" x="292" y="30" width="104" height="88" rx="10" fill="none" stroke="#3a3450" stroke-width="5"/>
+        <line x1="344" y1="34" x2="344" y2="114" stroke="#3a3450" stroke-width="4"/>
+        <!-- 桌面 -->
+        <rect x="20" y="196" width="380" height="14" rx="6" fill="#4a3a30"/>
+        <rect x="44" y="210" width="12" height="60" fill="#3a2c24"/>
+        <rect x="364" y="210" width="12" height="60" fill="#3a2c24"/>
+        <!-- 台灯（熄→亮） -->
+        <g id="focuslamp">
+          <rect x="330" y="130" width="5" height="66" fill="#3a3450"/>
+          <path d="M314 132 L352 132 L342 104 L324 104 Z" fill="#c8973f"/>
+          <circle class="lampoff" cx="332" cy="136" r="0"/>
+          <g class="lampon">
+            <circle cx="332" cy="136" r="8" fill="#ffd98a"/>
+            <circle cx="332" cy="136" r="24" fill="#ffd98a" opacity=".18"/>
+            <path d="M332 142 L262 196 L402 196 Z" fill="#ffd98a" opacity=".1"/>
+          </g>
+        </g>
+        <!-- 摊开的案卷 -->
+        <g transform="rotate(-2 130 190)">
+          <rect x="70" y="168" width="56" height="26" rx="3" fill="#5c3f28"/>
+          <rect x="132" y="168" width="56" height="26" rx="3" fill="#5c3f28"/>
+          <rect x="70" y="168" width="56" height="26" rx="3" fill="#f2e8d0" opacity=".16"/>
+          <rect x="132" y="168" width="56" height="26" rx="3" fill="#f2e8d0" opacity=".16"/>
+        </g>
+        <!-- 朱迪专注的背影 -->
+        <g>
+          <ellipse cx="176" cy="166" rx="26" ry="26" fill="#2B3556"/>
+          <circle cx="176" cy="128" r="19" fill="#A6ABBB"/>
+          <ellipse cx="168" cy="105" rx="6" ry="19" transform="rotate(-6 168 105)" fill="#A6ABBB"/>
+          <ellipse cx="184" cy="104" rx="6" ry="19" transform="rotate(6 184 104)" fill="#A6ABBB"/>
+          <ellipse cx="168" cy="108" rx="3" ry="13" transform="rotate(-6 168 108)" fill="#E9BCCF"/>
+          <ellipse cx="184" cy="107" rx="3" ry="13" transform="rotate(6 184 107)" fill="#E9BCCF"/>
+          <!-- 低头看卷宗 -->
+          <circle cx="169" cy="126" r="4.6" fill="#6F52BE"/>
+          <circle cx="183" cy="126" r="4.6" fill="#6F52BE"/>
+          <circle cx="169" cy="127.8" r="1.9" fill="#2A2140"/>
+          <circle cx="183" cy="127.8" r="1.9" fill="#2A2140"/>
+          <!-- 手扶着卷宗 -->
+          <path d="M148 172 Q136 180 138 192" stroke="#B8C6E4" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <circle cx="139" cy="194" r="4.6" fill="#A6ABBB"/>
+        </g>
+        <rect x="0" y="270" width="420" height="10" fill="#10131f"/>
+      </svg>
+    </div>
+    <!-- 飘着的比较泡泡（点破） -->
+    <div class="fbub" style="left:6%;top:8%">局长今天对她笑了</div>
+    <div class="fbub" style="left:44%;top:2%">她又被夸了</div>
+    <div class="fbub" style="left:4%;top:44%">复印机换新墨盒了</div>
+    <div class="fbub" style="left:52%;top:26%">刚才那句话什么意思</div>
+    <div class="fbub" style="left:12%;top:72%">他是不是对我有意见</div>
+    <div class="fbub" style="left:48%;top:58%">那个案子本来该给我吗</div>
+    <div class="fbub" style="left:26%;top:34%">她升得是不是比我快</div>
+  </div>
+  <div class="lines" id="focus-lines">
+    <p><span>别人的桌子，别人的卷宗。</span></p>
+    <p><span>你只要写好，自己的那一页。</span></p>
+  </div>
+</section>
+
+<!-- ════════════ 六 · 器重 ════════════ -->
+<section id="s6" class="scene flowtop">
+  <div class="words">
+    <div class="kicker reveal"><span class="num">陆</span><span>器重</span></div>
+    <p class="reveal" style="--d:.15s">傍晚快下班，小鹿梅怯生生地凑过来："朱迪，能教教我怎么写案情分析吗？"</p>
+    <div class="bubble reveal" style="--d:.4s">
+      <span class="who">梅的声音小小的</span>
+      "局长总把最重要的案子分给你。全警局都知道，他最器重你。"
+    </div>
+    <p class="reveal" style="--d:.65s">朱迪愣在原地。</p>
+    <p class="reveal dim" style="--d:.85s">原来她攒了一整本证据的那件事，在别人眼里，叫"器重"。</p>
+  </div>
+  <div class="artflow">
+    <svg viewBox="0 0 380 280" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="280" fill="#1e1a2c"/>
+      <!-- 傍晚的窗 -->
+      <rect x="228" y="26" width="130" height="92" rx="10" fill="#4a3a58"/>
+      <rect x="228" y="26" width="130" height="92" rx="10" fill="none" stroke="#3a3450" stroke-width="6"/>
+      <circle cx="320" cy="60" r="14" fill="#e8a870" opacity=".8"/>
+      <rect x="228" y="84" width="130" height="34" fill="#3a2f4a"/>
+      <!-- 桌子 -->
+      <rect x="30" y="196" width="320" height="13" rx="5" fill="#4a3a30"/>
+      <rect x="52" y="209" width="11" height="60" fill="#3a2c24"/>
+      <rect x="318" y="209" width="11" height="60" fill="#3a2c24"/>
+      <!-- 朱迪坐在桌前（愣住） -->
+      <g>
+        <ellipse cx="150" cy="172" rx="22" ry="22" fill="#2B3556"/>
+        <circle cx="150" cy="136" r="17" fill="#A6ABBB"/>
+        <ellipse cx="143" cy="118" rx="5.4" ry="15" transform="rotate(-6 143 118)" fill="#A6ABBB"/>
+        <ellipse cx="157" cy="117" rx="5.4" ry="15" transform="rotate(6 157 117)" fill="#A6ABBB"/>
+        <ellipse cx="143" cy="121" rx="2.7" ry="10" transform="rotate(-6 143 121)" fill="#E9BCCF"/>
+        <ellipse cx="157" cy="120" rx="2.7" ry="10" transform="rotate(6 157 120)" fill="#E9BCCF"/>
+        <ellipse cx="150" cy="134" rx="8.6" ry="5.4" fill="#CDD1DC"/>
+        <circle cx="143.5" cy="132" r="4.2" fill="#6F52BE"/>
+        <circle cx="156.5" cy="132" r="4.2" fill="#6F52BE"/>
+        <circle cx="143.5" cy="133.7" r="1.7" fill="#2A2140"/>
+        <circle cx="156.5" cy="133.7" r="1.7" fill="#2A2140"/>
+        <path d="M146 145 Q150 147 154 145" stroke="#5A6070" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- 怯生生的梅 -->
+      <g>
+        <ellipse cx="262" cy="178" rx="20" ry="19" fill="#C8A27C"/>
+        <ellipse cx="262" cy="186" rx="12.5" ry="10" fill="#E4CDA8"/>
+        <circle cx="262" cy="146" r="15" fill="#C8A27C"/>
+        <ellipse cx="273" cy="128" rx="7.2" ry="10.5" transform="rotate(12 273 128)" fill="#C8A27C"/>
+        <ellipse cx="251" cy="128" rx="7.2" ry="10.5" transform="rotate(-12 251 128)" fill="#C8A27C"/>
+        <ellipse cx="273" cy="130" rx="3.7" ry="6.6" transform="rotate(12 273 130)" fill="#E4CDA8"/>
+        <ellipse cx="251" cy="130" rx="3.7" ry="6.6" transform="rotate(-12 251 130)" fill="#E4CDA8"/>
+        <ellipse cx="262" cy="144" rx="9" ry="5.8" fill="#E4CDA8"/>
+        <!-- 害羞低垂的大眼睛 -->
+        <ellipse cx="256" cy="142" rx="4.2" ry="4.8" fill="#5A4030"/>
+        <ellipse cx="268" cy="142" rx="4.2" ry="4.8" fill="#5A4030"/>
+        <circle cx="256" cy="144" r="1.7" fill="#241812"/>
+        <circle cx="268" cy="144" r="1.7" fill="#241812"/>
+        <path d="M251.5 137.5 Q256 135.8 260.5 137.5 M263.5 137.5 Q268 135.8 272.5 137.5" stroke="#8a6a4e" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <path d="M258 153 Q262 155 266 153" stroke="#5A4030" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <!-- 紧张绞着的小手 -->
+        <path d="M246 192 Q238 198 240 206" stroke="#C8A27C" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M250 196 Q246 202 248 208" stroke="#C8A27C" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <!-- 背上的小梅花点 -->
+        <circle cx="252" cy="170" r="1.8" fill="#E4CDA8" opacity=".8"/>
+        <circle cx="262" cy="166" r="1.8" fill="#E4CDA8" opacity=".8"/>
+        <circle cx="271" cy="172" r="1.8" fill="#E4CDA8" opacity=".8"/>
+      </g>
+      <!-- 桌上：一次通过的分析报告 -->
+      <g transform="rotate(2 90 190)">
+        <rect x="62" y="180" width="34" height="22" rx="2" fill="#e9e2cf"/>
+        <path d="M70 190 l4 4 12 -10" stroke="#6fae6a" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════ 尾声 ════════════ -->
+<section id="s7" class="scene">
+  <div class="art">
+    <svg viewBox="0 0 380 240" aria-hidden="true">
+      <rect x="0" y="0" width="380" height="240" fill="#221c2c"/>
+      <!-- 合上的证据本，最新一页是空白 -->
+      <g transform="rotate(-4 190 112)">
+        <rect x="128" y="44" width="124" height="150" rx="8" fill="#5c3f28"/>
+        <rect x="136" y="52" width="108" height="134" rx="5" fill="#f2e8d0"/>
+        <!-- 翻过去的旧页（一角） -->
+        <path d="M136 52 Q170 46 190 52 L190 186 Q160 178 136 186 Z" fill="#e9e2cf"/>
+        <!-- 最新一页：干净空白 -->
+        <rect x="136" y="52" width="108" height="134" rx="5" fill="#f2e8d0"/>
+        <!-- 页脚一行小字 -->
+        <text x="190" y="172" text-anchor="middle" font-size="8.5" fill="#b3aa90" letter-spacing="2">（这一页，先空着）</text>
+      </g>
+      <!-- 桌角一枚放大镜收进了口袋 -->
+      <g transform="rotate(12 318 176)">
+        <circle cx="318" cy="164" r="13" fill="none" stroke="#8d8577" stroke-width="4" opacity=".8"/>
+        <line x1="327" y1="173" x2="340" y2="188" stroke="#8d8577" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="words">
+    <div class="kicker reveal"><span class="num">柒</span><span>尾声</span></div>
+    <p class="reveal" style="--d:.15s">回家路上，她把《偏心证据》那一页，轻轻翻了过去。</p>
+    <p class="reveal dim" style="--d:.35s">后面是新的一页。她想了想，什么也没写。</p>
+    <p class="reveal dim" style="--d:.55s">空着就空着吧。</p>
+    <div class="dedic reveal" style="--d:.8s">
+      <div class="to">送给亲爱的 Lin</div>
+      <div class="from">—— 永远站在你这边的 Zhe</div>
+    </div>
+    <div class="nextup reveal" style="--d:1.05s">
+      <div class="win-mini">
+        <svg viewBox="0 0 60 80" aria-hidden="true">
+          <rect x="4" y="4" width="52" height="72" rx="6" fill="#3a4266"/>
+          <rect x="10" y="10" width="40" height="60" rx="3" fill="#4a5378"/>
+          <circle cx="24" cy="40" r="2.6" fill="#8d92ab"/>
+          <circle cx="36" cy="40" r="2.6" fill="#8d92ab"/>
+          <circle cx="30" cy="30" r="2.6" fill="#8d92ab"/>
+        </svg>
+      </div>
+      <div class="next-text">下一夜，正在来的路上</div>
+      <a class="back-study" href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">回到书房 · 看看其它的窗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="../" onclick="try{sessionStorage.setItem('zs_seen',1)}catch(e){}">回到书房</a>
+  第 六 夜 · 完
+</footer>
+</main>
+
+<script src="../assets/story.js"></script>
+<script>
+/* 本页专属：专注模式 —— 点破飘着的比较泡泡 */
+(function(){
+  var bubs=[].slice.call(document.querySelectorAll("#focuswrap .fbub"));
+  var popped=0,
+      hint=document.getElementById("s5hint"),
+      wrap=document.getElementById("focuswrap"),
+      lines=[].slice.call(document.querySelectorAll("#focus-lines p"));
+  function done(){
+    wrap.classList.add("done");
+    lines.forEach(function(p){p.classList.add("on")});
+    if(hint)hint.innerHTML="世 界 安 静 了 。";
+  }
+  function pop(b){
+    if(!b||b.classList.contains("pop"))return;
+    b.classList.add("pop");popped++;
+    if(popped>=bubs.length)done();
+  }
+  bubs.forEach(function(b){b.addEventListener("pointerdown",function(e){e.stopPropagation();pop(b)})});
+  if(wrap)wrap.addEventListener("pointerdown",function(){
+    var un=bubs.filter(function(b){return !b.classList.contains("pop")});
+    if(un.length)pop(un[Math.floor(Math.random()*un.length)]);
+  });
+  var qs=new URLSearchParams(location.search);
+  if(qs.get("stage")==="final"){
+    bubs.forEach(function(b){b.classList.add("pop")});popped=bubs.length;done();
+  }
+})();
+
+ZStory.init({
+  storyId:"evidence",
+  audio:{
+    tempo:4200, delayTime:.47, feedback:.3, wetness:.5,
+    chords:[
+      {bass:116.54,notes:[233.08,293.66,349.23,466.16],spark:[587.33,466.16]},
+      {bass:98.00, notes:[196.00,233.08,293.66,392.00],spark:[466.16,392.00]},
+      {bass:77.78, notes:[155.56,196.00,233.08,311.13],spark:[349.23,466.16]},
+      {bass:87.31, notes:[174.61,220.00,261.63,349.23],spark:[440.00,523.25]}
+    ]
+  }
+});
+</script>
+</body>
+</html>
